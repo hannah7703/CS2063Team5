@@ -23,12 +23,6 @@ class AchieveActivity : AppCompatActivity() {
 
         val activityTask = findViewById<Button>(R.id.btnTask)
         activityTask.setOnClickListener {
-            val intent = Intent(this, TaskActivity::class.java)
-            try {
-                startActivity(intent)
-            } catch (ex: ActivityNotFoundException) {
-                Log.e(TAG, "Unable to start the activity")
-            }
             finish()
         }
         val activityFish = findViewById<Button>(R.id.btnFish)

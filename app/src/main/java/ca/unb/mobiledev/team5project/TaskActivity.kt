@@ -30,7 +30,6 @@ class TaskActivity : AppCompatActivity() {
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
-            finish()
         }
         val activityFish = findViewById<Button>(R.id.btnFish)
         activityFish.setOnClickListener {
@@ -40,7 +39,6 @@ class TaskActivity : AppCompatActivity() {
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
-            finish()
         }
         val activityStore = findViewById<Button>(R.id.btnStore)
         activityStore.setOnClickListener {
@@ -50,7 +48,6 @@ class TaskActivity : AppCompatActivity() {
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
-            finish()
         }
         val activityTank = findViewById<Button>(R.id.btnTank)
         activityTank.setOnClickListener {
@@ -60,7 +57,6 @@ class TaskActivity : AppCompatActivity() {
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
-            finish()
         }
     }
     companion object {
