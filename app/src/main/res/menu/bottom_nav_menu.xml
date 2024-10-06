@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/store"
+        android:title="Store"
+        android:icon="@drawable/ic_store_icon_foreground"/>
+    <item
+        android:id="@+id/achievements"
+        android:title="Achievements"
+        android:icon="@drawable/ic_achievements_icon_foreground"/>
+    <item
+        android:id="@+id/tasks"
+        android:title="Tasks"
+        android:icon="@drawable/ic_tasks_icon_foreground"/>
+    <item
+        android:id="@+id/tank"
+        android:title="Tank"
+        android:icon="@drawable/ic_tank_icon_foreground"/>
+    <item
+        android:id="@+id/fish"
+        android:title="Fish"
+        android:icon="@drawable/ic_fish_icon_foreground"/>
+</menu>

@@ -9,6 +9,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import ca.unb.mobiledev.team5project.TaskActivity.Companion
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class AchieveActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,40 +23,47 @@ class AchieveActivity : AppCompatActivity() {
             insets
         }
 
-        val activityTask = findViewById<Button>(R.id.btnTask)
-        activityTask.setOnClickListener {
-            finish()
-        }
-        val activityFish = findViewById<Button>(R.id.btnFish)
-        activityFish.setOnClickListener {
-            val intent = Intent(this, FishActivity::class.java)
-            try {
-                startActivity(intent)
-            } catch (ex: ActivityNotFoundException) {
-                Log.e(TAG, "Unable to start the activity")
+        val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavBar.selectedItemId = R.id.achievements
+        bottomNavBar?.setOnItemSelectedListener { item ->
+            val menuItemId = item.itemId
+
+            when (menuItemId) {
+                R.id.store -> {
+                    val intent = Intent(this, StoreActivity::class.java)
+                    try {
+                        startActivity(intent)
+                    } catch (ex: ActivityNotFoundException) {
+                        Log.e(TaskActivity.TAG, "Unable to start the activity")
+                    }
+                    finish()
+                }
+                R.id.tasks -> {
+                    finish()
+                }
+                R.id.tank -> {
+                    val intent = Intent(this, TankActivity::class.java)
+                    try {
+                        startActivity(intent)
+                    } catch (ex: ActivityNotFoundException) {
+                        Log.e(TaskActivity.TAG, "Unable to start the activity")
+                    }
+                    finish()
+                }
+                R.id.fish -> {
+                    val intent = Intent(this, FishActivity::class.java)
+                    try {
+                        startActivity(intent)
+                    } catch (ex: ActivityNotFoundException) {
+                        Log.e(TaskActivity.TAG, "Unable to start the activity")
+                    }
+                    finish()
+                }
             }
-            finish()
+
+            return@setOnItemSelectedListener true
         }
-        val activityStore = findViewById<Button>(R.id.btnStore)
-        activityStore.setOnClickListener {
-            val intent = Intent(this, StoreActivity::class.java)
-            try {
-                startActivity(intent)
-            } catch (ex: ActivityNotFoundException) {
-                Log.e(TAG, "Unable to start the activity")
-            }
-            finish()
-        }
-        val activityTank = findViewById<Button>(R.id.btnTank)
-        activityTank.setOnClickListener {
-            val intent = Intent(this, TankActivity::class.java)
-            try {
-                startActivity(intent)
-            } catch (ex: ActivityNotFoundException) {
-                Log.e(TAG, "Unable to start the activity")
-            }
-            finish()
-        }
+
     }
     companion object {
         // String for LogCat documentation
