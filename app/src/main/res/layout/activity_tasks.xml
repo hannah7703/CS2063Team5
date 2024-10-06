@@ -76,14 +76,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
-    <ListView
-        android:layout_width="408dp"
-        android:layout_height="446dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:layout_editor_absoluteY="204dp" />
-
     <LinearLayout
         android:id="@+id/taskPageBanner"
         android:layout_width="409dp"
@@ -105,14 +97,112 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="404dp"
-        android:layout_height="42dp"
+        android:layout_width="405dp"
+        android:layout_height="43dp"
         android:text="Today"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskPageBanner"
-        tools:layout_editor_absoluteY="164dp" />
+        android:layout_marginVertical="16dp"/>
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="407dp"
+        android:layout_height="42dp"
+        android:text="Water plants"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:layout_editor_absoluteY="204dp" />
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="407dp"
+        android:layout_height="42dp"
+        android:text="Brush teeth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox1"
+        tools:layout_editor_absoluteY="204dp" />
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="407dp"
+        android:layout_height="42dp"
+        android:text="Make bed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox2"
+        tools:layout_editor_absoluteY="204dp" />
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="407dp"
+        android:layout_height="42dp"
+        android:text="Do homework"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox3"
+        tools:layout_editor_absoluteY="204dp" />
+    <CheckBox
+        android:id="@+id/checkBox5"
+        android:layout_width="407dp"
+        android:layout_height="42dp"
+        android:text="Check email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox4"
+        tools:layout_editor_absoluteY="204dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="405dp"
+        android:layout_height="43dp"
+        android:text="This week"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox5"
+        android:layout_marginVertical="16dp"/>
+
+    <CheckBox
+        android:id="@+id/checkBox6"
+        android:layout_width="407dp"
+        android:layout_height="42dp"
+        android:text="Wash sheets"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:layout_editor_absoluteY="204dp" />
+    <CheckBox
+        android:id="@+id/checkBox7"
+        android:layout_width="407dp"
+        android:layout_height="42dp"
+        android:text="Take out trash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox6"
+        tools:layout_editor_absoluteY="204dp" />
+    <CheckBox
+        android:id="@+id/checkBox8"
+        android:layout_width="407dp"
+        android:layout_height="42dp"
+        android:text="Spa day!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox7"
+        tools:layout_editor_absoluteY="204dp" />
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="405dp"
+        android:layout_height="43dp"
+        android:text="This month"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox8"
+        android:layout_marginVertical="16dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
