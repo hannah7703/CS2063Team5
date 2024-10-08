@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Fill Your Tank</string>
+    <string-array name="repeat_options">
+        <item>One Time Task</item>
+        <item>Repeat Daily</item>
+        <item>Repeat Weekly</item>
+        <item>Repeat Monthly</item>
+    </string-array>
+    <string-array name="time">
+        <item>AM</item>
+        <item>PM</item>
+    </string-array>
 </resources>

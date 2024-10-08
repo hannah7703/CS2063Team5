@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -64,6 +65,16 @@ class TaskActivity : AppCompatActivity() {
             }
 
             return@setOnItemSelectedListener true
+        }
+
+        val createTaskButton = findViewById<Button>(R.id.createTaskBtn)
+        createTaskButton.setOnClickListener {
+           val intent = Intent(this, CreateTaskDialog::class.java)
+            try {
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(TAG, "Unable to start the activity")
+            }
         }
     }
 
