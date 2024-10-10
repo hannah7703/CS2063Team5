@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="16dp"
         android:text="Task Title:"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -50,12 +50,12 @@
         app:layout_constraintTop_toBottomOf="@+id/DialogTaskTitle" />
 
     <TextView
-        android:id="@+id/DialogRepeat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/DialogDeadline"
+        android:layout_width="103dp"
+        android:layout_height="33dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="27dp"
-        android:text="Repeat:"
+        android:text="Deadline:"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="20dp"
         android:text="Reminder Time:"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -76,17 +76,17 @@
 
     <CheckBox
         android:id="@+id/reminderCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="17dp"
+        android:layout_width="207dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
         android:buttonTint="#FFFFFF"
         android:shadowColor="#FFFFFF"
         android:text="Reminder"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DialogRepeat" />
+        app:layout_constraintStart_toEndOf="@+id/repeatCheck"
+        app:layout_constraintTop_toBottomOf="@+id/DialogDeadline" />
 
     <Button
         android:id="@+id/SaveTask"
@@ -113,29 +113,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="260dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="21dp"
+
+    <Spinner
+        android:id="@+id/DeadlineDrop"
+        android:layout_width="212dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="28dp"
         android:background="#FFFFFF"
-        android:padding="8dp"
-        app:layout_constraintStart_toEndOf="@+id/DialogRepeat"
-        app:layout_constraintTop_toBottomOf="@+id/DialogStartDate">
-        <Spinner
-            android:id="@+id/RepeatDrop"
-            android:layout_width="249dp"
-            android:layout_height="wrap_content"
-            android:textSize="24sp" />
-    </RelativeLayout>
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/DialogDeadline"
+        app:layout_constraintTop_toBottomOf="@+id/DialogStartDate" />
 
     <EditText
         android:id="@+id/TaskTitleEdit"
         android:layout_width="226dp"
         android:layout_height="33dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
@@ -144,75 +139,107 @@
         app:layout_constraintStart_toEndOf="@+id/DialogTaskTitle"
         app:layout_constraintTop_toBottomOf="@+id/CreateDialogTitle" />
 
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="222dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="22dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#FFFFFF"
-        android:ems="10"
-        android:inputType="date"
-        android:textColor="#000000"
-        app:layout_constraintStart_toEndOf="@+id/DialogStartDate"
-        app:layout_constraintTop_toBottomOf="@+id/TaskTitleEdit" />
-
-    <EditText
+    <Spinner
         android:id="@+id/hour"
-        android:layout_width="31dp"
-        android:layout_height="33dp"
+        android:layout_width="40dp"
+        android:layout_height="32dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="20dp"
         android:background="#FFFFFF"
-        android:backgroundTint="#FFFFFF"
-        android:ems="10"
-        android:inputType="number"
         android:visibility="invisible"
+        android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/DialogRemindTime"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/reminderCheckBox" />
 
     <TextView
         android:id="@+id/TimeColon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
         android:text=":"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/hour"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/reminderCheckBox" />
 
-    <EditText
+    <Spinner
         android:id="@+id/Minute"
-        android:layout_width="32dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="76dp"
+        android:layout_width="36dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
         android:background="#FFFFFF"
-        android:backgroundTint="#FFFFFF"
-        android:ems="10"
-        android:inputType="number"
         android:visibility="invisible"
+        android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/TimeColon"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/reminderCheckBox" />
+
+    <Spinner
+        android:id="@+id/timeSpinner"
+        android:layout_width="43dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
+        android:background="#FFFFFF"
+        android:visibility="invisible"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/Minute"
+        app:layout_constraintTop_toBottomOf="@+id/reminderCheckBox" />
+
+    <CheckBox
+        android:id="@+id/repeatCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:buttonTint="#FFFFFF"
+        android:shadowColor="#FFFFFF"
+        android:text="Repeat"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DialogDeadline" />
+
+    <TextView
+        android:id="@+id/selectDateBox"
+        android:layout_width="225dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:background="#FFFEFE"
+        android:text=" Click to select date"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/DialogStartDate"
+        app:layout_constraintTop_toBottomOf="@+id/TaskTitleEdit" />
 
     <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="113dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="76dp"
+        android:id="@+id/relativeLayout3"
+        android:layout_width="344dp"
+        android:layout_height="335dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="1dp"
         android:background="#FFFFFF"
         android:padding="8dp"
         android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/Minute"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
-        <Spinner
-            android:id="@+id/timeSpinner"
-            android:layout_width="97dp"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"/>
+        app:layout_constraintBottom_toTopOf="@+id/CancelTask"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CreateDialogTitle"
+        app:layout_constraintVertical_bias="1.0">
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="340dp"
+            android:layout_height="309dp"
+            android:visibility="visible"
+            android:weekNumberColor="#000000" />
+
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
