@@ -12,10 +12,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import java.lang.String.format
-import java.text.DateFormat
-import java.time.Month
-import java.time.format.DateTimeFormatter
 
 
 class CreateTaskDialog : AppCompatActivity() {

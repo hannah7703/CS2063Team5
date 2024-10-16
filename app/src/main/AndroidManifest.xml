@@ -42,6 +42,11 @@
             android:exported="false"
             android:theme="@style/Theme.CreateTask">
         </activity>
+        <activity
+            android:name=".AchievementDialog"
+            android:exported="false"
+            android:theme="@style/Theme.CreateTask">
+        </activity>
     </application>
 
 </manifest>
