@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -62,6 +63,98 @@ class StoreActivity : AppCompatActivity() {
             }
 
             return@setOnItemSelectedListener true
+        }
+
+        val item1 = findViewById<ImageView>(R.id.imageView)
+        val item2 = findViewById<ImageView>(R.id.imageView10)
+        val item3 = findViewById<ImageView>(R.id.imageView13)
+        val item4 = findViewById<ImageView>(R.id.imageView14)
+        val item5 = findViewById<ImageView>(R.id.imageView17)
+        val item6 = findViewById<ImageView>(R.id.imageView18)
+
+        item1.setOnClickListener {
+            val intent = Intent(this, StoreDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", "Picture Frame")
+                bundle.putInt("cost", 15)
+                bundle.putBoolean("purchased", false)
+                bundle.putBoolean("placed", false)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(AchieveActivity.TAG, "Unable to start the activity")
+            }
+        }
+        item2.setOnClickListener {
+            val intent = Intent(this, StoreDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", "Framed Map")
+                bundle.putInt("cost", 20)
+                bundle.putBoolean("purchased", false)
+                bundle.putBoolean("placed", false)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(AchieveActivity.TAG, "Unable to start the activity")
+            }
+        }
+        item3.setOnClickListener {
+            val intent = Intent(this, StoreDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", "Fish Tank Man")
+                bundle.putInt("cost", 20)
+                bundle.putBoolean("purchased", false)
+                bundle.putBoolean("placed", false)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(AchieveActivity.TAG, "Unable to start the activity")
+            }
+        }
+        item4.setOnClickListener {
+            val intent = Intent(this, StoreDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", "Wall Clock")
+                bundle.putInt("cost", 10)
+                bundle.putBoolean("purchased", true)
+                bundle.putBoolean("placed", true)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(AchieveActivity.TAG, "Unable to start the activity")
+            }
+        }
+        item5.setOnClickListener {
+            val intent = Intent(this, StoreDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", "Magnifying Glass")
+                bundle.putInt("cost", 5)
+                bundle.putBoolean("purchased", false)
+                bundle.putBoolean("placed", false)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(AchieveActivity.TAG, "Unable to start the activity")
+            }
+        }
+        item6.setOnClickListener {
+            val intent = Intent(this, StoreDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", "Camera")
+                bundle.putInt("cost", 35)
+                bundle.putBoolean("purchased", false)
+                bundle.putBoolean("placed", false)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(AchieveActivity.TAG, "Unable to start the activity")
+            }
         }
     }
     companion object {

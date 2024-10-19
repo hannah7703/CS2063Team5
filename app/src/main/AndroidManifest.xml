@@ -47,6 +47,11 @@
             android:exported="false"
             android:theme="@style/Theme.CreateTask">
         </activity>
+        <activity
+            android:name=".StoreDialog"
+            android:exported="false"
+            android:theme="@style/Theme.CreateTask">
+        </activity>
     </application>
 
 </manifest>
