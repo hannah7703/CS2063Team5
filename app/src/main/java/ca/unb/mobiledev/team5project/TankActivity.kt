@@ -2,21 +2,42 @@ package ca.unb.mobiledev.team5project
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
+import android.util.TimeUtils
+import android.view.View
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import ca.unb.mobiledev.team5project.StoreActivity.Companion
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.time.LocalTime
 
 class TankActivity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_tank)
+
+        //sets day window and wall visible if day *****Hardcoded sunrise sunset!!
+        val daytime = TimeUtils.isTimeBetween(LocalTime.now(), LocalTime.of(6,0), LocalTime.of(22,0))
+        if (daytime) {
+            findViewById<ImageView>(R.id.dayWindow).visibility = View.VISIBLE
+            findViewById<ImageView>(R.id.nightWindow).visibility = View.INVISIBLE
+            findViewById<ImageView>(R.id.dayWall).visibility = View.VISIBLE
+            findViewById<ImageView>(R.id.nightWall).visibility = View.INVISIBLE
+        }
+        else {
+            findViewById<ImageView>(R.id.dayWindow).visibility = View.INVISIBLE
+            findViewById<ImageView>(R.id.nightWindow).visibility = View.VISIBLE
+            findViewById<ImageView>(R.id.dayWall).visibility = View.INVISIBLE
+            findViewById<ImageView>(R.id.nightWall).visibility = View.VISIBLE
+        }
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.tank)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

@@ -7,15 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".FishActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fish Page"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
         android:id="@+id/topNavBar"
         android:layout_width="410dp"
@@ -84,5 +75,138 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
+
+    <ImageView
+        android:id="@+id/storebowl1"
+        android:layout_width="205dp"
+        android:layout_height="201dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/fishbowl_fishselection"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topNavBar"/>
+    <ImageView
+        android:id="@+id/goldfish_owned"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/goldfish_image"
+        app:layout_constraintBottom_toBottomOf="@id/storebowl1"
+        app:layout_constraintEnd_toEndOf="@id/storebowl1"
+        app:layout_constraintStart_toStartOf="@id/storebowl1"
+        app:layout_constraintTop_toTopOf="@id/storebowl1"
+        />
+
+    <ImageView
+        android:id="@+id/storebowl2"
+        android:layout_width="205dp"
+        android:layout_height="201dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/fishbowl_fishselection"
+        tools:layout_editor_absoluteX="205dp"
+        tools:layout_editor_absoluteY="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topNavBar"
+        />
+    <ImageView
+        android:id="@+id/bowl2fish"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/goldfish_notowned"
+        app:layout_constraintBottom_toBottomOf="@id/storebowl2"
+        app:layout_constraintEnd_toEndOf="@id/storebowl2"
+        app:layout_constraintStart_toStartOf="@id/storebowl2"
+        app:layout_constraintTop_toTopOf="@id/storebowl2"
+        />
+
+    <ImageView
+        android:id="@+id/storebowl3"
+        android:layout_width="205dp"
+        android:layout_height="201dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/fishbowl_fishselection"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="271dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/storebowl1"/>
+    <ImageView
+        android:id="@+id/bowl3fish"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/goldfish_notowned"
+        app:layout_constraintBottom_toBottomOf="@id/storebowl3"
+        app:layout_constraintEnd_toEndOf="@id/storebowl3"
+        app:layout_constraintStart_toStartOf="@id/storebowl3"
+        app:layout_constraintTop_toTopOf="@id/storebowl3"
+        />
+
+    <ImageView
+        android:id="@+id/storebowl4"
+        android:layout_width="205dp"
+        android:layout_height="201dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/fishbowl_fishselection"
+        tools:layout_editor_absoluteX="206dp"
+        tools:layout_editor_absoluteY="271dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/storebowl2"/>
+    <ImageView
+        android:id="@+id/bowl4fish"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/goldfish_notowned"
+        app:layout_constraintBottom_toBottomOf="@id/storebowl4"
+        app:layout_constraintEnd_toEndOf="@id/storebowl4"
+        app:layout_constraintStart_toStartOf="@id/storebowl4"
+        app:layout_constraintTop_toTopOf="@id/storebowl4"
+        />
+
+    <ImageView
+        android:id="@+id/storebowl5"
+        android:layout_width="205dp"
+        android:layout_height="201dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/fishbowl_fishselection"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="472dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/storebowl3"/>
+    <ImageView
+        android:id="@+id/bowl5fish"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/goldfish_notowned"
+        app:layout_constraintBottom_toBottomOf="@id/storebowl5"
+        app:layout_constraintEnd_toEndOf="@id/storebowl5"
+        app:layout_constraintStart_toStartOf="@id/storebowl5"
+        app:layout_constraintTop_toTopOf="@id/storebowl5"
+        />
+
+    <ImageView
+        android:id="@+id/storebowl6"
+        android:layout_width="205dp"
+        android:layout_height="201dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/fishbowl_fishselection"
+        tools:layout_editor_absoluteX="206dp"
+        tools:layout_editor_absoluteY="472dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/storebowl4"/>
+    <ImageView
+        android:id="@+id/bowl6fish"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/goldfish_notowned"
+        app:layout_constraintBottom_toBottomOf="@id/storebowl6"
+        app:layout_constraintEnd_toEndOf="@id/storebowl6"
+        app:layout_constraintStart_toStartOf="@id/storebowl6"
+        app:layout_constraintTop_toTopOf="@id/storebowl6"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

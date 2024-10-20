@@ -7,15 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".TankActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tank Page"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
         android:id="@+id/topNavBar"
         android:layout_width="410dp"
@@ -84,5 +75,87 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
+
+    <ImageView
+        android:id="@+id/dayWall"
+        android:layout_width="500dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/wall_image"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/nightWall"
+        android:layout_width="500dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        app:layout_constraintVertical_bias="0.5"
+        app:srcCompat="@drawable/wall_image"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/nightWindow"
+        android:layout_width="219dp"
+        android:layout_height="247dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="108dp"
+        app:layout_constraintBottom_toBottomOf="@id/nightWall"
+        app:layout_constraintStart_toStartOf="@id/nightWall"
+        app:layout_constraintTop_toTopOf="@id/nightWall"
+        app:layout_constraintVertical_bias="0.2"
+        app:srcCompat="@drawable/night_window" />
+
+    <ImageView
+        android:id="@+id/dayWindow"
+        android:layout_width="219dp"
+        android:layout_height="247dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="108dp"
+        app:layout_constraintBottom_toBottomOf="@id/dayWall"
+        app:layout_constraintStart_toStartOf="@id/dayWall"
+        app:layout_constraintTop_toTopOf="@id/dayWall"
+        app:layout_constraintVertical_bias="0.2"
+        app:srcCompat="@drawable/day_window" />
+
+    <ImageView
+        android:id="@+id/table"
+        android:layout_width="347dp"
+        android:layout_height="213dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="88dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/table_image" />
+
+    <ImageView
+        android:id="@+id/tankgraphic"
+        android:layout_width="221dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginBottom="240dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/tank_image" />
+
+    <ImageView
+        android:id="@+id/goldfish"
+        android:layout_width="60dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginBottom="324dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:srcCompat="@drawable/goldfish_image" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
