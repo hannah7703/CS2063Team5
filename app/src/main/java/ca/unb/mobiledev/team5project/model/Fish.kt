@@ -6,4 +6,5 @@ data class Fish(val name: String?,
                 val placed: Boolean?,
                 val fishCode: String?,
                 val level: Int,
-                val levelProgress: Int)
+                val levelProgress: Int,
+                var rarity: String?)

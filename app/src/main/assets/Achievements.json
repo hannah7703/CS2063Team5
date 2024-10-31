@@ -1,0 +1,116 @@
+{
+  "achievements": [
+    {
+      "name": "Diving In",
+      "goal": 1,
+      "goalType": "Task Made",
+      "reward": "10 Fish Food",
+      "rewardCode": "FF10",
+      "state": "Locked"
+    },
+    {
+      "name": "Finship",
+      "goal": 1,
+      "goalType": "Fish Collected",
+      "reward": "10 Fish Food",
+      "rewardCode": "FF10",
+      "state": "Locked"
+    },
+    {
+      "name": "Habit Starter",
+      "goal": 5,
+      "goalType": "Task Completed",
+      "reward": "15 Fish Food",
+      "rewardCode": "FF15",
+      "state": "Locked"
+    },
+    {
+      "name": "Habit Master",
+      "goal": 20,
+      "goalType": "Task Completed",
+      "reward": "100 Fish Food",
+      "rewardCode": "FF100",
+      "state": "Locked"
+    },
+    {
+      "name": "Novice Planner",
+      "goal": 5,
+      "goalType": "Task Made",
+      "reward": "10 Fish Food",
+      "rewardCode": "FF10",
+      "state": "Locked"
+    },
+    {
+      "name": "Master Planner",
+      "goal": 25,
+      "goalType": "Task Made",
+      "reward": "50 Fish Food",
+      "rewardCode": "FF50",
+      "state": "Locked"
+    },
+    {
+      "name": "Pet Owner",
+      "goal": 5,
+      "goalType": "Fish Collected",
+      "reward": "Plush Toy",
+      "rewardCode": "DE08",
+      "state": "Locked"
+    },
+    {
+      "name": "Pet Shop",
+      "goal": 20,
+      "goalType": "Fish Collected",
+      "reward": "75 Fish Food",
+      "rewardCode": "FF75",
+      "state": "Locked"
+    },
+    {
+      "name": "Window Shopper",
+      "goal": 1,
+      "goalType": "Decoration Bought",
+      "reward": "15 Fish Food",
+      "rewardCode": "FF15",
+      "state": "Locked"
+    },
+    {
+      "name": "Shopaholic",
+      "goal": 15,
+      "goalType": "Decoration Bought",
+      "reward": "100 Fish Food",
+      "rewardCode": "FF100",
+      "state": "Locked"
+    },
+    {
+      "name": "Interior Design",
+      "goal": 1,
+      "goalType": "Decoration Placed",
+      "reward": "Desk Lamp",
+      "rewardCode": "DE06",
+      "state": "Locked"
+    },
+    {
+      "name": "IKEA Showroom",
+      "goal": 6,
+      "goalType": "Decoration Placed",
+      "reward": "Hanging Plant",
+      "rewardCode": "DE03",
+      "state": "Locked"
+    },
+    {
+      "name": "Fishy Friend",
+      "goal": 1,
+      "goalType": "Fish Displayed",
+      "reward": "10 Fish Food",
+      "rewardCode": "FF10",
+      "state": "Locked"
+    },
+    {
+      "name": "Fishy Following",
+      "goal": 5,
+      "goalType": "Fish Displayed",
+      "reward": "Treasure Chest",
+      "rewardCode": "DE11",
+      "state": "Locked"
+    }
+  ]
+}

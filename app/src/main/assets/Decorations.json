@@ -1,0 +1,132 @@
+{
+  "decorations": [
+    {
+      "name": "Framed picture",
+      "owned": false,
+      "decoType": "Wall",
+      "placement": "NA",
+      "decoCode": "01",
+      "cost": "5"
+    },
+    {
+      "name": "Wall Clock",
+      "owned": false,
+      "decoType": "Wall",
+      "placement": "NA",
+      "decoCode": "02",
+      "cost": "10"
+    },
+    {
+      "name": "Hanging Plant",
+      "owned": false,
+      "decoType": "Wall",
+      "placement": "NA",
+      "decoCode": "03",
+      "cost": ""
+    },
+    {
+      "name": "House Plant",
+      "owned": false,
+      "decoType": "Table",
+      "placement": "NA",
+      "decoCode": "04",
+      "cost": "15"
+    },
+    {
+      "name": "Rubix Cube",
+      "owned": false,
+      "decoType": "Table",
+      "placement": "NA",
+      "decoCode": "05",
+      "cost": "5"
+    },
+    {
+      "name": "Desk Lamp",
+      "owned": false,
+      "decoType": "Table",
+      "placement": "NA",
+      "decoCode": "06",
+      "cost": ""
+    },
+    {
+      "name": "Snow Globe",
+      "owned": false,
+      "decoType": "Table",
+      "placement": "NA",
+      "decoCode": "07",
+      "cost": "20"
+    },
+    {
+      "name": "Plush Toy",
+      "owned": false,
+      "decoType": "Table",
+      "placement": "NA",
+      "decoCode": "08",
+      "cost": ""
+    },
+    {
+      "name": "Castle",
+      "owned": false,
+      "decoType": "Tank",
+      "placement": "NA",
+      "decoCode": "09",
+      "cost": "50"
+    },
+    {
+      "name": "Seaweed",
+      "owned": false,
+      "decoType": "Tank",
+      "placement": "NA",
+      "decoCode": "10",
+      "cost": "10"
+    },
+    {
+      "name": "Treasure Chest",
+      "owned": false,
+      "decoType": "Tank",
+      "placement": "NA",
+      "decoCode": "11",
+      "cost": ""
+    },
+    {
+      "name": "Diver",
+      "owned": false,
+      "decoType": "Tank",
+      "placement": "NA",
+      "decoCode": "12",
+      "cost": "30"
+    },
+    {
+      "name": "Neon Sign",
+      "owned": false,
+      "decoType": "Wall",
+      "placement": "NA",
+      "decoCode": "13",
+      "cost": "25"
+    },
+    {
+      "name": "Books",
+      "owned": false,
+      "decoType": "Table",
+      "placement": "NA",
+      "decoCode": "14",
+      "cost": "10"
+    },
+    {
+      "name": "Ship",
+      "owned": false,
+      "decoType": "Tank",
+      "placement": "NA",
+      "decoCode": "15",
+      "cost": "25"
+    },
+    {
+      "name": "Kraken",
+      "owned": false,
+      "decoType": "Tank",
+      "placement": "NA",
+      "decoCode": "16",
+      "cost": "50"
+    }
+  ]
+}

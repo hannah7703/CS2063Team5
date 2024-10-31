@@ -1,0 +1,84 @@
+{
+  "fishes": [
+    {
+      "name": "Frank",
+      "type": "Betta",
+      "owned": false,
+      "placed": false,
+      "fishCode": "01",
+      "level": 0,
+      "levelProgress": 0,
+      "rarity": "Common"
+    },
+    {
+      "name": "Nemo",
+      "type": "Clownfish",
+      "owned": false,
+      "placed": false,
+      "fishCode": "02",
+      "level": 0,
+      "levelProgress": 0,
+      "rarity": "Common"
+    },
+    {
+      "name": "Finley",
+      "type": "Angelfish",
+      "owned": false,
+      "placed": false,
+      "fishCode": "03",
+      "level": 0,
+      "levelProgress": 0,
+      "rarity": "Common"
+    },
+    {
+      "name": "Finnegan",
+      "type": "Guppy",
+      "owned": false,
+      "placed": false,
+      "fishCode": "04",
+      "level": 0,
+      "levelProgress": 0,
+      "rarity": "Uncommon"
+    },
+    {
+      "name": "Suzy",
+      "type": "Shrimp",
+      "owned": false,
+      "placed": false,
+      "fishCode": "05",
+      "level": 0,
+      "levelProgress": 0,
+      "rarity": "Uncommon"
+    },
+    {
+      "name": "Pancakes",
+      "type": "Discus",
+      "owned": false,
+      "placed": false,
+      "fishCode": "06",
+      "level": 0,
+      "levelProgress": 0,
+      "rarity": "Uncommon"
+    },
+    {
+      "name": "Bilbo",
+      "type": "Cichlid ",
+      "owned": false,
+      "placed": false,
+      "fishCode": "07",
+      "level": 0,
+      "levelProgress": 0,
+      "rarity": "Rare"
+    },
+    {
+      "name": "Miser",
+      "type": "Goldfish",
+      "owned": false,
+      "placed": false,
+      "fishCode": "08",
+      "level": 0,
+      "levelProgress": 0,
+      "rarity": "Rare"
+    }
+  ]
+}
