@@ -8,6 +8,7 @@
     android:background="#2196F3"
     android:backgroundTintMode="add"
     android:visibility="visible"
+    app:flow_verticalAlign="bottom"
     tools:context=".CreateTaskDialog">
 
     <TextView
@@ -116,7 +117,7 @@
 
     <Spinner
         android:id="@+id/DeadlineDrop"
-        android:layout_width="212dp"
+        android:layout_width="226dp"
         android:layout_height="31dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="28dp"
@@ -139,53 +140,19 @@
         app:layout_constraintStart_toEndOf="@+id/DialogTaskTitle"
         app:layout_constraintTop_toBottomOf="@+id/CreateDialogTitle" />
 
-    <Spinner
-        android:id="@+id/hour"
-        android:layout_width="40dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="20dp"
-        android:background="#FFFFFF"
-        android:visibility="invisible"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/DialogRemindTime"
-        app:layout_constraintTop_toBottomOf="@+id/reminderCheckBox" />
-
     <TextView
-        android:id="@+id/TimeColon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
+        android:id="@+id/selectTimeBox"
+        android:layout_width="174dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        android:text=":"
-        android:textColor="#FFFFFF"
+        android:background="#FFFEFE"
+        android:text=" Tap to select"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
         android:textSize="24sp"
         android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/hour"
-        app:layout_constraintTop_toBottomOf="@+id/reminderCheckBox" />
-
-    <Spinner
-        android:id="@+id/Minute"
-        android:layout_width="36dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="20dp"
-        android:background="#FFFFFF"
-        android:visibility="invisible"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/TimeColon"
-        app:layout_constraintTop_toBottomOf="@+id/reminderCheckBox" />
-
-    <Spinner
-        android:id="@+id/timeSpinner"
-        android:layout_width="43dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="20dp"
-        android:background="#FFFFFF"
-        android:visibility="invisible"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/Minute"
+        app:layout_constraintStart_toEndOf="@+id/DialogRemindTime"
         app:layout_constraintTop_toBottomOf="@+id/reminderCheckBox" />
 
     <CheckBox
@@ -209,7 +176,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:background="#FFFEFE"
-        android:text=" Click to select date"
+        android:text=" Tap to select"
+        android:textAlignment="textStart"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/DialogStartDate"
@@ -217,21 +185,17 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
-        android:layout_width="344dp"
-        android:layout_height="335dp"
+        android:layout_width="346dp"
+        android:layout_height="322dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="31dp"
         android:background="#FFFFFF"
         android:padding="8dp"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/CancelTask"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CreateDialogTitle"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/CreateDialogTitle">
 
         <CalendarView
             android:id="@+id/calendarView"
@@ -239,6 +203,27 @@
             android:layout_height="309dp"
             android:visibility="visible"
             android:weekNumberColor="#000000" />
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:timePickerMode="spinner"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="250dp"
+            android:backgroundTint="#FF5722"
+            android:text="Select Time"
+            android:textColor="#FFFFFF"
+            android:textColorLink="#FFFFFF"
+            android:visibility="invisible" />
+
 
     </RelativeLayout>
 

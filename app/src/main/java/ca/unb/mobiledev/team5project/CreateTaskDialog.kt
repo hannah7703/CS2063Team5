@@ -1,17 +1,24 @@
 package ca.unb.mobiledev.team5project
 
+import ca.unb.mobiledev.team5project.model.Task
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.CalendarView
 import android.widget.CheckBox
+import android.widget.EditText
 import android.widget.RelativeLayout
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.TimePicker
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import java.sql.Date
+import java.sql.Time
+import java.time.LocalDate
 
 
 class CreateTaskDialog : AppCompatActivity() {
@@ -23,25 +30,23 @@ class CreateTaskDialog : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        val saveTaskButton = findViewById<Button>(R.id.SaveTask)
-        saveTaskButton.setOnClickListener{
-            finish()
-        }
-        val cancelTaskButton = findViewById<Button>(R.id.CancelTask)
-        cancelTaskButton.setOnClickListener{
-            finish()
-        }
-
+        var startdate: Date? = null
+        var reminder = false
+        var reminderTime: Time? = null
+        val titleBox = findViewById<EditText>(R.id.TaskTitleEdit)
         val calendar = findViewById<CalendarView>(R.id.calendarView)
         val calendarBack = findViewById<RelativeLayout>(R.id.relativeLayout3)
         val dateClickBox = findViewById<TextView>(R.id.selectDateBox)
+        val selectTime = findViewById<Button>(R.id.button2)
         dateClickBox.setOnClickListener {
             calendarBack.visibility = View.VISIBLE
         }
-        calendar.setOnDateChangeListener { calendarView, year, month, day ->
-            val date = " $day/$month/$year"
-            dateClickBox.text = date
+        calendar.setOnDateChangeListener { calendar, year, month, day ->
+            var displayMonth = month+1
+            val date = "$day/$displayMonth/$year"
+            dateClickBox.text = " $date"
+            val saveDate = "$year-$displayMonth-$day"
+            startdate = Date.valueOf(saveDate)
             calendarBack.visibility = View.INVISIBLE
         }
 
@@ -50,38 +55,75 @@ class CreateTaskDialog : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         deadlineDropDown.adapter = adapter
 
-        val timeDropDown = findViewById<Spinner>(R.id.timeSpinner)
-        val timeAdapter = ArrayAdapter.createFromResource(this, R.array.time, android.R.layout.simple_spinner_dropdown_item)
-        timeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        timeDropDown.adapter = timeAdapter
-
+        val reminderTimeDialog = findViewById<TextView>(R.id.DialogRemindTime)
         val remindCheckBox = findViewById<CheckBox>(R.id.reminderCheckBox)
-        val reminderTime = findViewById<TextView>(R.id.DialogRemindTime)
-        val reminderHour = findViewById<Spinner>(R.id.hour)
-        val HourAdapter = ArrayAdapter.createFromResource(this, R.array.hour, android.R.layout.simple_spinner_dropdown_item)
-        HourAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        reminderHour.adapter = HourAdapter
 
-        val reminderMinute = findViewById<Spinner>(R.id.Minute)
-        val minuteAdapter = ArrayAdapter.createFromResource(this, R.array.minute, android.R.layout.simple_spinner_dropdown_item)
-        minuteAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        reminderMinute.adapter = minuteAdapter
+        val selectTimeBox = findViewById<TextView>(R.id.selectTimeBox)
+        val timePicker = findViewById<TimePicker>(R.id.timePicker)
+        selectTimeBox.setOnClickListener {
+            calendarBack.visibility = View.VISIBLE
+            timePicker.visibility = View.VISIBLE
+            selectTime.visibility = View.VISIBLE
+            calendar.visibility = View.INVISIBLE
+        }
+        selectTime.setOnClickListener{
+            var hour = timePicker.hour
+            var minute = timePicker.minute
+            var reminder = "$hour:$minute:00"
+            reminderTime = Time.valueOf(reminder)
+            var am_pm = ""
+            // AM_PM decider logic
+            when {hour == 0 -> { hour += 12
+                am_pm = "AM"
+            }
+                hour == 12 -> am_pm = "PM"
+                hour > 12 -> { hour -= 12
+                    am_pm = "PM"
+                }
+                else -> am_pm = "AM"
+            }
+            var displayHour = if (hour < 10) "0" + hour else hour
+            val displayMin = if (minute < 10) "0" + minute else minute
+            // display format of time
+            val time = " $displayHour:$displayMin $am_pm"
+            selectTimeBox.text = time
+            calendarBack.visibility = View.INVISIBLE
+            timePicker.visibility = View.INVISIBLE
+            selectTime.visibility = View.INVISIBLE
+            calendar.visibility = View.VISIBLE
+        }
 
-        val reminderColon = findViewById<TextView>(R.id.TimeColon)
         remindCheckBox.setOnClickListener{
             if(remindCheckBox.isChecked){
-                reminderTime.visibility = View.VISIBLE
-                reminderHour.visibility = View.VISIBLE
-                reminderColon.visibility = View.VISIBLE
-                reminderMinute.visibility = View.VISIBLE
-                timeDropDown.visibility = View.VISIBLE
+                selectTimeBox.visibility = View.VISIBLE
+                reminderTimeDialog.visibility = View.VISIBLE
+                reminder = true
             } else {
-                reminderTime.visibility = View.INVISIBLE
-                reminderHour.visibility = View.INVISIBLE
-                reminderColon.visibility = View.INVISIBLE
-                reminderMinute.visibility = View.INVISIBLE
-                timeDropDown.visibility = View.INVISIBLE
+                selectTimeBox.visibility = View.INVISIBLE
+                reminderTimeDialog.visibility = View.INVISIBLE
+                reminder = false
             }
+        }
+
+        val repeatCheckbox = findViewById<CheckBox>(R.id.repeatCheck)
+        val saveTaskButton = findViewById<Button>(R.id.SaveTask)
+        saveTaskButton.setOnClickListener{
+            val title = titleBox.text.toString()
+            val deadline = deadlineDropDown.selectedItem.toString()
+            var repeat = repeatCheckbox.isChecked
+            if (!remindCheckBox.isChecked){
+                reminderTime = null
+            }
+            if (title.isEmpty() or dateClickBox.text.equals(" Tap to select")) {
+                Toast.makeText(this, "You must fill all fields!", Toast.LENGTH_SHORT).show()
+            } else {
+                val newTask = Task(title, deadline, repeat, startdate, reminder, reminderTime, false)
+                finish()
+            }
+        }
+        val cancelTaskButton = findViewById<Button>(R.id.CancelTask)
+        cancelTaskButton.setOnClickListener{
+            finish()
         }
     }
 
