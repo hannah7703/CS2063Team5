@@ -5,11 +5,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ListView
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
+import ca.unb.mobiledev.team5project.model.Task
+import ca.unb.mobiledev.team5project.ui.TaskViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import mobiledev.unb.ca.roompersistencelab.ui.TaskAdapter
+import java.sql.Time
+import java.util.Arrays
+import java.util.Date
 
 
 class TaskActivity : AppCompatActivity() {
@@ -67,6 +76,8 @@ class TaskActivity : AppCompatActivity() {
             return@setOnItemSelectedListener true
         }
 
+
+
         val createTaskButton = findViewById<Button>(R.id.createTaskBtn)
         createTaskButton.setOnClickListener {
            val intent = Intent(this, CreateTaskDialog::class.java)
@@ -76,6 +87,17 @@ class TaskActivity : AppCompatActivity() {
                 Log.e(TAG, "Unable to start the activity")
             }
         }
+
+        val listView = findViewById<ListView>(R.id.dailyTasksListview)
+        val taskViewModel by viewModels<TaskViewModel>()
+        Log.e("Task Activity", "I made it here")
+        taskViewModel.insert("test task 1") // Some dependencies need to be added to make this insert actually work...
+        taskViewModel.insert("test task 2")
+        val list = taskViewModel.search()
+        val itemsAdapter = TaskAdapter(applicationContext, list)
+        listView.adapter = itemsAdapter
+        itemsAdapter.notifyDataSetChanged()
+
     }
 
     override fun onResume() {

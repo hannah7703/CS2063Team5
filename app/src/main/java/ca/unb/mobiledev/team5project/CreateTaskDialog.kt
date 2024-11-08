@@ -117,8 +117,9 @@ class CreateTaskDialog : AppCompatActivity() {
             if (title.isEmpty() or dateClickBox.text.equals(" Tap to select")) {
                 Toast.makeText(this, "You must fill all fields!", Toast.LENGTH_SHORT).show()
             } else {
-                val newTask = Task(title, deadline, repeat, startdate, reminder, reminderTime, false)
-                finish()
+                // Commented this out for now until the database insert() actually works...
+//                val newTask = Task(title, deadline, repeat, startdate, reminder, reminderTime, false)
+//                finish()
             }
         }
         val cancelTaskButton = findViewById<Button>(R.id.CancelTask)
