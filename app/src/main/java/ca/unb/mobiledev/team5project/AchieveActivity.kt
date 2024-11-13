@@ -63,22 +63,29 @@ class AchieveActivity : AppCompatActivity() {
             return@setOnItemSelectedListener true
         }
 
-        val TaskStarter = findViewById<ImageView>(R.id.imageView2)
-        val ExpertPlanner = findViewById<ImageView>(R.id.imageView3)
-        val PetOwner = findViewById<ImageView>(R.id.imageView4)
-        val PetStore = findViewById<ImageView>(R.id.imageView6)
-        val HabitStarter = findViewById<ImageView>(R.id.imageView5)
-        val HabitMaster = findViewById<ImageView>(R.id.imageView7)
-        val DepartmentStore = findViewById<ImageView>(R.id.imageView9)
-        val IKEAShowroom = findViewById<ImageView>(R.id.imageView8)
+        val DivingIn = findViewById<ImageView>(R.id.DivingInImage)
+        val Finship = findViewById<ImageView>(R.id.FinshipImage)
+        val HabitStarter = findViewById<ImageView>(R.id.HabitStarterImage)
+        val HabitMaster = findViewById<ImageView>(R.id.HabitMasterImage)
+        val NovicePlanner = findViewById<ImageView>(R.id.NovicePlannerImage)
+        val MasterPlanner = findViewById<ImageView>(R.id.MasterPlannerImage)
+        val PetOwner = findViewById<ImageView>(R.id.PetOwnerImage)
+        val PetShop = findViewById<ImageView>(R.id.PetShopImage)
+        val WindowShopper = findViewById<ImageView>(R.id.WindowShopperImage)
+        val Shopaholic = findViewById<ImageView>(R.id.ShopaholicImage)
+        val InteriorDesign = findViewById<ImageView>(R.id.InteriorDesignImage)
+        val IKEAShowroom = findViewById<ImageView>(R.id.IKEAShowroomImage)
+        val FishyFriend = findViewById<ImageView>(R.id.FishyFriendImage)
+        val FishyFollowing = findViewById<ImageView>(R.id.FishyFollowingImage)
 
-        TaskStarter.setOnClickListener {
+        DivingIn.setOnClickListener {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "Task Starter")
-                bundle.putString("goal", "Create 5/5 Tasks")
-                bundle.putString("Reward", "Reward: 10 Fish Food")
+                bundle.putString("name", "Diving In")
+                bundle.putString("goal", "1")
+                bundle.putString("goalType", "Task Made")
+                bundle.putString("Reward", "10 Fish Food")
                 bundle.putString("state", "Achieved")
                 intent.putExtras(bundle)
                 startActivity(intent)
@@ -86,42 +93,15 @@ class AchieveActivity : AppCompatActivity() {
                 Log.e(TAG, "Unable to start the activity")
             }
         }
-        ExpertPlanner.setOnClickListener {
+        Finship.setOnClickListener {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "Expert Planner")
-                bundle.putString("goal", "Create 20/20 Tasks")
-                bundle.putString("Reward", "Reward: 50 Fish Food")
+                bundle.putString("name", "Finship")
+                bundle.putString("goal", "1")
+                bundle.putString("goalType", "Fish Collected")
+                bundle.putString("Reward", "10 Fish Food")
                 bundle.putString("state", "Achieved")
-                intent.putExtras(bundle)
-                startActivity(intent)
-            } catch (ex: ActivityNotFoundException) {
-                Log.e(TAG, "Unable to start the activity")
-            }
-        }
-        PetOwner.setOnClickListener {
-            val intent = Intent(this, AchievementDialog::class.java)
-            try {
-                val bundle = Bundle()
-                bundle.putString("name", "Pet Owner")
-                bundle.putString("goal", "Collect 5/5 Fish")
-                bundle.putString("Reward", "Reward: Rainbow Gravel")
-                bundle.putString("state", "Achieved")
-                intent.putExtras(bundle)
-                startActivity(intent)
-            } catch (ex: ActivityNotFoundException) {
-                Log.e(TAG, "Unable to start the activity")
-            }
-        }
-        PetStore.setOnClickListener {
-            val intent = Intent(this, AchievementDialog::class.java)
-            try {
-                val bundle = Bundle()
-                bundle.putString("name", "[Locked]")
-                bundle.putString("goal", "Collect 8/20 Fish")
-                bundle.putString("Reward", "Reward: 75 Fish Food")
-                bundle.putString("state", "Locked")
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -133,9 +113,10 @@ class AchieveActivity : AppCompatActivity() {
             try {
                 val bundle = Bundle()
                 bundle.putString("name", "Habit Starter")
-                bundle.putString("goal", "Complete 10/10 Tasks")
-                bundle.putString("Reward", "Reward: Seaweed Decoration")
-                bundle.putString("state", "Earned")
+                bundle.putString("goal", "5")
+                bundle.putString("goalType", "Task Completed")
+                bundle.putString("Reward", "15 Fish Food")
+                bundle.putString("state", "Achieved")
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -146,9 +127,10 @@ class AchieveActivity : AppCompatActivity() {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "[Locked]")
-                bundle.putString("goal", "Complete 10/50 Tasks")
-                bundle.putString("Reward", "Reward: Fish Castle")
+                bundle.putString("name", "Habit Master")
+                bundle.putString("goal", "20")
+                bundle.putString("goalType", "Task Completed")
+                bundle.putString("Reward", "100 Fish Food")
                 bundle.putString("state", "Locked")
                 intent.putExtras(bundle)
                 startActivity(intent)
@@ -156,13 +138,111 @@ class AchieveActivity : AppCompatActivity() {
                 Log.e(TAG, "Unable to start the activity")
             }
         }
-        DepartmentStore.setOnClickListener {
+        var clicked = 0;
+        NovicePlanner.setOnClickListener {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "[Locked]")
-                bundle.putString("goal", "Buy 1/10 Items")
-                bundle.putString("Reward", "Reward: 45 Fish Food")
+                bundle.putString("name", "Novice Planner")
+                bundle.putString("goal", "5")
+                bundle.putString("goalType", "Task Made")
+                bundle.putString("Reward", "10 Fish Food")
+                if (clicked == 0) {
+                    bundle.putString("state", "Earned")
+                    clicked++
+                } else {
+                    bundle.putString("state", "Achieved")
+                }
+                intent.putExtras(bundle)
+                startActivity(intent)
+                NovicePlanner.setImageResource(R.drawable.star_achieved)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(TAG, "Unable to start the activity")
+            }
+        }
+        MasterPlanner.setOnClickListener {
+            val intent = Intent(this, AchievementDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", "Master Planner")
+                bundle.putString("goal", "25")
+                bundle.putString("goalType", "Task Made")
+                bundle.putString("Reward", "50 Fish Food")
+                bundle.putString("state", "Locked")
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(TAG, "Unable to start the activity")
+            }
+        }
+        PetOwner.setOnClickListener {
+            val intent = Intent(this, AchievementDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", "Pet Owner")
+                bundle.putString("goal", "5")
+                bundle.putString("goalType", "Fish Collected")
+                bundle.putString("Reward", "Plush Toy")
+                bundle.putString("state", "Locked")
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(TAG, "Unable to start the activity")
+            }
+        }
+        PetShop.setOnClickListener {
+            val intent = Intent(this, AchievementDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", "Pet Shop")
+                bundle.putString("goal", "20")
+                bundle.putString("goalType", "Fish Collected")
+                bundle.putString("Reward", "75 Fish Food")
+                bundle.putString("state", "Achieved")
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(TAG, "Unable to start the activity")
+            }
+        }
+        WindowShopper.setOnClickListener {
+            val intent = Intent(this, AchievementDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", "Window Shopper")
+                bundle.putString("goal", "1")
+                bundle.putString("goalType", "Decorations Bought")
+                bundle.putString("Reward", "15 Fish Food")
+                bundle.putString("state", "Locked")
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(TAG, "Unable to start the activity")
+            }
+        }
+        Shopaholic.setOnClickListener {
+            val intent = Intent(this, AchievementDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", "Shopaholic")
+                bundle.putString("goal", "15")
+                bundle.putString("goalType", "Decorations Bought")
+                bundle.putString("Reward", "100 Fish Food")
+                bundle.putString("state", "Locked")
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(TAG, "Unable to start the activity")
+            }
+        }
+        InteriorDesign.setOnClickListener {
+            val intent = Intent(this, AchievementDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", "Interior Design")
+                bundle.putString("goal", "1")
+                bundle.putString("goalType", "Decorations Placed")
+                bundle.putString("Reward", "Desk Lamp")
                 bundle.putString("state", "Locked")
                 intent.putExtras(bundle)
                 startActivity(intent)
@@ -174,9 +254,10 @@ class AchieveActivity : AppCompatActivity() {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "[Locked]")
-                bundle.putString("goal", "Buy 1/20 Items")
-                bundle.putString("Reward", "Reward: Golden Gravel")
+                bundle.putString("name", "IKEA Showroom")
+                bundle.putString("goal", "6")
+                bundle.putString("goalType", "Decoration Placed")
+                bundle.putString("Reward", "Hanging Plant")
                 bundle.putString("state", "Locked")
                 intent.putExtras(bundle)
                 startActivity(intent)
@@ -184,6 +265,37 @@ class AchieveActivity : AppCompatActivity() {
                 Log.e(TAG, "Unable to start the activity")
             }
         }
+        FishyFriend.setOnClickListener {
+            val intent = Intent(this, AchievementDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", "Fishy Friend")
+                bundle.putString("goal", "1")
+                bundle.putString("goalType", "Fish Displayed")
+                bundle.putString("Reward", "10 Fish Food")
+                bundle.putString("state", "Locked")
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(TAG, "Unable to start the activity")
+            }
+        }
+        FishyFollowing.setOnClickListener {
+            val intent = Intent(this, AchievementDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", "Fishy Following")
+                bundle.putString("goal", "5")
+                bundle.putString("goalType", "Fish Displayed")
+                bundle.putString("Reward", "Treasure Chest")
+                bundle.putString("state", "Locked")
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(TAG, "Unable to start the activity")
+            }
+        }
+
     }
     companion object {
         // String for LogCat documentation

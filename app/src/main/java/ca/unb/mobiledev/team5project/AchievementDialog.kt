@@ -20,6 +20,24 @@ class AchievementDialog : AppCompatActivity()  {
         }
 
         val bundle = intent.extras
+        val achieved = findViewById<ImageView>(R.id.achieved)
+        val locked = findViewById<ImageView>(R.id.locked)
+        val state = bundle?.getString("state")
+        val title = findViewById<TextView>(R.id.achievementTitle)
+        val goal = findViewById<TextView>(R.id.achievementGoal)
+        val goalAmount = bundle?.getString("goal")
+        val goalType = bundle?.getString("goalType")
+        if (state.equals("Locked")){
+            goal.text = "0/$goalAmount $goalType"
+            title.text = "Locked"
+        } else {
+            goal.text = "$goalAmount/$goalAmount $goalType"
+            title.text = bundle?.getString("name")
+        }
+        val reward = findViewById<TextView>(R.id.acheiveReward)
+        val rewardText = bundle?.getString("Reward")
+        reward.text = "Reward: $rewardText"
+
         val acceptBtn = findViewById<Button>(R.id.accept)
         acceptBtn.visibility = View.INVISIBLE
         acceptBtn.setOnClickListener{
@@ -30,16 +48,6 @@ class AchievementDialog : AppCompatActivity()  {
             finish()
         }
 
-        val title = findViewById<TextView>(R.id.achievementTitle)
-        title.text = bundle?.getString("name")
-        val goal = findViewById<TextView>(R.id.achievementGoal)
-        goal.text = bundle?.getString("goal")
-        val reward = findViewById<TextView>(R.id.acheiveReward)
-        reward.text = bundle?.getString("Reward")
-
-        val achieved = findViewById<ImageView>(R.id.achieved)
-        val locked = findViewById<ImageView>(R.id.locked)
-        val state = bundle?.getString("state")
         if (state.equals("Locked")){
             locked.visibility = View.VISIBLE
             achieved.visibility = View.INVISIBLE
@@ -49,8 +57,8 @@ class AchievementDialog : AppCompatActivity()  {
         }
         if (state.equals("Earned")){
             acceptBtn.visibility = View.VISIBLE
+            closeBtn.visibility = View.INVISIBLE
         }
-
 
     }
 }
