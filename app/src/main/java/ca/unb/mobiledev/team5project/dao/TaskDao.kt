@@ -12,8 +12,8 @@ import ca.unb.mobiledev.team5project.model.Task
 @Dao
 interface TaskDao {
     @Insert
-    fun insert(task: Task) { Log.e("Task Activity", "I made it here") }
+    fun insert(task: Task)
 
-    @Query("SELECT id, title, deadline, repeat, startDate, reminder, reminderTime, completed FROM task")
+    @Query("SELECT id, title, deadline, repeat, reminder, completed FROM task_table")
     fun retrieve(): List<Task>
 }

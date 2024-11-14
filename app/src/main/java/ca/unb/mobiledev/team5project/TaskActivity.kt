@@ -90,13 +90,10 @@ class TaskActivity : AppCompatActivity() {
 
         val listView = findViewById<ListView>(R.id.dailyTasksListview)
         val taskViewModel by viewModels<TaskViewModel>()
-        Log.e("Task Activity", "I made it here")
-        taskViewModel.insert("test task 1") // Some dependencies need to be added to make this insert actually work...
-        taskViewModel.insert("test task 2")
         val list = taskViewModel.search()
-        val itemsAdapter = TaskAdapter(applicationContext, list)
-        listView.adapter = itemsAdapter
-        itemsAdapter.notifyDataSetChanged()
+        val tasksAdapter = TaskAdapter(applicationContext, list)
+        listView.adapter = tasksAdapter
+        tasksAdapter.notifyDataSetChanged()
 
     }
 

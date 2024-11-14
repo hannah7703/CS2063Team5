@@ -9,7 +9,7 @@ import ca.unb.mobiledev.team5project.repository.TaskRepository
 class TaskViewModel(application: Application) : AndroidViewModel(application) {
     private val taskRepository: TaskRepository = TaskRepository(application)
 
-    fun insert(name: String?) {
+    fun insert(name: String) {
         Log.e("Task Activity", "I made it here")
         taskRepository.insertTask(name)
     }

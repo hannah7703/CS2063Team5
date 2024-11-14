@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id 'com.google.devtools.ksp' version '1.9.10-1.0.13'
 }
 
 android {
@@ -32,6 +33,13 @@ android {
     }
 }
 
+ext {
+    roomVersion = '2.6.1'
+    archLifecycleExtensionsVersion = '2.2.0'
+    archLifecycleVersion = '2.3.0'
+    materialVersion = '1.12.0'
+}
+
 dependencies {
 
     implementation libs.androidx.core.ktx
@@ -39,7 +47,21 @@ dependencies {
     implementation libs.material
     implementation libs.androidx.activity
     implementation libs.androidx.constraintlayout
-    implementation libs.androidx.room.common
+
+    // Room Components
+    implementation "androidx.room:room-runtime:$roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$roomVersion"
+    ksp "androidx.room:room-compiler:$roomVersion"
+
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleExtensionsVersion"
+    ksp "androidx.lifecycle:lifecycle-common-java8:$archLifecycleVersion"
+
+    // UI
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.core:core-ktx:1.13.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6"
+
     implementation libs.androidx.room.ktx
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit

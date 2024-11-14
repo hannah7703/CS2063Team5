@@ -25,6 +25,7 @@ class TaskRepository(application: Application) {
                 taskDao!!.retrieve()
             }
         )
+        Log.e("Task Repository", dataReadFuture.get().size.toString())
         return dataReadFuture.get()
     }
 }
