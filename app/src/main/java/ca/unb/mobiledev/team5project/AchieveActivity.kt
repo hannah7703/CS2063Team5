@@ -5,13 +5,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import ca.unb.mobiledev.team5project.model.Achievement
+import ca.unb.mobiledev.team5project.util.ListMaker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class AchieveActivity : AppCompatActivity() {
+    lateinit var achievementList: ArrayList<Achievement>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,7 +37,7 @@ class AchieveActivity : AppCompatActivity() {
                     try {
                         startActivity(intent)
                     } catch (ex: ActivityNotFoundException) {
-                        Log.e(TaskActivity.TAG, "Unable to start the activity")
+                        Log.e(TAG, "Unable to start the activity")
                     }
                     finish()
                 }
@@ -45,7 +49,7 @@ class AchieveActivity : AppCompatActivity() {
                     try {
                         startActivity(intent)
                     } catch (ex: ActivityNotFoundException) {
-                        Log.e(TaskActivity.TAG, "Unable to start the activity")
+                        Log.e(TAG, "Unable to start the activity")
                     }
                     finish()
                 }
@@ -54,7 +58,7 @@ class AchieveActivity : AppCompatActivity() {
                     try {
                         startActivity(intent)
                     } catch (ex: ActivityNotFoundException) {
-                        Log.e(TaskActivity.TAG, "Unable to start the activity")
+                        Log.e(TAG, "Unable to start the activity")
                     }
                     finish()
                 }
@@ -62,6 +66,9 @@ class AchieveActivity : AppCompatActivity() {
 
             return@setOnItemSelectedListener true
         }
+        val ListMaker = ListMaker(this)
+        ListMaker.execute()
+        achievementList = ListMaker.getAchievementList()
 
         val DivingIn = findViewById<ImageView>(R.id.DivingInImage)
         val Finship = findViewById<ImageView>(R.id.FinshipImage)
@@ -78,15 +85,47 @@ class AchieveActivity : AppCompatActivity() {
         val FishyFriend = findViewById<ImageView>(R.id.FishyFriendImage)
         val FishyFollowing = findViewById<ImageView>(R.id.FishyFollowingImage)
 
+        val DivingInText = findViewById<TextView>(R.id.DivingInText)
+        val FinshipText = findViewById<TextView>(R.id.FinshipText)
+        val HabitStarterText = findViewById<TextView>(R.id.HabitStarterText)
+        val HabitMasterText = findViewById<TextView>(R.id.HabitMasterText)
+        val NovicePlannerText = findViewById<TextView>(R.id.NovicePlannerText)
+        val MasterPlannerText = findViewById<TextView>(R.id.MasterPlannerText)
+        val PetOwnerText = findViewById<TextView>(R.id.PetOwnerText)
+        val PetShopText = findViewById<TextView>(R.id.PetShopText)
+        val WindowShopperText = findViewById<TextView>(R.id.WindowShopperText)
+        val ShopaholicText = findViewById<TextView>(R.id.ShopaholicText)
+        val InteriorDesignText = findViewById<TextView>(R.id.InteriorDesignText)
+        val IKEAShowroomText = findViewById<TextView>(R.id.IKEAShowroomText)
+        val FishyFriendText = findViewById<TextView>(R.id.FishyFriendText)
+        val FishyFollowingText = findViewById<TextView>(R.id.FishyFollowingText)
+
+        setDetails(achievementList.get(0), DivingIn,DivingInText)
+        setDetails(achievementList.get(1), Finship, FinshipText)
+        setDetails(achievementList.get(2), HabitStarter, HabitStarterText)
+        setDetails(achievementList.get(3), HabitMaster, HabitMasterText)
+        setDetails(achievementList.get(4), NovicePlanner, NovicePlannerText)
+        setDetails(achievementList.get(5), MasterPlanner, MasterPlannerText)
+        setDetails(achievementList.get(6), PetOwner, PetOwnerText)
+        setDetails(achievementList.get(7), PetShop, PetShopText)
+        setDetails(achievementList.get(8), WindowShopper, WindowShopperText)
+        setDetails(achievementList.get(9), Shopaholic, ShopaholicText)
+        setDetails(achievementList.get(10), InteriorDesign, InteriorDesignText)
+        setDetails(achievementList.get(11), IKEAShowroom, IKEAShowroomText)
+        setDetails(achievementList.get(12), FishyFriend, FishyFriendText)
+        setDetails(achievementList.get(13), FishyFollowing, FishyFollowingText)
+
         DivingIn.setOnClickListener {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "Diving In")
-                bundle.putString("goal", "1")
-                bundle.putString("goalType", "Task Made")
-                bundle.putString("Reward", "10 Fish Food")
-                bundle.putString("state", "Achieved")
+                bundle.putString("name", achievementList.get(0).name)
+                bundle.putInt("goal", achievementList.get(0).goal)
+                bundle.putString("goalType", achievementList.get(0).goalType)
+                bundle.putString("Reward", achievementList.get(0).reward)
+                bundle.putString("rewardCode", achievementList.get(0).rewardCode)
+                bundle.putString("state", achievementList.get(0).state)
+                bundle.putInt("index", 0)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -97,11 +136,13 @@ class AchieveActivity : AppCompatActivity() {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "Finship")
-                bundle.putString("goal", "1")
-                bundle.putString("goalType", "Fish Collected")
-                bundle.putString("Reward", "10 Fish Food")
-                bundle.putString("state", "Achieved")
+                bundle.putString("name", achievementList.get(1).name)
+                bundle.putInt("goal", achievementList.get(1).goal)
+                bundle.putString("goalType", achievementList.get(1).goalType)
+                bundle.putString("Reward", achievementList.get(1).reward)
+                bundle.putString("rewardCode", achievementList.get(1).rewardCode)
+                bundle.putString("state", achievementList.get(1).state)
+                bundle.putInt("index", 1)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -112,11 +153,13 @@ class AchieveActivity : AppCompatActivity() {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "Habit Starter")
-                bundle.putString("goal", "5")
-                bundle.putString("goalType", "Task Completed")
-                bundle.putString("Reward", "15 Fish Food")
-                bundle.putString("state", "Achieved")
+                bundle.putString("name", achievementList.get(2).name)
+                bundle.putInt("goal", achievementList.get(2).goal)
+                bundle.putString("goalType", achievementList.get(2).goalType)
+                bundle.putString("Reward", achievementList.get(2).reward)
+                bundle.putString("rewardCode", achievementList.get(2).rewardCode)
+                bundle.putString("state", achievementList.get(2).state)
+                bundle.putInt("index", 2)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -127,35 +170,32 @@ class AchieveActivity : AppCompatActivity() {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "Habit Master")
-                bundle.putString("goal", "20")
-                bundle.putString("goalType", "Task Completed")
-                bundle.putString("Reward", "100 Fish Food")
-                bundle.putString("state", "Locked")
+                bundle.putString("name", achievementList.get(3).name)
+                bundle.putInt("goal", achievementList.get(3).goal)
+                bundle.putString("goalType", achievementList.get(3).goalType)
+                bundle.putString("Reward", achievementList.get(3).reward)
+                bundle.putString("rewardCode", achievementList.get(3).rewardCode)
+                bundle.putString("state", achievementList.get(3).state)
+                bundle.putInt("index", 3)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
         }
-        var clicked = 0;
         NovicePlanner.setOnClickListener {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "Novice Planner")
-                bundle.putString("goal", "5")
-                bundle.putString("goalType", "Task Made")
-                bundle.putString("Reward", "10 Fish Food")
-                if (clicked == 0) {
-                    bundle.putString("state", "Earned")
-                    clicked++
-                } else {
-                    bundle.putString("state", "Achieved")
-                }
+                bundle.putString("name", achievementList.get(4).name)
+                bundle.putInt("goal", achievementList.get(4).goal)
+                bundle.putString("goalType", achievementList.get(4).goalType)
+                bundle.putString("Reward", achievementList.get(4).reward)
+                bundle.putString("rewardCode", achievementList.get(4).rewardCode)
+                bundle.putString("state", achievementList.get(4).state)
+                bundle.putInt("index", 4)
                 intent.putExtras(bundle)
                 startActivity(intent)
-                NovicePlanner.setImageResource(R.drawable.star_achieved)
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
@@ -164,11 +204,13 @@ class AchieveActivity : AppCompatActivity() {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "Master Planner")
-                bundle.putString("goal", "25")
-                bundle.putString("goalType", "Task Made")
-                bundle.putString("Reward", "50 Fish Food")
-                bundle.putString("state", "Locked")
+                bundle.putString("name", achievementList.get(5).name)
+                bundle.putInt("goal", achievementList.get(5).goal)
+                bundle.putString("goalType", achievementList.get(5).goalType)
+                bundle.putString("Reward", achievementList.get(5).reward)
+                bundle.putString("rewardCode", achievementList.get(5).rewardCode)
+                bundle.putString("state", achievementList.get(5).state)
+                bundle.putInt("index", 5)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -179,11 +221,13 @@ class AchieveActivity : AppCompatActivity() {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "Pet Owner")
-                bundle.putString("goal", "5")
-                bundle.putString("goalType", "Fish Collected")
-                bundle.putString("Reward", "Plush Toy")
-                bundle.putString("state", "Locked")
+                bundle.putString("name", achievementList.get(6).name)
+                bundle.putInt("goal", achievementList.get(6).goal)
+                bundle.putString("goalType", achievementList.get(6).goalType)
+                bundle.putString("Reward", achievementList.get(6).reward)
+                bundle.putString("rewardCode", achievementList.get(6).rewardCode)
+                bundle.putString("state", achievementList.get(6).state)
+                bundle.putInt("index", 6)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -194,11 +238,13 @@ class AchieveActivity : AppCompatActivity() {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "Pet Shop")
-                bundle.putString("goal", "20")
-                bundle.putString("goalType", "Fish Collected")
-                bundle.putString("Reward", "75 Fish Food")
-                bundle.putString("state", "Achieved")
+                bundle.putString("name", achievementList.get(7).name)
+                bundle.putInt("goal", achievementList.get(7).goal)
+                bundle.putString("goalType", achievementList.get(7).goalType)
+                bundle.putString("Reward", achievementList.get(7).reward)
+                bundle.putString("rewardCode", achievementList.get(7).rewardCode)
+                bundle.putString("state", achievementList.get(7).state)
+                bundle.putInt("index", 7)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -209,11 +255,13 @@ class AchieveActivity : AppCompatActivity() {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "Window Shopper")
-                bundle.putString("goal", "1")
-                bundle.putString("goalType", "Decorations Bought")
-                bundle.putString("Reward", "15 Fish Food")
-                bundle.putString("state", "Locked")
+                bundle.putString("name", achievementList.get(8).name)
+                bundle.putInt("goal", achievementList.get(8).goal)
+                bundle.putString("goalType", achievementList.get(8).goalType)
+                bundle.putString("Reward", achievementList.get(8).reward)
+                bundle.putString("rewardCode", achievementList.get(8).rewardCode)
+                bundle.putString("state", achievementList.get(8).state)
+                bundle.putInt("index", 8)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -224,11 +272,13 @@ class AchieveActivity : AppCompatActivity() {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "Shopaholic")
-                bundle.putString("goal", "15")
-                bundle.putString("goalType", "Decorations Bought")
-                bundle.putString("Reward", "100 Fish Food")
-                bundle.putString("state", "Locked")
+                bundle.putString("name", achievementList.get(9).name)
+                bundle.putInt("goal", achievementList.get(9).goal)
+                bundle.putString("goalType", achievementList.get(9).goalType)
+                bundle.putString("Reward", achievementList.get(9).reward)
+                bundle.putString("rewardCode", achievementList.get(9).rewardCode)
+                bundle.putString("state", achievementList.get(9).state)
+                bundle.putInt("index", 9)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -239,11 +289,13 @@ class AchieveActivity : AppCompatActivity() {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "Interior Design")
-                bundle.putString("goal", "1")
-                bundle.putString("goalType", "Decorations Placed")
-                bundle.putString("Reward", "Desk Lamp")
-                bundle.putString("state", "Locked")
+                bundle.putString("name", achievementList.get(10).name)
+                bundle.putInt("goal", achievementList.get(10).goal)
+                bundle.putString("goalType", achievementList.get(10).goalType)
+                bundle.putString("Reward", achievementList.get(10).reward)
+                bundle.putString("rewardCode", achievementList.get(10).rewardCode)
+                bundle.putString("state", achievementList.get(10).state)
+                bundle.putInt("index", 10)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -254,11 +306,13 @@ class AchieveActivity : AppCompatActivity() {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "IKEA Showroom")
-                bundle.putString("goal", "6")
-                bundle.putString("goalType", "Decoration Placed")
-                bundle.putString("Reward", "Hanging Plant")
-                bundle.putString("state", "Locked")
+                bundle.putString("name", achievementList.get(11).name)
+                bundle.putInt("goal", achievementList.get(11).goal)
+                bundle.putString("goalType", achievementList.get(11).goalType)
+                bundle.putString("Reward", achievementList.get(11).reward)
+                bundle.putString("rewardCode", achievementList.get(11).rewardCode)
+                bundle.putString("state", achievementList.get(11).state)
+                bundle.putInt("index", 11)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -269,11 +323,13 @@ class AchieveActivity : AppCompatActivity() {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "Fishy Friend")
-                bundle.putString("goal", "1")
-                bundle.putString("goalType", "Fish Displayed")
-                bundle.putString("Reward", "10 Fish Food")
-                bundle.putString("state", "Locked")
+                bundle.putString("name", achievementList.get(12).name)
+                bundle.putInt("goal", achievementList.get(12).goal)
+                bundle.putString("goalType", achievementList.get(12).goalType)
+                bundle.putString("Reward", achievementList.get(12).reward)
+                bundle.putString("rewardCode", achievementList.get(12).rewardCode)
+                bundle.putString("state", achievementList.get(12).state)
+                bundle.putInt("index", 12)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -284,11 +340,13 @@ class AchieveActivity : AppCompatActivity() {
             val intent = Intent(this, AchievementDialog::class.java)
             try {
                 val bundle = Bundle()
-                bundle.putString("name", "Fishy Following")
-                bundle.putString("goal", "5")
-                bundle.putString("goalType", "Fish Displayed")
-                bundle.putString("Reward", "Treasure Chest")
-                bundle.putString("state", "Locked")
+                bundle.putString("name", achievementList.get(13).name)
+                bundle.putInt("goal", achievementList.get(13).goal)
+                bundle.putString("goalType", achievementList.get(13).goalType)
+                bundle.putString("Reward", achievementList.get(13).reward)
+                bundle.putString("rewardCode", achievementList.get(13).rewardCode)
+                bundle.putString("state", achievementList.get(13).state)
+                bundle.putInt("index", 13)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -297,6 +355,20 @@ class AchieveActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun setDetails(achievement: Achievement, image: ImageView, text: TextView){
+        if(achievement.state.equals("Locked")){
+            image.setImageResource(R.drawable.star_locked)
+            text.text = "[Locked]"
+        } else if(achievement.state.equals("Achieved")){
+            image.setImageResource(R.drawable.star_achieved)
+            text.text = "${achievement.name}"
+        } else {
+            image.setImageResource(R.drawable.star_earned)
+            text.text = "${achievement.name}"
+        }
+    }
+
     companion object {
         // String for LogCat documentation
         const val TAG = "Achieve Activity"
