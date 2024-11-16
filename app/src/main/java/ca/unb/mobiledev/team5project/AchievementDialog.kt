@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import ca.unb.mobiledev.team5project.util.ListMaker
 
 class AchievementDialog : AppCompatActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,11 +19,13 @@ class AchievementDialog : AppCompatActivity()  {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+        val listmaker = ListMaker(this)
         val bundle = intent.extras
         val achieved = findViewById<ImageView>(R.id.achieved)
         val locked = findViewById<ImageView>(R.id.locked)
         val state = bundle?.getString("state")
+        val name = bundle?.getString("name")
+        val index = bundle?.getInt("index")
         val title = findViewById<TextView>(R.id.achievementTitle)
         val goal = findViewById<TextView>(R.id.achievementGoal)
         val goalAmount = bundle?.getInt("goal")
@@ -32,7 +35,7 @@ class AchievementDialog : AppCompatActivity()  {
             title.text = "Locked"
         } else {
             goal.text = "$goalAmount/$goalAmount $goalType"
-            title.text = bundle?.getString("name")
+            title.text = name
         }
         val reward = findViewById<TextView>(R.id.acheiveReward)
         val rewardText = bundle?.getString("Reward")
@@ -41,6 +44,9 @@ class AchievementDialog : AppCompatActivity()  {
         val acceptBtn = findViewById<Button>(R.id.accept)
         acceptBtn.visibility = View.INVISIBLE
         acceptBtn.setOnClickListener{
+            if (name != null && state != null && index != null) {
+                listmaker.updateAchieveState(name, state, index)
+            }
             finish()
         }
         val closeBtn = findViewById<Button>(R.id.button)

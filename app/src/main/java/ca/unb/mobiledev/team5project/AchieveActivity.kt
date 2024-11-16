@@ -128,6 +128,10 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putInt("index", 0)
                 intent.putExtras(bundle)
                 startActivity(intent)
+                if(achievementList.get(0).state.equals("Earned")){
+                    achievementList.get(0).state = "Achieved"
+                    setDetails(achievementList.get(0), DivingIn, DivingInText)
+                }
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
@@ -145,6 +149,10 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putInt("index", 1)
                 intent.putExtras(bundle)
                 startActivity(intent)
+                if(achievementList.get(1).state.equals("Earned")){
+                    achievementList.get(1).state = "Achieved"
+                    setDetails(achievementList.get(1), Finship, FinshipText)
+                }
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
@@ -162,6 +170,10 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putInt("index", 2)
                 intent.putExtras(bundle)
                 startActivity(intent)
+                if(achievementList.get(2).state.equals("Earned")){
+                    achievementList.get(2).state = "Achieved"
+                    setDetails(achievementList.get(2), HabitStarter, HabitStarterText)
+                }
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
@@ -179,6 +191,10 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putInt("index", 3)
                 intent.putExtras(bundle)
                 startActivity(intent)
+                if(achievementList.get(3).state.equals("Earned")){
+                    achievementList.get(3).state = "Achieved"
+                    setDetails(achievementList.get(3), HabitMaster, HabitMasterText)
+                }
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
@@ -196,6 +212,10 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putInt("index", 4)
                 intent.putExtras(bundle)
                 startActivity(intent)
+                if(achievementList.get(4).state.equals("Earned")){
+                    achievementList.get(4).state = "Achieved"
+                    setDetails(achievementList.get(4), NovicePlanner, NovicePlannerText)
+                }
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
@@ -213,6 +233,10 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putInt("index", 5)
                 intent.putExtras(bundle)
                 startActivity(intent)
+                if(achievementList.get(5).state.equals("Earned")){
+                    achievementList.get(5).state = "Achieved"
+                    setDetails(achievementList.get(5), MasterPlanner, MasterPlannerText)
+                }
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
@@ -230,6 +254,10 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putInt("index", 6)
                 intent.putExtras(bundle)
                 startActivity(intent)
+                if(achievementList.get(6).state.equals("Earned")){
+                    achievementList.get(6).state = "Achieved"
+                    setDetails(achievementList.get(6), PetOwner, PetOwnerText)
+                }
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
@@ -247,6 +275,10 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putInt("index", 7)
                 intent.putExtras(bundle)
                 startActivity(intent)
+                if(achievementList.get(7).state.equals("Earned")){
+                    achievementList.get(7).state = "Achieved"
+                    setDetails(achievementList.get(7), PetShop, PetShopText)
+                }
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
@@ -264,6 +296,10 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putInt("index", 8)
                 intent.putExtras(bundle)
                 startActivity(intent)
+                if(achievementList.get(8).state.equals("Earned")){
+                    achievementList.get(8).state = "Achieved"
+                    setDetails(achievementList.get(8), WindowShopper, WindowShopperText)
+                }
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
@@ -281,6 +317,10 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putInt("index", 9)
                 intent.putExtras(bundle)
                 startActivity(intent)
+                if(achievementList.get(9).state.equals("Earned")){
+                    achievementList.get(9).state = "Achieved"
+                    setDetails(achievementList.get(9), Shopaholic, ShopaholicText)
+                }
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
@@ -298,6 +338,10 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putInt("index", 10)
                 intent.putExtras(bundle)
                 startActivity(intent)
+                if(achievementList.get(10).state.equals("Earned")){
+                    achievementList.get(10).state = "Achieved"
+                    setDetails(achievementList.get(10), InteriorDesign, InteriorDesignText)
+                }
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
@@ -315,6 +359,10 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putInt("index", 11)
                 intent.putExtras(bundle)
                 startActivity(intent)
+                if(achievementList.get(11).state.equals("Earned")){
+                    achievementList.get(11).state = "Achieved"
+                    setDetails(achievementList.get(11), IKEAShowroom, IKEAShowroomText)
+                }
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
@@ -332,6 +380,10 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putInt("index", 12)
                 intent.putExtras(bundle)
                 startActivity(intent)
+                if(achievementList.get(12).state.equals("Earned")){
+                    achievementList.get(12).state = "Achieved"
+                    setDetails(achievementList.get(12), FishyFriend, FishyFriendText)
+                }
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }
@@ -349,6 +401,10 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putInt("index", 13)
                 intent.putExtras(bundle)
                 startActivity(intent)
+                if(achievementList.get(13).state.equals("Earned")){
+                    achievementList.get(13).state = "Achieved"
+                    setDetails(achievementList.get(13), FishyFollowing, FishyFollowingText)
+                }
             } catch (ex: ActivityNotFoundException) {
                 Log.e(TAG, "Unable to start the activity")
             }

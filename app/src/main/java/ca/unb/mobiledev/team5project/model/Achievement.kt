@@ -6,5 +6,5 @@ data class Achievement(
     var goalType: String? = null, //number fish, tasks made, completed
     var reward: String? = null,
     var rewardCode: String? = null, //Signifies currency or decoration and how much/which
-    val state: String? = null) //Add a progress value? or store values as global vars and check against?
+    var state: String? = null) //Add a progress value? or store values as global vars and check against?
 {}
