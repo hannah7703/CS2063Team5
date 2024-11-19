@@ -3,6 +3,7 @@ package ca.unb.mobiledev.team5project.util
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import ca.unb.mobiledev.team5project.model.Achievement
+import ca.unb.mobiledev.team5project.model.Decoration
 import java.io.BufferedReader
 import java.io.BufferedWriter
 import java.io.File
@@ -11,15 +12,16 @@ import java.io.FileWriter
 class ListMaker(private val activity: AppCompatActivity) {
     private val appContext: Context = activity.applicationContext
     lateinit var achieveList: ArrayList<Achievement>
+    lateinit var decoList: ArrayList<Decoration>
 
-    fun execute(){
+    fun executeAchievements(){
         var file = appContext.getFileStreamPath("achievementList.json")
         if(!file.exists()){
             file = File(appContext.getFilesDir(), "achievementList.json")
             val fileWriter = FileWriter(file)
             val bufferedWriter = BufferedWriter(fileWriter)
 
-            var assetString = JsonUtils(appContext).loadJSONFromAssets(appContext)
+            var assetString = JsonUtils(appContext).loadJSONFromAssets(appContext, "Achievements.json")
             bufferedWriter.write(assetString)
             bufferedWriter.close()
 
@@ -30,8 +32,30 @@ class ListMaker(private val activity: AppCompatActivity) {
         }
     }
 
+    fun executeDecorations(){
+        var file = appContext.getFileStreamPath("decorationList.json")
+        if(!file.exists()){
+            file = File(appContext.getFilesDir(), "decorationList.json")
+            val fileWriter = FileWriter(file)
+            val bufferedWriter = BufferedWriter(fileWriter)
+
+            var assetString = JsonUtils(appContext).loadJSONFromAssets(appContext, "Decorations.json")
+            bufferedWriter.write(assetString)
+            bufferedWriter.close()
+
+            decoList = JsonUtils(appContext).getDecorations(appContext)
+        } else {
+            //file.delete()
+            decoList = JsonUtils(appContext).getDecorationsFile(appContext)
+        }
+    }
+
     fun getAchievementList(): ArrayList<Achievement>{
         return achieveList
+    }
+
+    fun getDecorationList(): ArrayList<Decoration>{
+        return decoList
     }
 
     fun updateAchieveState(name: String, state: String, index: Int){
@@ -55,6 +79,28 @@ class ListMaker(private val activity: AppCompatActivity) {
         }
         val string = content.toString()
         val stringput = string.replaceFirst("\"state\": \"Earned\"", "\"state\": \"Achieved\"")
+        val fileWriter = FileWriter(file)
+        val bufferedWriter = BufferedWriter(fileWriter)
+
+        bufferedWriter.write(stringput)
+        bufferedWriter.close()
+    }
+
+    fun buyDecoration(name: String){
+        var file = appContext.getFileStreamPath("decorationList.json")
+        val reader = BufferedReader(file.reader())
+        val content = StringBuilder()
+        try {
+            var line = reader.readLine()
+            while (line != null) {
+                content.append(line)
+                line = reader.readLine()
+            }
+        } finally {
+            reader.close()
+        }
+        val string = content.toString()
+        val stringput = string.replaceFirst("\"name\": \"$name\",      \"owned\": false", "\"name\": \"$name\",      \"owned\": true")
         val fileWriter = FileWriter(file)
         val bufferedWriter = BufferedWriter(fileWriter)
 

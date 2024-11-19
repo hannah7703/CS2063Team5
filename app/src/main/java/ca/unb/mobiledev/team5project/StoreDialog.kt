@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import ca.unb.mobiledev.team5project.util.ListMaker
 
 class StoreDialog : AppCompatActivity()   {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,15 +20,15 @@ class StoreDialog : AppCompatActivity()   {
         }
 
         val bundle = intent.extras
-        val purchased = bundle?.getBoolean("purchased")
+        val purchased = bundle?.getBoolean("owned")
         val name = bundle?.getString("name")
         var owned = false
         if (purchased!= null && purchased){
             owned = true
         }
-        val cost = bundle?.getInt("cost")
+        val cost = bundle?.getString("cost")
         var afford = true
-        if (cost != null && cost > 15) {
+        if (cost != null && cost.toInt() > 15) {
             afford = false
         }
         val exitBtn = findViewById<Button>(R.id.button)
@@ -36,6 +37,11 @@ class StoreDialog : AppCompatActivity()   {
         }
         val purchaseBtn = findViewById<Button>(R.id.purchase)
         purchaseBtn.setOnClickListener{
+            val listMaker = ListMaker(this)
+            listMaker.executeDecorations()
+            if (name != null) {
+                listMaker.buyDecoration(name)
+            }
             finish()
         }
         val text = findViewById<TextView>(R.id.textView20)

@@ -67,7 +67,7 @@ class AchieveActivity : AppCompatActivity() {
             return@setOnItemSelectedListener true
         }
         val ListMaker = ListMaker(this)
-        ListMaker.execute()
+        ListMaker.executeAchievements()
         achievementList = ListMaker.getAchievementList()
 
         val DivingIn = findViewById<ImageView>(R.id.DivingInImage)
