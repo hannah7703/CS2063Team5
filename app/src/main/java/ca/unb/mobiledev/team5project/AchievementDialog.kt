@@ -19,13 +19,12 @@ class AchievementDialog : AppCompatActivity()  {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val listmaker = ListMaker(this)
+        val listMaker = ListMaker(this)
         val bundle = intent.extras
         val achieved = findViewById<ImageView>(R.id.achieved)
         val locked = findViewById<ImageView>(R.id.locked)
         val state = bundle?.getString("state")
         val name = bundle?.getString("name")
-        val index = bundle?.getInt("index")
         val title = findViewById<TextView>(R.id.achievementTitle)
         val goal = findViewById<TextView>(R.id.achievementGoal)
         val goalAmount = bundle?.getInt("goal")
@@ -44,8 +43,31 @@ class AchievementDialog : AppCompatActivity()  {
         val acceptBtn = findViewById<Button>(R.id.accept)
         acceptBtn.visibility = View.INVISIBLE
         acceptBtn.setOnClickListener{
-            if (name != null && state != null && index != null) {
-                listmaker.updateAchieveState(name, state, index)
+            if (name != null && state != null) {
+                listMaker.updateAchieveState(name, state)
+            }
+            val rewardCode = bundle?.getString("rewardCode")
+            val type = rewardCode?.substring(0, 2)
+            val rewardvalue = rewardCode?.substring(2)
+            if(type.equals("FF")){
+                listMaker.executeStatistics()
+                val statistics = listMaker.getStatistics()
+                if (rewardvalue != null) {
+                    listMaker.updateStatistics("Fish food", statistics.Fishfood,true, rewardvalue.toInt())
+                }
+            } else {
+                listMaker.executeDecorations()
+                val decoList = listMaker.getDecorationList()
+                var decoReward = ""
+                for(deco in decoList){
+                    if(deco.decoCode.equals(rewardvalue)){
+                        decoReward = deco.name.toString()
+                        break
+                    }
+                }
+                if (name != null) {
+                    listMaker.buyDecoration(decoReward)
+                }
             }
             finish()
         }

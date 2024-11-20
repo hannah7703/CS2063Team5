@@ -27,6 +27,8 @@ import java.util.Date
 
 class TaskActivity : AppCompatActivity() {
     lateinit var statistics: Statistics
+    lateinit var ListMaker: ListMaker
+    lateinit var foodCount: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -80,10 +82,10 @@ class TaskActivity : AppCompatActivity() {
             return@setOnItemSelectedListener true
         }
 
-        val ListMaker = ListMaker(this)
+        ListMaker = ListMaker(this)
         ListMaker.executeStatistics()
         statistics = ListMaker.getStatistics()
-        val foodCount = findViewById<TextView>(R.id.foodCount)
+        foodCount = findViewById(R.id.foodCount)
         foodCount.text = statistics.Fishfood.toString()
         val title = findViewById<TextView>(R.id.textView)
         title.text = "${statistics.Username}'s Tasks"
@@ -110,6 +112,9 @@ class TaskActivity : AppCompatActivity() {
     override fun onResume() {
         val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNavBar.selectedItemId = R.id.tasks
+        ListMaker.executeStatistics()
+        statistics = ListMaker.getStatistics()
+        foodCount.text = statistics.Fishfood.toString()
         super.onResume()
     }
 

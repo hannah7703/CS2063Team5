@@ -82,13 +82,7 @@ class ListMaker(private val activity: AppCompatActivity) {
         return stats
     }
 
-    fun updateAchieveState(name: String, state: String, index: Int){
-//        val array = JsonUtils(appContext).getAchievementsArray(appContext)
-//        if (state.equals("Earned")){
-//            array.getJSONObject(index).put("state", "Achieved")
-//        } else {
-//            array.getJSONObject(index).put("state", "Earned")
-//        }
+    fun updateAchieveState(name: String, state: String){
         var file = appContext.getFileStreamPath("achievementList.json")
         val reader = BufferedReader(file.reader())
         val content = StringBuilder()
@@ -101,8 +95,14 @@ class ListMaker(private val activity: AppCompatActivity) {
         } finally {
             reader.close()
         }
+        var newState = state
+        if (state.equals("Locked")){
+            newState = "Earned"
+        } else {
+            newState = "Achieved"
+        }
         val string = content.toString()
-        val stringput = string.replaceFirst("\"state\": \"Earned\"", "\"state\": \"Achieved\"")
+        val stringput = string.replaceFirst("\"name\": \"$name\",      \"state\": \"$state\"", "\"name\": \"$name\",      \"state\": \"$newState\"")
         val fileWriter = FileWriter(file)
         val bufferedWriter = BufferedWriter(fileWriter)
 
@@ -132,8 +132,8 @@ class ListMaker(private val activity: AppCompatActivity) {
         bufferedWriter.close()
     }
 
-    fun updateStatistics(stat: String, value: Int, increase: Boolean){
-        var file = appContext.getFileStreamPath("Statistic.json")
+    fun updateStatistics(stat: String, value: Int, increase: Boolean, amount: Int){
+        var file = appContext.getFileStreamPath("Statistics.json")
         val reader = BufferedReader(file.reader())
         val content = StringBuilder()
         var change = value
@@ -147,12 +147,12 @@ class ListMaker(private val activity: AppCompatActivity) {
             reader.close()
         }
         if(increase){
-            change++
+            change = value+amount
         } else {
-            change--
+            change = value-amount
         }
         val string = content.toString()
-        val stringput = string.replaceFirst("\"$stat\": \"$value\"", "\"$stat\": \"$change\"")
+        val stringput = string.replaceFirst("\"$stat\": $value", "\"$stat\": $change")
         val fileWriter = FileWriter(file)
         val bufferedWriter = BufferedWriter(fileWriter)
 

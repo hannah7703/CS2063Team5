@@ -43,6 +43,10 @@ class StoreDialog : AppCompatActivity()   {
             if (name != null) {
                 listMaker.buyDecoration(name)
             }
+            listMaker.executeStatistics()
+            val statistics = listMaker.getStatistics()
+            listMaker.updateStatistics("Fish food", statistics.Fishfood,false, cost!!.toInt())
+            listMaker.updateStatistics("Decoration Bought", statistics.DecorationBought,true, 1)
             finish()
         }
         val text = findViewById<TextView>(R.id.textView20)

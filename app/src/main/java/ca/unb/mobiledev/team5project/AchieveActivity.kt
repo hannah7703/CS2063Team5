@@ -18,6 +18,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class AchieveActivity : AppCompatActivity() {
     lateinit var achievementList: ArrayList<Achievement>
     lateinit var statistics: Statistics
+    lateinit var foodCount: TextView
+    lateinit var ListMaker: ListMaker
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -68,15 +70,50 @@ class AchieveActivity : AppCompatActivity() {
 
             return@setOnItemSelectedListener true
         }
-        val ListMaker = ListMaker(this)
+        ListMaker = ListMaker(this)
         ListMaker.executeAchievements()
         achievementList = ListMaker.getAchievementList()
         ListMaker.executeStatistics()
         statistics = ListMaker.getStatistics()
-        val foodCount = findViewById<TextView>(R.id.foodCount)
+        foodCount = findViewById(R.id.foodCount)
         foodCount.text = statistics.Fishfood.toString()
         val title = findViewById<TextView>(R.id.textView)
         title.text = "${statistics.Username}'s Achievements"
+
+
+        for(achieve in achievementList){
+            if (achieve.goalType.equals("Task Made")){
+                if(achieve.goal <= statistics.TaskMade && achieve.state.equals("Locked")){
+                    ListMaker.updateAchieveState(achieve.name!!, achieve.state!!)
+                    achieve.state = "Earned"
+                }
+            } else if (achieve.goalType.equals("Task Completed")){
+                if(achieve.goal <= statistics.TaskCompleted && achieve.state.equals("Locked")){
+                    ListMaker.updateAchieveState(achieve.name!!, achieve.state!!)
+                    achieve.state = "Earned"
+                }
+            } else if (achieve.goalType.equals("Fish Collected")){
+                if(achieve.goal <= statistics.FishCollected && achieve.state.equals("Locked")){
+                    ListMaker.updateAchieveState(achieve.name!!, achieve.state!!)
+                    achieve.state = "Earned"
+                }
+            } else if (achieve.goalType.equals("Fish Displayed")){
+                if(achieve.goal <= statistics.FishDisplayed && achieve.state.equals("Locked")){
+                    ListMaker.updateAchieveState(achieve.name!!, achieve.state!!)
+                    achieve.state = "Earned"
+                }
+            } else if (achieve.goalType.equals("Decoration Bought")){
+                if(achieve.goal <= statistics.DecorationBought && achieve.state.equals("Locked")){
+                    ListMaker.updateAchieveState(achieve.name!!, achieve.state!!)
+                    achieve.state = "Earned"
+                }
+            } else if (achieve.goalType.equals("Decoration Placed")){
+                if(achieve.goal <= statistics.DecorationPlaced && achieve.state.equals("Locked")){
+                    ListMaker.updateAchieveState(achieve.name!!, achieve.state!!)
+                    achieve.state = "Earned"
+                }
+            }
+        }
 
         val DivingIn = findViewById<ImageView>(R.id.DivingInImage)
         val Finship = findViewById<ImageView>(R.id.FinshipImage)
@@ -431,6 +468,13 @@ class AchieveActivity : AppCompatActivity() {
             image.setImageResource(R.drawable.star_earned)
             text.text = "${achievement.name}"
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        ListMaker.executeStatistics()
+        statistics = ListMaker.getStatistics()
+        foodCount.text = statistics.Fishfood.toString()
     }
 
     companion object {

@@ -34,7 +34,7 @@ class JsonUtils(context: Context) {
                     val reward = classObject.get("reward").toString()
                     val rewardCode = classObject.get("rewardCode").toString()
                     val state = classObject.get("state").toString()
-                    val newAchievement = Achievement(name, goal, goalType, reward, rewardCode, state)
+                    val newAchievement = Achievement(name, state, goal, goalType, reward, rewardCode)
                     achieveList.add(newAchievement)
                 }
             } else if(fileName.equals("Decorations.json")){
@@ -142,7 +142,7 @@ class JsonUtils(context: Context) {
             val reward = classObject.get("reward").toString()
             val rewardCode = classObject.get("rewardCode").toString()
             val state = classObject.get("state").toString()
-            val newAchievement = Achievement(name, goal, goalType, reward, rewardCode, state)
+            val newAchievement = Achievement(name, state, goal, goalType, reward, rewardCode)
             achievelist.add(newAchievement)
         }
         return achievelist
