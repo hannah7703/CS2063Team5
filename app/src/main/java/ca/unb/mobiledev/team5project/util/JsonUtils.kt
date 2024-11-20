@@ -3,6 +3,7 @@ package ca.unb.mobiledev.team5project.util
 import android.content.Context
 import ca.unb.mobiledev.team5project.model.Achievement
 import ca.unb.mobiledev.team5project.model.Decoration
+import ca.unb.mobiledev.team5project.model.Statistics
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -15,6 +16,7 @@ import java.util.*
 class JsonUtils(context: Context) {
     private var achieveList: ArrayList<Achievement> = ArrayList()
     private var decoList: ArrayList<Decoration> = ArrayList()
+    private lateinit var stats: Statistics
 
     private fun processJSON(context: Context, fileName: String) {
         try {
@@ -48,6 +50,16 @@ class JsonUtils(context: Context) {
                     val newDecoration = Decoration(name, owned, decoType, placement, decoCode, cost)
                     decoList.add(newDecoration)
                 }
+            } else if(fileName.equals("Statistics.json")){
+                val username = jsonObject.get("Username").toString()
+                val food = jsonObject.get("Fish food").toString().toInt()
+                val made = jsonObject.get("Task Made").toString().toInt()
+                val completed = jsonObject.get("Task Completed").toString().toInt()
+                val collected = jsonObject.get("Fish Collected").toString().toInt()
+                val displayed = jsonObject.get("Fish Displayed").toString().toInt()
+                val bought = jsonObject.get("Decoration Bought").toString().toInt()
+                val placed = jsonObject.get("Decoration Placed").toString().toInt()
+                stats = Statistics(username, food, made, completed, collected, displayed, bought, placed)
             }
 
         } catch (e: JSONException) {
@@ -98,6 +110,11 @@ class JsonUtils(context: Context) {
     fun getDecorations(context: Context): ArrayList<Decoration> {
         processJSON(context, "Decorations.json")
         return decoList
+    }
+
+    fun getStatistics(context: Context): Statistics{
+        processJSON(context, "Statistics.json")
+        return stats
     }
 
     fun getAchievementsFile(context: Context): ArrayList<Achievement> {
@@ -160,5 +177,33 @@ class JsonUtils(context: Context) {
             decolist.add(newDecoration)
         }
         return decolist
+    }
+
+    fun getStatisticsFile(context: Context): Statistics {
+        var statistics: Statistics
+
+        val file = File(context.filesDir, "Statistics.json")
+        val fileReader = FileReader(file)
+        val bufferedReader = BufferedReader(fileReader)
+        val stringBuilder = java.lang.StringBuilder()
+
+        var line = bufferedReader.readLine()
+        while (line != null) {
+            stringBuilder.append(line).append("\n")
+            line = bufferedReader.readLine()
+        }
+        bufferedReader.close()
+
+        val statistic = JSONObject(Objects.requireNonNull(loadJSONFromFile(context, "Statistics.json")))
+        val username = statistic.get("Username").toString()
+        val food = statistic.get("Fish food").toString().toInt()
+        val made = statistic.get("Task Made").toString().toInt()
+        val completed = statistic.get("Task Completed").toString().toInt()
+        val collected = statistic.get("Fish Collected").toString().toInt()
+        val displayed = statistic.get("Fish Displayed").toString().toInt()
+        val bought = statistic.get("Decoration Bought").toString().toInt()
+        val placed = statistic.get("Decoration Placed").toString().toInt()
+        statistics = Statistics(username, food, made, completed, collected, displayed, bought, placed)
+        return statistics
     }
 }

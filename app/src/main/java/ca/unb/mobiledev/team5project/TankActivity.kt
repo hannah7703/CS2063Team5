@@ -8,15 +8,19 @@ import android.util.Log
 import android.util.TimeUtils
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import ca.unb.mobiledev.team5project.model.Statistics
+import ca.unb.mobiledev.team5project.util.ListMaker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.time.LocalTime
 
 class TankActivity : AppCompatActivity() {
+    lateinit var statistics: Statistics
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,7 +88,16 @@ class TankActivity : AppCompatActivity() {
 
             return@setOnItemSelectedListener true
         }
+
+        val ListMaker = ListMaker(this)
+        ListMaker.executeStatistics()
+        statistics = ListMaker.getStatistics()
+        val foodCount = findViewById<TextView>(R.id.foodCount)
+        foodCount.text = statistics.Fishfood.toString()
+        val title = findViewById<TextView>(R.id.textView)
+        title.text = "${statistics.Username}'s Tank"
     }
+
     companion object {
         // String for LogCat documentation
         const val TAG = "Tank Activity"

@@ -27,8 +27,9 @@ class StoreDialog : AppCompatActivity()   {
             owned = true
         }
         val cost = bundle?.getString("cost")
+        val food = bundle?.getInt("food")
         var afford = true
-        if (cost != null && cost.toInt() > 15) {
+        if (cost != null && cost.toInt() > food!!) {
             afford = false
         }
         val exitBtn = findViewById<Button>(R.id.button)

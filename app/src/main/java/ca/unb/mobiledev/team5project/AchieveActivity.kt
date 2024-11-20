@@ -11,11 +11,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import ca.unb.mobiledev.team5project.model.Achievement
+import ca.unb.mobiledev.team5project.model.Statistics
 import ca.unb.mobiledev.team5project.util.ListMaker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class AchieveActivity : AppCompatActivity() {
     lateinit var achievementList: ArrayList<Achievement>
+    lateinit var statistics: Statistics
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -69,6 +71,12 @@ class AchieveActivity : AppCompatActivity() {
         val ListMaker = ListMaker(this)
         ListMaker.executeAchievements()
         achievementList = ListMaker.getAchievementList()
+        ListMaker.executeStatistics()
+        statistics = ListMaker.getStatistics()
+        val foodCount = findViewById<TextView>(R.id.foodCount)
+        foodCount.text = statistics.Fishfood.toString()
+        val title = findViewById<TextView>(R.id.textView)
+        title.text = "${statistics.Username}'s Achievements"
 
         val DivingIn = findViewById<ImageView>(R.id.DivingInImage)
         val Finship = findViewById<ImageView>(R.id.FinshipImage)

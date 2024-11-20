@@ -13,12 +13,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import ca.unb.mobiledev.team5project.model.Decoration
+import ca.unb.mobiledev.team5project.model.Statistics
 import ca.unb.mobiledev.team5project.util.ListMaker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class StoreActivity : AppCompatActivity() {
     lateinit var decoList: ArrayList<Decoration>
     lateinit var ListMaker: ListMaker
+    lateinit var statistics: Statistics
 
     lateinit var  photoFood: ImageView
     lateinit var  clockFood: ImageView
@@ -108,6 +110,10 @@ class StoreActivity : AppCompatActivity() {
         ListMaker = ListMaker(this)
         ListMaker.executeDecorations()
         decoList = ListMaker.getDecorationList()
+        ListMaker.executeStatistics()
+        statistics = ListMaker.getStatistics()
+        val foodCount = findViewById<TextView>(R.id.foodCount)
+        foodCount.text = statistics.Fishfood.toString()
 
         setDetails(decoList.get(0), photoFood, PhotoText)
         setDetails(decoList.get(1), clockFood, ClockText)
@@ -115,8 +121,6 @@ class StoreActivity : AppCompatActivity() {
         setDetails(decoList.get(3), cradleFood, CradleText)
         setDetails(decoList.get(4), snowFood, SnowText)
         setDetails(decoList.get(5), castleFood, CastleText)
-
-
 
         framedPhoto.setOnClickListener {
             val intent = Intent(this, StoreDialog::class.java)
@@ -128,6 +132,7 @@ class StoreActivity : AppCompatActivity() {
                 bundle.putString("placement", decoList.get(0).placement)
                 bundle.putString("decoCode", decoList.get(0).decoCode)
                 bundle.putString("cost", decoList.get(0).cost)
+                bundle.putInt("food", statistics.Fishfood)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -144,6 +149,7 @@ class StoreActivity : AppCompatActivity() {
                 bundle.putString("placement", decoList.get(1).placement)
                 bundle.putString("decoCode", decoList.get(1).decoCode)
                 bundle.putString("cost", decoList.get(1).cost)
+                bundle.putInt("food", statistics.Fishfood)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -160,6 +166,7 @@ class StoreActivity : AppCompatActivity() {
                 bundle.putString("placement", decoList.get(2).placement)
                 bundle.putString("decoCode", decoList.get(2).decoCode)
                 bundle.putString("cost", decoList.get(0).cost)
+                bundle.putInt("food", statistics.Fishfood)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -176,6 +183,7 @@ class StoreActivity : AppCompatActivity() {
                 bundle.putString("placement", decoList.get(3).placement)
                 bundle.putString("decoCode", decoList.get(3).decoCode)
                 bundle.putString("cost", decoList.get(3).cost)
+                bundle.putInt("food", statistics.Fishfood)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -192,6 +200,7 @@ class StoreActivity : AppCompatActivity() {
                 bundle.putString("placement", decoList.get(4).placement)
                 bundle.putString("decoCode", decoList.get(4).decoCode)
                 bundle.putString("cost", decoList.get(4).cost)
+                bundle.putInt("food", statistics.Fishfood)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -208,6 +217,7 @@ class StoreActivity : AppCompatActivity() {
                 bundle.putString("placement", decoList.get(5).placement)
                 bundle.putString("decoCode", decoList.get(5).decoCode)
                 bundle.putString("cost", decoList.get(5).cost)
+                bundle.putInt("food", statistics.Fishfood)
                 intent.putExtras(bundle)
                 startActivity(intent)
             } catch (ex: ActivityNotFoundException) {
@@ -220,7 +230,7 @@ class StoreActivity : AppCompatActivity() {
         if(decoration.owned){
             text.text = "Owned"
             text.setTextColor(Color.BLUE)
-        } else if(decoration.cost.toInt() > 15){ //Change this to be dynamic
+        } else if(decoration.cost.toInt() > statistics.Fishfood){ //Change this to be dynamic
             text.text = decoration.cost
             text.setTextColor(Color.RED)
         } else {

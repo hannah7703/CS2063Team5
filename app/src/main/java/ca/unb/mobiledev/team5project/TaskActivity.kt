@@ -6,14 +6,18 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ListView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
+import ca.unb.mobiledev.team5project.model.Achievement
+import ca.unb.mobiledev.team5project.model.Statistics
 import ca.unb.mobiledev.team5project.model.Task
 import ca.unb.mobiledev.team5project.ui.TaskViewModel
+import ca.unb.mobiledev.team5project.util.ListMaker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import mobiledev.unb.ca.roompersistencelab.ui.TaskAdapter
 import java.sql.Time
@@ -22,7 +26,7 @@ import java.util.Date
 
 
 class TaskActivity : AppCompatActivity() {
-
+    lateinit var statistics: Statistics
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -76,7 +80,13 @@ class TaskActivity : AppCompatActivity() {
             return@setOnItemSelectedListener true
         }
 
-
+        val ListMaker = ListMaker(this)
+        ListMaker.executeStatistics()
+        statistics = ListMaker.getStatistics()
+        val foodCount = findViewById<TextView>(R.id.foodCount)
+        foodCount.text = statistics.Fishfood.toString()
+        val title = findViewById<TextView>(R.id.textView)
+        title.text = "${statistics.Username}'s Tasks"
 
         val createTaskButton = findViewById<Button>(R.id.createTaskBtn)
         createTaskButton.setOnClickListener {
