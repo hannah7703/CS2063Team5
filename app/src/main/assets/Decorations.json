@@ -6,7 +6,8 @@
       "decoType": "Wall",
       "placement": "NA",
       "decoCode": "01",
-      "cost": "5"
+      "cost": "5",
+      "imageLink": "framed_photo.png"
     },
     {
       "name": "Wall Clock",
@@ -14,15 +15,8 @@
       "decoType": "Wall",
       "placement": "NA",
       "decoCode": "02",
-      "cost": "10"
-    },
-    {
-      "name": "Hanging Plant",
-      "owned": false,
-      "decoType": "Wall",
-      "placement": "NA",
-      "decoCode": "03",
-      "cost": ""
+      "cost": "10",
+      "imageLink": "wall_clock.png"
     },
     {
       "name": "House Plant",
@@ -30,23 +24,17 @@
       "decoType": "Table",
       "placement": "NA",
       "decoCode": "04",
-      "cost": "15"
+      "cost": "15",
+      "imageLink": "house_plant.png"
     },
     {
-      "name": "Rubix Cube",
+      "name": "Newton's Cradle",
       "owned": false,
       "decoType": "Table",
       "placement": "NA",
       "decoCode": "05",
-      "cost": "5"
-    },
-    {
-      "name": "Desk Lamp",
-      "owned": false,
-      "decoType": "Table",
-      "placement": "NA",
-      "decoCode": "06",
-      "cost": ""
+      "cost": "5",
+      "imageLink": "newtons_cradle.png"
     },
     {
       "name": "Snow Globe",
@@ -54,15 +42,8 @@
       "decoType": "Table",
       "placement": "NA",
       "decoCode": "07",
-      "cost": "20"
-    },
-    {
-      "name": "Plush Toy",
-      "owned": false,
-      "decoType": "Table",
-      "placement": "NA",
-      "decoCode": "08",
-      "cost": ""
+      "cost": "20",
+      "imageLink": "snowglobe.png"
     },
     {
       "name": "Castle",
@@ -70,7 +51,8 @@
       "decoType": "Tank",
       "placement": "NA",
       "decoCode": "09",
-      "cost": "50"
+      "cost": "50",
+      "imageLink": "castle.png"
     },
     {
       "name": "Seaweed",
@@ -78,15 +60,8 @@
       "decoType": "Tank",
       "placement": "NA",
       "decoCode": "10",
-      "cost": "10"
-    },
-    {
-      "name": "Treasure Chest",
-      "owned": false,
-      "decoType": "Tank",
-      "placement": "NA",
-      "decoCode": "11",
-      "cost": ""
+      "cost": "10",
+      "imageLink": "seaweed.png"
     },
     {
       "name": "Diver",
@@ -94,7 +69,8 @@
       "decoType": "Tank",
       "placement": "NA",
       "decoCode": "12",
-      "cost": "30"
+      "cost": "30",
+      "imageLink": "diver.png"
     },
     {
       "name": "Neon Sign",
@@ -102,7 +78,8 @@
       "decoType": "Wall",
       "placement": "NA",
       "decoCode": "13",
-      "cost": "25"
+      "cost": "25",
+      "imageLink": "neon_sign.png"
     },
     {
       "name": "Books",
@@ -110,15 +87,17 @@
       "decoType": "Table",
       "placement": "NA",
       "decoCode": "14",
-      "cost": "10"
+      "cost": "10",
+      "imageLink": "books.png"
     },
     {
-      "name": "Ship",
+      "name": "Ship in a Bottle",
       "owned": false,
-      "decoType": "Tank",
+      "decoType": "Table",
       "placement": "NA",
       "decoCode": "15",
-      "cost": "25"
+      "cost": "25",
+      "imageLink": "ship_in_bottle.PNG"
     },
     {
       "name": "Kraken",
@@ -126,7 +105,44 @@
       "decoType": "Tank",
       "placement": "NA",
       "decoCode": "16",
-      "cost": "50"
+      "cost": "50",
+      "imageLink": "kraken.png"
+    },
+    {
+      "name": "Plush Toy",
+      "owned": false,
+      "decoType": "Table",
+      "placement": "NA",
+      "decoCode": "08",
+      "cost": "",
+      "imageLink": "plush_toy.png"
+    },
+    {
+      "name": "Hanging Plant",
+      "owned": false,
+      "decoType": "Wall",
+      "placement": "NA",
+      "decoCode": "03",
+      "cost": "",
+      "imageLink": "hanging_plant.png"
+    },
+    {
+      "name": "Desk Lamp",
+      "owned": false,
+      "decoType": "Table",
+      "placement": "NA",
+      "decoCode": "06",
+      "cost": "",
+      "imageLink": "desk_lamp.png"
+    },
+    {
+      "name": "Treasure Chest",
+      "owned": false,
+      "decoType": "Tank",
+      "placement": "NA",
+      "decoCode": "11",
+      "cost": "",
+      "imageLink": "treasure_chest.png"
     }
   ]
 }

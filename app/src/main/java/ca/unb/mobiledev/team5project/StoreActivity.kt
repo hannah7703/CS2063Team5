@@ -31,6 +31,10 @@ class StoreActivity : AppCompatActivity() {
     lateinit var  castleFood: ImageView
     lateinit var  weedFood: ImageView
     lateinit var  diverFood: ImageView
+    lateinit var signFood: ImageView
+    lateinit var bookFood: ImageView
+    lateinit var shipFood: ImageView
+    lateinit var krakenFood: ImageView
 
     lateinit var  PhotoText: TextView
     lateinit var  ClockText: TextView
@@ -40,6 +44,10 @@ class StoreActivity : AppCompatActivity() {
     lateinit var  CastleText: TextView
     lateinit var  seaweedText: TextView
     lateinit var  diverText: TextView
+    lateinit var signText: TextView
+    lateinit var bookText: TextView
+    lateinit var shipText: TextView
+    lateinit var krakenText: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -99,41 +107,18 @@ class StoreActivity : AppCompatActivity() {
         val castle = findViewById<ImageView>(R.id.castle)
         val seaweed = findViewById<ImageView>(R.id.seaweed)
         val diver = findViewById<ImageView>(R.id.diver)
-
-        photoFood = findViewById(R.id.PhotoFood)
-        clockFood = findViewById(R.id.ClockFood)
-        plantFood = findViewById(R.id.PlantFood)
-        cradleFood = findViewById(R.id.CradleFood)
-        snowFood = findViewById(R.id.snowFood)
-        castleFood = findViewById(R.id.castleFood)
-        weedFood = findViewById(R.id.weedFood)
-        diverFood = findViewById(R.id.diverFood)
-
-        PhotoText = findViewById(R.id.framedPhotoText)
-        ClockText = findViewById(R.id.wallClockText)
-        PlantText = findViewById(R.id.housePlantText)
-        CradleText = findViewById(R.id.newtonsCradleText)
-        SnowText = findViewById(R.id.snowGlobeText)
-        CastleText = findViewById(R.id.castleText)
-        seaweedText = findViewById(R.id.seaweedText)
-        diverText = findViewById(R.id.diverText)
+        val sign = findViewById<ImageView>(R.id.neonSign)
+        val books = findViewById<ImageView>(R.id.books)
+        val ship = findViewById<ImageView>(R.id.shipInBottle)
+        val kraken = findViewById<ImageView>(R.id.kraken)
 
         ListMaker = ListMaker(this)
         ListMaker.executeDecorations()
         decoList = ListMaker.getDecorationList()
         ListMaker.executeStatistics()
         statistics = ListMaker.getStatistics()
-        foodCount = findViewById<TextView>(R.id.foodCount)
+        foodCount = findViewById(R.id.foodCount)
         foodCount.text = statistics.Fishfood.toString()
-
-        setDetails(decoList.get(0), photoFood, PhotoText)
-        setDetails(decoList.get(1), clockFood, ClockText)
-        setDetails(decoList.get(2), plantFood, PlantText)
-        setDetails(decoList.get(3), cradleFood, CradleText)
-        setDetails(decoList.get(4), snowFood, SnowText)
-        setDetails(decoList.get(5), castleFood, CastleText)
-        setDetails(decoList.get(6), weedFood, seaweedText)
-        setDetails(decoList.get(7), diverFood, diverText)
 
         framedPhoto.setOnClickListener {
             val intent = Intent(this, StoreDialog::class.java)
@@ -141,9 +126,6 @@ class StoreActivity : AppCompatActivity() {
                 val bundle = Bundle()
                 bundle.putString("name", decoList.get(0).name)
                 bundle.putBoolean("owned", decoList.get(0).owned)
-                bundle.putString("decoType", decoList.get(0).decoType)
-                bundle.putString("placement", decoList.get(0).placement)
-                bundle.putString("decoCode", decoList.get(0).decoCode)
                 bundle.putString("cost", decoList.get(0).cost)
                 bundle.putInt("food", statistics.Fishfood)
                 intent.putExtras(bundle)
@@ -158,9 +140,6 @@ class StoreActivity : AppCompatActivity() {
                 val bundle = Bundle()
                 bundle.putString("name", decoList.get(1).name)
                 bundle.putBoolean("owned", decoList.get(1).owned)
-                bundle.putString("decoType", decoList.get(1).decoType)
-                bundle.putString("placement", decoList.get(1).placement)
-                bundle.putString("decoCode", decoList.get(1).decoCode)
                 bundle.putString("cost", decoList.get(1).cost)
                 bundle.putInt("food", statistics.Fishfood)
                 intent.putExtras(bundle)
@@ -175,9 +154,6 @@ class StoreActivity : AppCompatActivity() {
                 val bundle = Bundle()
                 bundle.putString("name", decoList.get(2).name)
                 bundle.putBoolean("owned", decoList.get(2).owned)
-                bundle.putString("decoType", decoList.get(2).decoType)
-                bundle.putString("placement", decoList.get(2).placement)
-                bundle.putString("decoCode", decoList.get(2).decoCode)
                 bundle.putString("cost", decoList.get(0).cost)
                 bundle.putInt("food", statistics.Fishfood)
                 intent.putExtras(bundle)
@@ -192,9 +168,6 @@ class StoreActivity : AppCompatActivity() {
                 val bundle = Bundle()
                 bundle.putString("name", decoList.get(3).name)
                 bundle.putBoolean("owned", decoList.get(3).owned)
-                bundle.putString("decoType", decoList.get(3).decoType)
-                bundle.putString("placement", decoList.get(3).placement)
-                bundle.putString("decoCode", decoList.get(3).decoCode)
                 bundle.putString("cost", decoList.get(3).cost)
                 bundle.putInt("food", statistics.Fishfood)
                 intent.putExtras(bundle)
@@ -209,9 +182,6 @@ class StoreActivity : AppCompatActivity() {
                 val bundle = Bundle()
                 bundle.putString("name", decoList.get(4).name)
                 bundle.putBoolean("owned", decoList.get(4).owned)
-                bundle.putString("decoType", decoList.get(4).decoType)
-                bundle.putString("placement", decoList.get(4).placement)
-                bundle.putString("decoCode", decoList.get(4).decoCode)
                 bundle.putString("cost", decoList.get(4).cost)
                 bundle.putInt("food", statistics.Fishfood)
                 intent.putExtras(bundle)
@@ -226,9 +196,6 @@ class StoreActivity : AppCompatActivity() {
                 val bundle = Bundle()
                 bundle.putString("name", decoList.get(5).name)
                 bundle.putBoolean("owned", decoList.get(5).owned)
-                bundle.putString("decoType", decoList.get(5).decoType)
-                bundle.putString("placement", decoList.get(5).placement)
-                bundle.putString("decoCode", decoList.get(5).decoCode)
                 bundle.putString("cost", decoList.get(5).cost)
                 bundle.putInt("food", statistics.Fishfood)
                 intent.putExtras(bundle)
@@ -243,9 +210,6 @@ class StoreActivity : AppCompatActivity() {
                 val bundle = Bundle()
                 bundle.putString("name", decoList.get(6).name)
                 bundle.putBoolean("owned", decoList.get(6).owned)
-                bundle.putString("decoType", decoList.get(6).decoType)
-                bundle.putString("placement", decoList.get(6).placement)
-                bundle.putString("decoCode", decoList.get(6).decoCode)
                 bundle.putString("cost", decoList.get(6).cost)
                 bundle.putInt("food", statistics.Fishfood)
                 intent.putExtras(bundle)
@@ -260,10 +224,63 @@ class StoreActivity : AppCompatActivity() {
                 val bundle = Bundle()
                 bundle.putString("name", decoList.get(7).name)
                 bundle.putBoolean("owned", decoList.get(7).owned)
-                bundle.putString("decoType", decoList.get(7).decoType)
-                bundle.putString("placement", decoList.get(7).placement)
-                bundle.putString("decoCode", decoList.get(7).decoCode)
                 bundle.putString("cost", decoList.get(7).cost)
+                bundle.putInt("food", statistics.Fishfood)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(AchieveActivity.TAG, "Unable to start the activity")
+            }
+        }
+        sign.setOnClickListener {
+            val intent = Intent(this, StoreDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", decoList.get(8).name)
+                bundle.putBoolean("owned", decoList.get(8).owned)
+                bundle.putString("cost", decoList.get(8).cost)
+                bundle.putInt("food", statistics.Fishfood)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(AchieveActivity.TAG, "Unable to start the activity")
+            }
+        }
+        books.setOnClickListener {
+            val intent = Intent(this, StoreDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", decoList.get(9).name)
+                bundle.putBoolean("owned", decoList.get(9).owned)
+                bundle.putString("cost", decoList.get(9).cost)
+                bundle.putInt("food", statistics.Fishfood)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(AchieveActivity.TAG, "Unable to start the activity")
+            }
+        }
+        ship.setOnClickListener {
+            val intent = Intent(this, StoreDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", decoList.get(10).name)
+                bundle.putBoolean("owned", decoList.get(10).owned)
+                bundle.putString("cost", decoList.get(10).cost)
+                bundle.putInt("food", statistics.Fishfood)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(AchieveActivity.TAG, "Unable to start the activity")
+            }
+        }
+        kraken.setOnClickListener {
+            val intent = Intent(this, StoreDialog::class.java)
+            try {
+                val bundle = Bundle()
+                bundle.putString("name", decoList.get(11).name)
+                bundle.putBoolean("owned", decoList.get(11).owned)
+                bundle.putString("cost", decoList.get(10).cost)
                 bundle.putInt("food", statistics.Fishfood)
                 intent.putExtras(bundle)
                 startActivity(intent)
@@ -297,6 +314,12 @@ class StoreActivity : AppCompatActivity() {
         cradleFood = findViewById(R.id.CradleFood)
         snowFood = findViewById(R.id.snowFood)
         castleFood = findViewById(R.id.castleFood)
+        weedFood = findViewById(R.id.weedFood)
+        diverFood = findViewById(R.id.diverFood)
+        signFood = findViewById(R.id.signFood)
+        bookFood = findViewById(R.id.bookFood)
+        shipFood = findViewById(R.id.shipFood)
+        krakenFood = findViewById(R.id.krakenFood)
 
         PhotoText = findViewById(R.id.framedPhotoText)
         ClockText = findViewById(R.id.wallClockText)
@@ -304,6 +327,12 @@ class StoreActivity : AppCompatActivity() {
         CradleText = findViewById(R.id.newtonsCradleText)
         SnowText = findViewById(R.id.snowGlobeText)
         CastleText = findViewById(R.id.castleText)
+        seaweedText = findViewById(R.id.seaweedText)
+        diverText = findViewById(R.id.diverText)
+        signText = findViewById(R.id.neonSignText)
+        bookText = findViewById(R.id.bookText)
+        shipText = findViewById(R.id.shipText)
+        krakenText = findViewById(R.id.krakenText)
 
         setDetails(decoList.get(0), photoFood, PhotoText)
         setDetails(decoList.get(1), clockFood, ClockText)
@@ -311,6 +340,12 @@ class StoreActivity : AppCompatActivity() {
         setDetails(decoList.get(3), cradleFood, CradleText)
         setDetails(decoList.get(4), snowFood, SnowText)
         setDetails(decoList.get(5), castleFood, CastleText)
+        setDetails(decoList.get(6), weedFood, seaweedText)
+        setDetails(decoList.get(7), diverFood, diverText)
+        setDetails(decoList.get(8), signFood, signText)
+        setDetails(decoList.get(9), bookFood, bookText)
+        setDetails(decoList.get(10), shipFood, shipText)
+        setDetails(decoList.get(11), krakenFood, krakenText)
 
         ListMaker.executeStatistics()
         statistics = ListMaker.getStatistics()

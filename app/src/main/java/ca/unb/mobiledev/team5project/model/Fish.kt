@@ -1,14 +1,10 @@
 package ca.unb.mobiledev.team5project.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
-@Entity(tableName = "fish")
-class Fish {
-    @PrimaryKey(true) var id = 0
-    var name: String? = null
-    val type: FishType? = null
-    var placed: Boolean = false
-    var level: Int = 1
-    var levelProgress: Int = 0
-}
+data class Fish (
+    var name: String? = null,
+    val type: String? = null,
+    var owned: Boolean = false,
+    var placed: Boolean = false,
+    val fishCode: Int = 0,
+    val rarity: String = "Common")
+{}

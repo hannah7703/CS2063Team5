@@ -52,6 +52,11 @@
             android:exported="false"
             android:theme="@style/Theme.CreateTask">
         </activity>
+        <activity
+            android:name=".FishDialog"
+            android:exported="false"
+            android:theme="@style/Theme.CreateTask">
+        </activity>
     </application>
 
 </manifest>
