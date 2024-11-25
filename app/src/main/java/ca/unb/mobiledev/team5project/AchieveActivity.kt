@@ -170,7 +170,7 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putString("Reward", achievementList.get(0).reward)
                 bundle.putString("rewardCode", achievementList.get(0).rewardCode)
                 bundle.putString("state", achievementList.get(0).state)
-                bundle.putInt("index", 0)
+                bundle.putInt("progress", statistics.TaskMade)
                 intent.putExtras(bundle)
                 startActivity(intent)
                 if(achievementList.get(0).state.equals("Earned")){
@@ -191,7 +191,7 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putString("Reward", achievementList.get(1).reward)
                 bundle.putString("rewardCode", achievementList.get(1).rewardCode)
                 bundle.putString("state", achievementList.get(1).state)
-                bundle.putInt("index", 1)
+                bundle.putInt("progress", statistics.FishCollected)
                 intent.putExtras(bundle)
                 startActivity(intent)
                 if(achievementList.get(1).state.equals("Earned")){
@@ -212,7 +212,7 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putString("Reward", achievementList.get(2).reward)
                 bundle.putString("rewardCode", achievementList.get(2).rewardCode)
                 bundle.putString("state", achievementList.get(2).state)
-                bundle.putInt("index", 2)
+                bundle.putInt("progress", statistics.TaskCompleted)
                 intent.putExtras(bundle)
                 startActivity(intent)
                 if(achievementList.get(2).state.equals("Earned")){
@@ -233,7 +233,7 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putString("Reward", achievementList.get(3).reward)
                 bundle.putString("rewardCode", achievementList.get(3).rewardCode)
                 bundle.putString("state", achievementList.get(3).state)
-                bundle.putInt("index", 3)
+                bundle.putInt("progress", statistics.TaskCompleted)
                 intent.putExtras(bundle)
                 startActivity(intent)
                 if(achievementList.get(3).state.equals("Earned")){
@@ -254,7 +254,7 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putString("Reward", achievementList.get(4).reward)
                 bundle.putString("rewardCode", achievementList.get(4).rewardCode)
                 bundle.putString("state", achievementList.get(4).state)
-                bundle.putInt("index", 4)
+                bundle.putInt("progress", statistics.TaskMade)
                 intent.putExtras(bundle)
                 startActivity(intent)
                 if(achievementList.get(4).state.equals("Earned")){
@@ -275,7 +275,7 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putString("Reward", achievementList.get(5).reward)
                 bundle.putString("rewardCode", achievementList.get(5).rewardCode)
                 bundle.putString("state", achievementList.get(5).state)
-                bundle.putInt("index", 5)
+                bundle.putInt("progress", statistics.TaskMade)
                 intent.putExtras(bundle)
                 startActivity(intent)
                 if(achievementList.get(5).state.equals("Earned")){
@@ -296,7 +296,7 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putString("Reward", achievementList.get(6).reward)
                 bundle.putString("rewardCode", achievementList.get(6).rewardCode)
                 bundle.putString("state", achievementList.get(6).state)
-                bundle.putInt("index", 6)
+                bundle.putInt("progress", statistics.FishCollected)
                 intent.putExtras(bundle)
                 startActivity(intent)
                 if(achievementList.get(6).state.equals("Earned")){
@@ -317,7 +317,7 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putString("Reward", achievementList.get(7).reward)
                 bundle.putString("rewardCode", achievementList.get(7).rewardCode)
                 bundle.putString("state", achievementList.get(7).state)
-                bundle.putInt("index", 7)
+                bundle.putInt("progress", statistics.FishCollected)
                 intent.putExtras(bundle)
                 startActivity(intent)
                 if(achievementList.get(7).state.equals("Earned")){
@@ -338,7 +338,7 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putString("Reward", achievementList.get(8).reward)
                 bundle.putString("rewardCode", achievementList.get(8).rewardCode)
                 bundle.putString("state", achievementList.get(8).state)
-                bundle.putInt("index", 8)
+                bundle.putInt("progress", statistics.DecorationBought)
                 intent.putExtras(bundle)
                 startActivity(intent)
                 if(achievementList.get(8).state.equals("Earned")){
@@ -359,7 +359,7 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putString("Reward", achievementList.get(9).reward)
                 bundle.putString("rewardCode", achievementList.get(9).rewardCode)
                 bundle.putString("state", achievementList.get(9).state)
-                bundle.putInt("index", 9)
+                bundle.putInt("progress", statistics.DecorationBought)
                 intent.putExtras(bundle)
                 startActivity(intent)
                 if(achievementList.get(9).state.equals("Earned")){
@@ -380,7 +380,7 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putString("Reward", achievementList.get(10).reward)
                 bundle.putString("rewardCode", achievementList.get(10).rewardCode)
                 bundle.putString("state", achievementList.get(10).state)
-                bundle.putInt("index", 10)
+                bundle.putInt("progress", statistics.DecorationPlaced)
                 intent.putExtras(bundle)
                 startActivity(intent)
                 if(achievementList.get(10).state.equals("Earned")){
@@ -401,7 +401,7 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putString("Reward", achievementList.get(11).reward)
                 bundle.putString("rewardCode", achievementList.get(11).rewardCode)
                 bundle.putString("state", achievementList.get(11).state)
-                bundle.putInt("index", 11)
+                bundle.putInt("progress", statistics.DecorationPlaced)
                 intent.putExtras(bundle)
                 startActivity(intent)
                 if(achievementList.get(11).state.equals("Earned")){
@@ -422,7 +422,7 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putString("Reward", achievementList.get(12).reward)
                 bundle.putString("rewardCode", achievementList.get(12).rewardCode)
                 bundle.putString("state", achievementList.get(12).state)
-                bundle.putInt("index", 12)
+                bundle.putInt("progress", statistics.FishDisplayed)
                 intent.putExtras(bundle)
                 startActivity(intent)
                 if(achievementList.get(12).state.equals("Earned")){
@@ -443,7 +443,7 @@ class AchieveActivity : AppCompatActivity() {
                 bundle.putString("Reward", achievementList.get(13).reward)
                 bundle.putString("rewardCode", achievementList.get(13).rewardCode)
                 bundle.putString("state", achievementList.get(13).state)
-                bundle.putInt("index", 13)
+                bundle.putInt("progress", statistics.FishDisplayed)
                 intent.putExtras(bundle)
                 startActivity(intent)
                 if(achievementList.get(13).state.equals("Earned")){

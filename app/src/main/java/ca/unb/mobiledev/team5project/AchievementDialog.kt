@@ -29,8 +29,9 @@ class AchievementDialog : AppCompatActivity()  {
         val goal = findViewById<TextView>(R.id.achievementGoal)
         val goalAmount = bundle?.getInt("goal")
         val goalType = bundle?.getString("goalType")
+        val progress = bundle?.getInt("progress")
         if (state.equals("Locked")){
-            goal.text = "0/$goalAmount $goalType"
+            goal.text = "$progress/$goalAmount $goalType"
             title.text = "Locked"
         } else {
             goal.text = "$goalAmount/$goalAmount $goalType"
