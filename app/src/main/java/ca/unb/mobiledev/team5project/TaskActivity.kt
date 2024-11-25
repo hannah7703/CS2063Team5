@@ -87,6 +87,14 @@ class TaskActivity : AppCompatActivity() {
         statistics = ListMaker.getStatistics()
         foodCount = findViewById(R.id.foodCount)
         foodCount.text = statistics.Fishfood.toString()
+        if(statistics.Username?.isEmpty() == true){
+            val intent = Intent(this, UsernameDialog::class.java)
+            try {
+                startActivity(intent)
+            } catch (ex: ActivityNotFoundException) {
+                Log.e(TAG, "Unable to start the activity")
+            }
+        }
         val title = findViewById<TextView>(R.id.textView)
         title.text = "${statistics.Username}'s Tasks"
 
@@ -115,6 +123,8 @@ class TaskActivity : AppCompatActivity() {
         ListMaker.executeStatistics()
         statistics = ListMaker.getStatistics()
         foodCount.text = statistics.Fishfood.toString()
+        val title = findViewById<TextView>(R.id.textView)
+        title.text = "${statistics.Username}'s Tasks"
         super.onResume()
     }
 

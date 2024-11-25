@@ -57,6 +57,11 @@
             android:exported="false"
             android:theme="@style/Theme.CreateTask">
         </activity>
+        <activity
+            android:name=".UsernameDialog"
+            android:exported="false"
+            android:theme="@style/Theme.CreateTask">
+        </activity>
     </application>
 
 </manifest>
