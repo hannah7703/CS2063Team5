@@ -1,84 +1,76 @@
 {
   "fishes": [
     {
-      "name": "Frank",
+      "name": "Betty",
       "type": "Betta",
       "owned": false,
       "placed": false,
-      "fishCode": "01",
-      "level": 0,
-      "levelProgress": 0,
-      "rarity": "Common"
+      "fishCode": 1,
+      "rarity": "Common",
+      "imageLink": "betta.png"
     },
     {
-      "name": "Nemo",
-      "type": "Clownfish",
+      "name": "Marty",
+      "type": "Zebra fish",
       "owned": false,
       "placed": false,
-      "fishCode": "02",
-      "level": 0,
-      "levelProgress": 0,
-      "rarity": "Common"
+      "fishCode": 2,
+      "rarity": "Common",
+      "imageLink": "zebrafish.png"
     },
     {
-      "name": "Finley",
-      "type": "Angelfish",
+      "name": "Sassy",
+      "type": "Catfish",
       "owned": false,
       "placed": false,
-      "fishCode": "03",
-      "level": 0,
-      "levelProgress": 0,
-      "rarity": "Common"
+      "fishCode": 3,
+      "rarity": "Common",
+      "imageLink": "catfish.png"
     },
     {
       "name": "Finnegan",
       "type": "Guppy",
       "owned": false,
       "placed": false,
-      "fishCode": "04",
-      "level": 0,
-      "levelProgress": 0,
-      "rarity": "Uncommon"
+      "fishCode": 4,
+      "rarity": "Uncommon",
+      "imageLink": "guppy.png"
     },
     {
-      "name": "Suzy",
-      "type": "Shrimp",
+      "name": "Lemon",
+      "type": "Cichlid",
       "owned": false,
       "placed": false,
-      "fishCode": "05",
-      "level": 0,
-      "levelProgress": 0,
-      "rarity": "Uncommon"
+      "fishCode": 5,
+      "rarity": "Uncommon",
+      "imageLink": "cichlid.png"
     },
     {
       "name": "Pancakes",
       "type": "Discus",
       "owned": false,
       "placed": false,
-      "fishCode": "06",
-      "level": 0,
-      "levelProgress": 0,
-      "rarity": "Uncommon"
+      "fishCode": 6,
+      "rarity": "Uncommon",
+      "imageLink": "discus.png"
     },
     {
       "name": "Bilbo",
-      "type": "Cichlid ",
+      "type": "Blue Tang",
       "owned": false,
       "placed": false,
-      "fishCode": "07",
-      "level": 0,
-      "levelProgress": 0,
-      "rarity": "Rare"
+      "fishCode": 7,
+      "rarity": "Rare",
+      "imageLink": "blue_tang.png"
     },
     {
       "name": "Miser",
       "type": "Goldfish",
       "owned": false,
       "placed": false,
-      "fishCode": "08",
-      "level": 0,
-      "levelProgress": 0,
-      "rarity": "Rare"
+      "fishCode": 8,
+      "rarity": "Rare",
+      "imageLink": "goldfish.png"
     }
   ]
 }

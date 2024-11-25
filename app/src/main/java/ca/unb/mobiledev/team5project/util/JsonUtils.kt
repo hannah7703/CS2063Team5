@@ -3,6 +3,7 @@ package ca.unb.mobiledev.team5project.util
 import android.content.Context
 import ca.unb.mobiledev.team5project.model.Achievement
 import ca.unb.mobiledev.team5project.model.Decoration
+import ca.unb.mobiledev.team5project.model.Fish
 import ca.unb.mobiledev.team5project.model.Statistics
 import org.json.JSONArray
 import org.json.JSONException
@@ -16,6 +17,7 @@ import java.util.*
 class JsonUtils(context: Context) {
     private var achieveList: ArrayList<Achievement> = ArrayList()
     private var decoList: ArrayList<Decoration> = ArrayList()
+    private var fishList: ArrayList<Fish> = ArrayList()
     private lateinit var stats: Statistics
 
     private fun processJSON(context: Context, fileName: String) {
@@ -61,6 +63,20 @@ class JsonUtils(context: Context) {
                 val bought = jsonObject.get("Decoration Bought").toString().toInt()
                 val placed = jsonObject.get("Decoration Placed").toString().toInt()
                 stats = Statistics(username, food, made, completed, collected, displayed, bought, placed)
+            } else if(fileName.equals("Fishes.json")){
+                val jsonArray = jsonObject.getJSONArray("fishes")
+                for (i in 0 until jsonArray.length()) {
+                    val classObject : JSONObject = jsonArray.getJSONObject(i)
+                    val name = classObject.get("name").toString()
+                    val type = classObject.get("type").toString()
+                    val owned = classObject.get("owned").toString().toBoolean()
+                    val placed = classObject.get("placed").toString().toBoolean()
+                    val fishCode = classObject.get("fishCode").toString().toInt()
+                    val rarity = classObject.get("rarity").toString()
+                    val link = classObject.get("imageLink").toString()
+                    val newFish = Fish(name, type, owned, placed, fishCode, rarity, link)
+                    fishList.add(newFish)
+                }
             }
 
         } catch (e: JSONException) {
@@ -116,6 +132,11 @@ class JsonUtils(context: Context) {
     fun getStatistics(context: Context): Statistics{
         processJSON(context, "Statistics.json")
         return stats
+    }
+
+    fun getFish(context: Context): ArrayList<Fish> {
+        processJSON(context, "Fishes.json")
+        return fishList
     }
 
     fun getAchievementsFile(context: Context): ArrayList<Achievement> {
@@ -179,6 +200,38 @@ class JsonUtils(context: Context) {
             decolist.add(newDecoration)
         }
         return decolist
+    }
+
+    fun getFishFile(context: Context): ArrayList<Fish> {
+        var fishlist: ArrayList<Fish> = ArrayList()
+
+        val file = File(context.filesDir, "fishList.json")
+        val fileReader = FileReader(file)
+        val bufferedReader = BufferedReader(fileReader)
+        val stringBuilder = java.lang.StringBuilder()
+
+        var line = bufferedReader.readLine()
+        while (line != null) {
+            stringBuilder.append(line).append("\n")
+            line = bufferedReader.readLine()
+        }
+        bufferedReader.close()
+
+        val jsonObject = JSONObject(Objects.requireNonNull(loadJSONFromFile(context, "fishList.json")))
+        val jsonArray = jsonObject.getJSONArray("fishes")
+        for (i in 0 until jsonArray.length()) {
+            val classObject : JSONObject = jsonArray.getJSONObject(i)
+            val name = classObject.get("name").toString()
+            val type = classObject.get("type").toString()
+            val owned = classObject.get("owned").toString().toBoolean()
+            val placed = classObject.get("placed").toString().toBoolean()
+            val fishCode = classObject.get("fishCode").toString().toInt()
+            val rarity = classObject.get("rarity").toString()
+            val link = classObject.get("imageLink").toString()
+            val newFish = Fish(name, type, owned, placed, fishCode, rarity, link)
+            fishlist.add(newFish)
+        }
+        return fishlist
     }
 
     fun getStatisticsFile(context: Context): Statistics {

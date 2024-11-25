@@ -156,6 +156,6 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
 
-        app:srcCompat="@drawable/goldfish_image" />
+        app:srcCompat="@drawable/betta" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

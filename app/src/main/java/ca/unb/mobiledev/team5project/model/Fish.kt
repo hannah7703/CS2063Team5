@@ -6,5 +6,6 @@ data class Fish (
     var owned: Boolean = false,
     var placed: Boolean = false,
     val fishCode: Int = 0,
-    val rarity: String = "Common")
+    val rarity: String = "Common",
+    val imageLink: String = "")
 {}
