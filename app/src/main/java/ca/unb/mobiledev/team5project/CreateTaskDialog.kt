@@ -1,7 +1,7 @@
 package ca.unb.mobiledev.team5project
 
-import ca.unb.mobiledev.team5project.model.Task
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -13,13 +13,14 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.TimePicker
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import ca.unb.mobiledev.team5project.ui.TaskViewModel
 import ca.unb.mobiledev.team5project.util.ListMaker
 import java.sql.Date
 import java.sql.Time
-import java.time.LocalDate
 
 
 class CreateTaskDialog : AppCompatActivity() {
@@ -122,9 +123,10 @@ class CreateTaskDialog : AppCompatActivity() {
                 listMaker.executeStatistics()
                 val statistics = listMaker.getStatistics()
                 listMaker.updateStatistics("Task Made", statistics.TaskMade,true, 1)
-                // Commented this out for now until the database insert() actually works...
-//                val newTask = Task(title, deadline, repeat, startdate, reminder, reminderTime, false)
-//                finish()
+                val taskViewModel by viewModels<TaskViewModel>()
+                taskViewModel.insert(title, deadline, repeat,
+                    startdate.toString(), reminder, reminderTime.toString(), false)
+                finish()
             }
         }
         val cancelTaskButton = findViewById<Button>(R.id.CancelTask)

@@ -12,8 +12,8 @@ class Task {
     var title: String? = null
     var deadline: String? = null
     var repeat: Boolean = false
-//    var startDate: Date? = null // Will need to create converters for date/time fields
+    var startDate: String? = null
     var reminder: Boolean = false
-//    var reminderTime: Time? = null
+    var reminderTime: String? = null
     var completed: Boolean = false
 }

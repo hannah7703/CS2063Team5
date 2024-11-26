@@ -5,24 +5,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.ListView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
-import ca.unb.mobiledev.team5project.model.Achievement
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ca.unb.mobiledev.team5project.model.Statistics
 import ca.unb.mobiledev.team5project.model.Task
 import ca.unb.mobiledev.team5project.ui.TaskViewModel
 import ca.unb.mobiledev.team5project.util.ListMaker
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import mobiledev.unb.ca.roompersistencelab.ui.TaskAdapter
-import java.sql.Time
-import java.util.Arrays
-import java.util.Date
+import ca.unb.mobiledev.team5project.ui.TaskAdapter
 
 
 class TaskActivity : AppCompatActivity() {
@@ -108,13 +104,7 @@ class TaskActivity : AppCompatActivity() {
             }
         }
 
-        val listView = findViewById<ListView>(R.id.dailyTasksListview)
-        val taskViewModel by viewModels<TaskViewModel>()
-        val list = taskViewModel.search()
-        val tasksAdapter = TaskAdapter(applicationContext, list)
-        listView.adapter = tasksAdapter
-        tasksAdapter.notifyDataSetChanged()
-
+        updateList()
     }
 
     override fun onResume() {
@@ -125,7 +115,21 @@ class TaskActivity : AppCompatActivity() {
         foodCount.text = statistics.Fishfood.toString()
         val title = findViewById<TextView>(R.id.textView)
         title.text = "${statistics.Username}'s Tasks"
+        updateList()
         super.onResume()
+    }
+
+    private fun updateList() {
+        val taskViewModel by viewModels<TaskViewModel>()
+
+        val recyclerview = findViewById<RecyclerView>(R.id.dailyTasksRecyclerView)
+        recyclerview.layoutManager = LinearLayoutManager(this)
+        val list = taskViewModel.retrieveAllTasks() //Will update this
+
+        val adapter = TaskAdapter(list)
+
+        recyclerview.adapter = adapter
+        adapter.notifyDataSetChanged()
     }
 
     companion object {
