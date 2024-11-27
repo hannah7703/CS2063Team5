@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ca.unb.mobiledev.team5project.model.Statistics
 import ca.unb.mobiledev.team5project.model.Task
+import ca.unb.mobiledev.team5project.ui.CompletedTaskAdapter
 import ca.unb.mobiledev.team5project.ui.TaskViewModel
 import ca.unb.mobiledev.team5project.util.ListMaker
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -104,7 +105,7 @@ class TaskActivity : AppCompatActivity() {
             }
         }
 
-        updateList()
+        updateLists()
     }
 
     override fun onResume() {
@@ -115,21 +116,46 @@ class TaskActivity : AppCompatActivity() {
         foodCount.text = statistics.Fishfood.toString()
         val title = findViewById<TextView>(R.id.textView)
         title.text = "${statistics.Username}'s Tasks"
-        updateList()
+        updateLists()
         super.onResume()
     }
 
-    private fun updateList() {
+    private fun completeTask(name: String) {
+        val taskViewModel by viewModels<TaskViewModel>()
+        taskViewModel.completeTask(name)
+    }
+
+    private fun updateLists() {
         val taskViewModel by viewModels<TaskViewModel>()
 
-        val recyclerview = findViewById<RecyclerView>(R.id.dailyTasksRecyclerView)
-        recyclerview.layoutManager = LinearLayoutManager(this)
-        val list = taskViewModel.retrieveAllTasks() //Will update this
+        val dailyRecyclerView = findViewById<RecyclerView>(R.id.dailyTasksRecyclerView)
+        dailyRecyclerView.layoutManager = LinearLayoutManager(this)
+        val dayList = taskViewModel.retrieveDailyTasks()
+        val dailyTaskAdapter = TaskAdapter(taskViewModel, dayList)
+        dailyRecyclerView.adapter = dailyTaskAdapter
+        dailyTaskAdapter.notifyDataSetChanged()
 
-        val adapter = TaskAdapter(list)
+        val weeklyRecyclerView = findViewById<RecyclerView>(R.id.weeklyTasksRecyclerView)
+        weeklyRecyclerView.layoutManager = LinearLayoutManager(this)
+        val weekList = taskViewModel.retrieveWeeklyTasks()
+        val weeklyTaskAdapter = TaskAdapter(taskViewModel, weekList)
+        weeklyRecyclerView.adapter = weeklyTaskAdapter
+        weeklyTaskAdapter.notifyDataSetChanged()
 
-        recyclerview.adapter = adapter
-        adapter.notifyDataSetChanged()
+        val monthlyRecyclerView = findViewById<RecyclerView>(R.id.monthlyTasksRecyclerView)
+        monthlyRecyclerView.layoutManager = LinearLayoutManager(this)
+        val monthList = taskViewModel.retrieveMonthlyTasks()
+        val monthlyTaskAdapter = TaskAdapter(taskViewModel, monthList)
+        monthlyRecyclerView.adapter = monthlyTaskAdapter
+        monthlyTaskAdapter.notifyDataSetChanged()
+
+        // Need diff adapter for this I think
+        val completedRecyclerView = findViewById<RecyclerView>(R.id.completedTasksRecyclerView)
+        completedRecyclerView.layoutManager = LinearLayoutManager(this)
+        val completedList = taskViewModel.retrieveCompletedTasks()
+        val completedTaskAdapter = CompletedTaskAdapter(completedList)
+        completedRecyclerView.adapter = completedTaskAdapter
+        completedTaskAdapter.notifyDataSetChanged()
     }
 
     companion object {

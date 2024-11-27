@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:itemPaddingBottom="16dp"
-        app:itemPaddingTop="8dp"
+        app:itemPaddingTop="16dp"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +78,7 @@
 
     <LinearLayout
         android:id="@+id/taskPageBanner"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="91dp"
         android:background="#2196F3"
         android:orientation="horizontal"
@@ -89,49 +89,50 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Info about the user's tank will be displayed here" />
     </LinearLayout>
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="427dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createTaskBtn">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/dailyTasksTextView"
-                android:layout_width="405dp"
+                android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:gravity="bottom"
                 android:text="Today"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/dailyTasksRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false" />
+                android:nestedScrollingEnabled="false"
+                />
 
             <TextView
                 android:id="@+id/weeklyTasksTextView"
-                android:layout_width="405dp"
+                android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:gravity="bottom"
                 android:text="This week"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -145,10 +146,10 @@
 
             <TextView
                 android:id="@+id/monthlyTasksTextView"
-                android:layout_width="405dp"
+                android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:gravity="bottom"
                 android:text="This month"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -162,10 +163,10 @@
 
             <TextView
                 android:id="@+id/completedTasksTextView"
-                android:layout_width="405dp"
+                android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:gravity="bottom"
                 android:text="Completed"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -182,7 +183,7 @@
 
     <Button
         android:id="@+id/createTaskBtn"
-        android:layout_width="379dp"
+        android:layout_width="match_parent"
         android:layout_height="51dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"

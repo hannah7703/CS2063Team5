@@ -21,7 +21,6 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
 
     fun retrieveDailyTasks(): List<Task> {
         val currDate = LocalDate.now()
-        val weekDate = currDate.plus(Period.of(0, 0, 7))
         return taskRepository.retrieveDailyTasks(currDate.toString())
     }
 

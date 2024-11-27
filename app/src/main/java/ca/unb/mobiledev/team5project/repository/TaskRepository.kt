@@ -1,7 +1,6 @@
 package ca.unb.mobiledev.team5project.repository
 
 import android.app.Application
-import android.util.Log
 import ca.unb.mobiledev.team5project.dao.TaskDao
 import ca.unb.mobiledev.team5project.db.AppDatabase
 import ca.unb.mobiledev.team5project.db.AppDatabase.Companion.getDatabase

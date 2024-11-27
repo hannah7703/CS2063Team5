@@ -12,11 +12,11 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class TaskAdapter(private val viewModel: TaskViewModel, private val mList: List<Task>) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
+class CompletedTaskAdapter(private val mList: List<Task>) : RecyclerView.Adapter<CompletedTaskAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.task_layout, parent, false)
+            .inflate(R.layout.completed_task_layout, parent, false)
 
         return ViewHolder(view)
     }
@@ -24,11 +24,6 @@ class TaskAdapter(private val viewModel: TaskViewModel, private val mList: List<
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val task = mList[position]
         holder.checkBox.text = task.title
-
-        holder.checkBox.setOnClickListener {
-            viewModel?.completeTask(task.title!!)
-            notifyDataSetChanged()
-        }
     }
 
     override fun getItemCount(): Int {
