@@ -50,7 +50,7 @@ class JsonUtils(context: Context) {
                     val decoCode = classObject.get("decoCode").toString()
                     val cost = classObject.get("cost").toString()
                     val link = classObject.get("imageLink").toString()
-                    val newDecoration = Decoration(name, owned, decoType, placement, decoCode, cost, link)
+                    val newDecoration = Decoration(name, owned, placement, decoType, decoCode, cost, link)
                     decoList.add(newDecoration)
                 }
             } else if(fileName.equals("Statistics.json")){
@@ -196,7 +196,7 @@ class JsonUtils(context: Context) {
             val decoCode = classObject.get("decoCode").toString()
             val cost = classObject.get("cost").toString()
             val link = classObject.get("imageLink").toString()
-            val newDecoration = Decoration(name, owned, decoType, placement, decoCode, cost, link)
+            val newDecoration = Decoration(name, owned, placement, decoType, decoCode, cost, link)
             decolist.add(newDecoration)
         }
         return decolist

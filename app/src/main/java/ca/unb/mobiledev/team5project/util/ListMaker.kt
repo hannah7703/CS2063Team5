@@ -154,6 +154,29 @@ class ListMaker(private val activity: AppCompatActivity) {
         bufferedWriter.close()
     }
 
+    fun placeDecoration(name: String, placement: String, newPlace: String){
+        var file = appContext.getFileStreamPath("decorationList.json")
+        val reader = BufferedReader(file.reader())
+        val content = StringBuilder()
+        try {
+            var line = reader.readLine()
+            while (line != null) {
+                content.append(line)
+                line = reader.readLine()
+            }
+        } finally {
+            reader.close()
+        }
+        val string = content.toString()
+        val stringput = string.replaceFirst("\"name\": \"$name\",      \"owned\": true,      \"placement\": \"$placement\"", "\"name\": \"$name\",      \"owned\": true,      \"placement\": \"$newPlace\"")
+
+        val fileWriter = FileWriter(file)
+        val bufferedWriter = BufferedWriter(fileWriter)
+
+        bufferedWriter.write(stringput)
+        bufferedWriter.close()
+    }
+
     fun updateUsername(name: String){
         var file = appContext.getFileStreamPath("Statistics.json")
         val reader = BufferedReader(file.reader())

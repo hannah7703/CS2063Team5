@@ -3,8 +3,8 @@
     {
       "name": "Framed picture",
       "owned": false,
-      "decoType": "Wall",
       "placement": "NA",
+      "decoType": "Wall",
       "decoCode": "01",
       "cost": "5",
       "imageLink": "framed_photo.png"
@@ -12,8 +12,8 @@
     {
       "name": "Wall Clock",
       "owned": false,
-      "decoType": "Wall",
       "placement": "NA",
+      "decoType": "Wall",
       "decoCode": "02",
       "cost": "10",
       "imageLink": "wall_clock.png"
@@ -21,8 +21,8 @@
     {
       "name": "House Plant",
       "owned": false,
-      "decoType": "Table",
       "placement": "NA",
+      "decoType": "Table",
       "decoCode": "04",
       "cost": "15",
       "imageLink": "house_plant.png"
@@ -30,8 +30,8 @@
     {
       "name": "Newton's Cradle",
       "owned": false,
-      "decoType": "Table",
       "placement": "NA",
+      "decoType": "Table",
       "decoCode": "05",
       "cost": "5",
       "imageLink": "newtons_cradle.png"
@@ -39,8 +39,8 @@
     {
       "name": "Snow Globe",
       "owned": false,
-      "decoType": "Table",
       "placement": "NA",
+      "decoType": "Table",
       "decoCode": "07",
       "cost": "20",
       "imageLink": "snowglobe.png"
@@ -48,8 +48,8 @@
     {
       "name": "Castle",
       "owned": false,
-      "decoType": "Tank",
       "placement": "NA",
+      "decoType": "Tank",
       "decoCode": "09",
       "cost": "50",
       "imageLink": "castle.png"
@@ -57,8 +57,8 @@
     {
       "name": "Seaweed",
       "owned": false,
-      "decoType": "Tank",
       "placement": "NA",
+      "decoType": "Tank",
       "decoCode": "10",
       "cost": "10",
       "imageLink": "seaweed.png"
@@ -66,8 +66,8 @@
     {
       "name": "Diver",
       "owned": false,
-      "decoType": "Tank",
       "placement": "NA",
+      "decoType": "Tank",
       "decoCode": "12",
       "cost": "30",
       "imageLink": "diver.png"
@@ -75,8 +75,8 @@
     {
       "name": "Neon Sign",
       "owned": false,
-      "decoType": "Wall",
       "placement": "NA",
+      "decoType": "Wall",
       "decoCode": "13",
       "cost": "25",
       "imageLink": "neon_sign.png"
@@ -84,8 +84,8 @@
     {
       "name": "Books",
       "owned": false,
-      "decoType": "Table",
       "placement": "NA",
+      "decoType": "Table",
       "decoCode": "14",
       "cost": "10",
       "imageLink": "books.png"
@@ -93,8 +93,8 @@
     {
       "name": "Ship in a Bottle",
       "owned": false,
-      "decoType": "Table",
       "placement": "NA",
+      "decoType": "Table",
       "decoCode": "15",
       "cost": "25",
       "imageLink": "ship_in_bottle.PNG"
@@ -102,8 +102,8 @@
     {
       "name": "Kraken",
       "owned": false,
-      "decoType": "Tank",
       "placement": "NA",
+      "decoType": "Tank",
       "decoCode": "16",
       "cost": "50",
       "imageLink": "kraken.png"
@@ -111,8 +111,8 @@
     {
       "name": "Plush Toy",
       "owned": false,
-      "decoType": "Table",
       "placement": "NA",
+      "decoType": "Table",
       "decoCode": "08",
       "cost": "",
       "imageLink": "plush_toy.png"
@@ -120,8 +120,8 @@
     {
       "name": "Hanging Plant",
       "owned": false,
-      "decoType": "Wall",
       "placement": "NA",
+      "decoType": "Wall",
       "decoCode": "03",
       "cost": "",
       "imageLink": "hanging_plant.png"
@@ -129,8 +129,8 @@
     {
       "name": "Desk Lamp",
       "owned": false,
-      "decoType": "Table",
       "placement": "NA",
+      "decoType": "Table",
       "decoCode": "06",
       "cost": "",
       "imageLink": "desk_lamp.png"
@@ -138,8 +138,8 @@
     {
       "name": "Treasure Chest",
       "owned": false,
-      "decoType": "Tank",
       "placement": "NA",
+      "decoType": "Tank",
       "decoCode": "11",
       "cost": "",
       "imageLink": "treasure_chest.png"

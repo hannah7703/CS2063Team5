@@ -37,15 +37,21 @@ class FishDialog: AppCompatActivity() {
         val fishName = findViewById<TextView>(R.id.FishNameEdit)
         val nameText = findViewById<TextView>(R.id.textView14)
         val displayCheck = findViewById<CheckBox>(R.id.checkBox)
-        val message = findViewById<TextView>(R.id.textView15)
         val image = findViewById<ImageView>(R.id.fish)
         val exitBtn = findViewById<Button>(R.id.button)
         exitBtn.setOnClickListener{
             val listMaker = ListMaker(this)
             listMaker.executeFish()
             if(displayCheck.isChecked != placed){
+                listMaker.executeStatistics()
+                val stats = listMaker.getStatistics()
                 if (type != null) {
                     listMaker.updateFish(type, displayCheck.isChecked, "placed")
+                    if(displayCheck.isChecked){
+                        listMaker.updateStatistics("Fish Displayed", stats.FishDisplayed,true, 1)
+                    } else {
+                        listMaker.updateStatistics("Fish Displayed", stats.FishDisplayed,false, 1)
+                    }
                 }
             }
             if(!fishName.text.equals(name)){
@@ -62,7 +68,6 @@ class FishDialog: AppCompatActivity() {
             nameText.text = "Complete Tasks to\n           Unlock"
             fishName.visibility = View.INVISIBLE
             displayCheck.visibility = View.INVISIBLE
-            message.visibility = View.INVISIBLE
             link = link + "_dark"
         } else {
             fishType.text = type
@@ -74,7 +79,6 @@ class FishDialog: AppCompatActivity() {
             if (placed != null) {
                 displayCheck.isChecked = placed
             }
-            message.visibility = View.INVISIBLE
         }
         val resID = getResources().getIdentifier(link, "drawable", packageName)
         image.setImageResource(resID)
