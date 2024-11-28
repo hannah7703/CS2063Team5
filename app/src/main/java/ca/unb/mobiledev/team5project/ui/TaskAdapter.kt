@@ -26,7 +26,7 @@ class TaskAdapter(private val viewModel: TaskViewModel, private val mList: List<
         holder.checkBox.text = task.title
 
         holder.checkBox.setOnClickListener {
-            viewModel?.completeTask(task.title!!)
+            viewModel?.completeTask(task.title!!, holder.checkBox.isChecked)
             notifyDataSetChanged()
         }
     }

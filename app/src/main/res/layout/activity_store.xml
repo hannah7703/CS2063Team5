@@ -18,6 +18,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingHorizontal="16dp"
+            android:text="Store"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
         <LinearLayout
             android:layout_width="70dp"
             android:layout_height="30dp"
@@ -37,29 +47,11 @@
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:text="15"
+                android:text="3"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingHorizontal="16dp"
-            android:text="Store"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="30dp"
-            app:srcCompat="@drawable/ic_profile_icon_foreground" />
 
     </LinearLayout>
 
