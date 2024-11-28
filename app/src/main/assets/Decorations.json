@@ -10,15 +10,6 @@
       "imageLink": "framed_photo.png"
     },
     {
-      "name": "Wall Clock",
-      "owned": false,
-      "placement": "NA",
-      "decoType": "Wall",
-      "decoCode": "02",
-      "cost": "10",
-      "imageLink": "wall_clock.png"
-    },
-    {
       "name": "House Plant",
       "owned": false,
       "placement": "NA",
@@ -26,15 +17,6 @@
       "decoCode": "04",
       "cost": "15",
       "imageLink": "house_plant.png"
-    },
-    {
-      "name": "Newton's Cradle",
-      "owned": false,
-      "placement": "NA",
-      "decoType": "Table",
-      "decoCode": "05",
-      "cost": "5",
-      "imageLink": "newtons_cradle.png"
     },
     {
       "name": "Snow Globe",
@@ -64,15 +46,6 @@
       "imageLink": "seaweed.png"
     },
     {
-      "name": "Diver",
-      "owned": false,
-      "placement": "NA",
-      "decoType": "Tank",
-      "decoCode": "12",
-      "cost": "30",
-      "imageLink": "diver.png"
-    },
-    {
       "name": "Neon Sign",
       "owned": false,
       "placement": "NA",
@@ -91,24 +64,6 @@
       "imageLink": "books.png"
     },
     {
-      "name": "Ship in a Bottle",
-      "owned": false,
-      "placement": "NA",
-      "decoType": "Table",
-      "decoCode": "15",
-      "cost": "25",
-      "imageLink": "ship_in_bottle.PNG"
-    },
-    {
-      "name": "Kraken",
-      "owned": false,
-      "placement": "NA",
-      "decoType": "Tank",
-      "decoCode": "16",
-      "cost": "50",
-      "imageLink": "kraken.png"
-    },
-    {
       "name": "Plush Toy",
       "owned": false,
       "placement": "NA",
@@ -125,15 +80,6 @@
       "decoCode": "03",
       "cost": "",
       "imageLink": "hanging_plant.png"
-    },
-    {
-      "name": "Desk Lamp",
-      "owned": false,
-      "placement": "NA",
-      "decoType": "Table",
-      "decoCode": "06",
-      "cost": "",
-      "imageLink": "desk_lamp.png"
     },
     {
       "name": "Treasure Chest",

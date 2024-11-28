@@ -30,6 +30,6 @@ interface TaskDao {
     @Query("SELECT id, title, deadline, repeat, startDate, reminder, reminderTime, completed FROM task_table WHERE completed = 1 AND startDate >= :currDate")
     fun retrieveCompleted(currDate: String): List<Task>
 
-    @Query("UPDATE task_table SET completed = 1 WHERE title = :taskName")
-    fun completeTask(taskName: String)
+    @Query("UPDATE task_table SET completed = :completed WHERE title = :taskName")
+    fun completeTask(taskName: String, completed: Boolean)
 }

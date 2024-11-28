@@ -120,9 +120,25 @@ class TaskActivity : AppCompatActivity() {
         super.onResume()
     }
 
-    private fun completeTask(name: String) {
+    private fun completeTask(name: String, completed: Boolean) {
         val taskViewModel by viewModels<TaskViewModel>()
-        taskViewModel.completeTask(name)
+        taskViewModel.completeTask(name, completed)
+
+        // Update stats
+        // This will need to somehow go into the ViewModel, this doesn't actually get called from here
+//        val listMaker = ListMaker(this)
+//        listMaker.executeDecorations()
+//        listMaker.executeStatistics()
+//        val statistics = listMaker.getStatistics()
+//        listMaker.updateStatistics("Task Completed", statistics.TaskCompleted, true, 1)
+//        val tasksCompleted = listMaker.stats.TaskCompleted;
+//        if (tasksCompleted == 1 || tasksCompleted % 5 == 0) {
+//            listMaker.updateStatistics("Fish Collected", statistics.FishCollected, true, 1)
+//        } else if (tasksCompleted % 3 == 0) {
+//            listMaker.updateStatistics("Fish Food", statistics.Fishfood, true, 10)
+//        } else {
+//            listMaker.updateStatistics("Fish Food", statistics.Fishfood, true, 5)
+//        }
     }
 
     private fun updateLists() {
@@ -149,11 +165,10 @@ class TaskActivity : AppCompatActivity() {
         monthlyRecyclerView.adapter = monthlyTaskAdapter
         monthlyTaskAdapter.notifyDataSetChanged()
 
-        // Need diff adapter for this I think
         val completedRecyclerView = findViewById<RecyclerView>(R.id.completedTasksRecyclerView)
         completedRecyclerView.layoutManager = LinearLayoutManager(this)
         val completedList = taskViewModel.retrieveCompletedTasks()
-        val completedTaskAdapter = CompletedTaskAdapter(completedList)
+        val completedTaskAdapter = CompletedTaskAdapter(taskViewModel, completedList)
         completedRecyclerView.adapter = completedTaskAdapter
         completedTaskAdapter.notifyDataSetChanged()
     }

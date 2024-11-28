@@ -32,7 +32,7 @@ class StoreDialog : AppCompatActivity()   {
         val cost = bundle?.getString("cost")
         val food = bundle?.getInt("food")
         var afford = true
-        if (cost != null && cost.toInt() > food!!) {
+        if (cost != "" && cost != null && cost.toInt() > food!!) {
             afford = false
         }
         val exitBtn = findViewById<Button>(R.id.button)
@@ -154,6 +154,12 @@ class StoreDialog : AppCompatActivity()   {
             rightBtn.visibility = View.VISIBLE
             removeBtn.visibility = View.INVISIBLE
             purchaseBtn.text = "Center"
+        } else if(cost.equals("")){
+            purchaseBtn.visibility = View.INVISIBLE
+            leftBtn.visibility = View.INVISIBLE
+            rightBtn.visibility = View.INVISIBLE
+            removeBtn.visibility = View.INVISIBLE
+            content = "Unlock by completing achievements!"
         } else if(!afford){
             purchaseBtn.visibility = View.INVISIBLE
             leftBtn.visibility = View.INVISIBLE

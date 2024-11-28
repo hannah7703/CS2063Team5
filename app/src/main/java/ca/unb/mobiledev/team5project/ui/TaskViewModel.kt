@@ -1,10 +1,12 @@
 package ca.unb.mobiledev.team5project.ui
 
+import android.app.Activity
 import android.app.Application
-import android.util.Log
+import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import ca.unb.mobiledev.team5project.model.Task
 import ca.unb.mobiledev.team5project.repository.TaskRepository
+import ca.unb.mobiledev.team5project.util.ListMaker
 import java.time.LocalDate
 import java.time.Period
 
@@ -41,7 +43,7 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
         return taskRepository.retrieveCompletedTasks(currDate)
     }
 
-    fun completeTask(name: String) {
-        taskRepository.completeTask(name)
+    fun completeTask(name: String, completed: Boolean) {
+        taskRepository.completeTask(name, completed)
     }
 }
