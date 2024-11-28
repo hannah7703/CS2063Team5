@@ -94,6 +94,37 @@
         app:srcCompat="@drawable/wall_image"
         tools:ignore="MissingConstraints" />
 
+
+    <ImageView
+        android:id="@+id/wallDecoLeft"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@id/dayWindow"
+        app:layout_constraintStart_toStartOf="@id/dayWindow"
+         />
+
+    <ImageView
+        android:id="@+id/wallDecoCenter"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@id/wallDecoRight"
+        app:layout_constraintStart_toEndOf="@id/dayWindow"
+         />
+
+    <ImageView
+        android:id="@+id/wallDecoRight"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintStart_toEndOf="@id/dayWindow"
+        app:layout_constraintTop_toBottomOf="@id/wallDecoLeft"
+         />
+
     <ImageView
         android:id="@+id/nightWindow"
         android:layout_width="219dp"
@@ -120,14 +151,12 @@
 
     <ImageView
         android:id="@+id/table"
-        android:layout_width="347dp"
-        android:layout_height="213dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="88dp"
+        android:layout_width="412dp"
+        android:layout_height="293dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/table_image" />
 
@@ -145,17 +174,114 @@
         app:srcCompat="@drawable/tank_image" />
 
     <ImageView
-        android:id="@+id/goldfish"
+        android:id="@+id/tankDecoRight"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/tankgraphic"
+        app:layout_constraintEnd_toEndOf="@id/tankgraphic"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@id/tankgraphic"
+        app:layout_constraintTop_toTopOf="@id/tankgraphic"
+        app:layout_constraintVertical_bias="0.676"
+         />
+
+    <ImageView
+        android:id="@+id/tankDecoLeft"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/tankgraphic"
+        app:layout_constraintEnd_toEndOf="@id/tankgraphic"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/tankgraphic"
+        app:layout_constraintTop_toTopOf="@id/tankgraphic"
+        app:layout_constraintVertical_bias="0.676"
+         />
+
+    <ImageView
+        android:id="@+id/tankDecoCenter"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/tankgraphic"
+        app:layout_constraintEnd_toEndOf="@id/tankgraphic"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="@id/tankgraphic"
+        app:layout_constraintTop_toTopOf="@id/tankgraphic"
+        app:layout_constraintVertical_bias="0.676"
+         />
+
+    <ImageView
+        android:id="@+id/fishLeft"
         android:layout_width="60dp"
         android:layout_height="55dp"
         android:layout_marginStart="96dp"
         android:layout_marginEnd="98dp"
-        android:layout_marginBottom="324dp"
+        android:layout_marginBottom="348dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
+         />
 
-        app:srcCompat="@drawable/betta" />
+    <ImageView
+        android:id="@+id/fishCenter"
+        android:layout_width="60dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginBottom="348dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toStartOf="parent"
+         />
+
+    <ImageView
+        android:id="@+id/fishRight"
+        android:layout_width="60dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginBottom="348dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent"
+         />
+
+    <ImageView
+        android:id="@+id/tableDecoRight"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/tankgraphic"
+        app:layout_constraintEnd_toEndOf="@id/table"
+         />
+
+    <ImageView
+        android:id="@+id/tableDecoLeft"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/tankgraphic"
+        app:layout_constraintStart_toStartOf="@id/table"
+         />
+
+    <ImageView
+        android:id="@+id/tableDecoCenter"
+        android:layout_width="82dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/table"
+        app:layout_constraintEnd_toEndOf="@id/table"
+        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintStart_toStartOf="@id/table"
+        app:layout_constraintTop_toTopOf="@id/table"
+        app:layout_constraintVertical_bias="0.0"
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,8 +12,10 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import ca.unb.mobiledev.team5project.model.Fish
 import ca.unb.mobiledev.team5project.model.Statistics
 import ca.unb.mobiledev.team5project.util.ListMaker
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -26,6 +28,8 @@ class TankActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_tank)
+
+        val ListMaker = ListMaker(this)
 
         //sets day window and wall visible if day *****Hardcoded sunrise sunset!!
         val daytime = TimeUtils.isTimeBetween(LocalTime.now(), LocalTime.of(6,0), LocalTime.of(22,0))
@@ -47,6 +51,51 @@ class TankActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        var i = 0
+        val decoList = ListMaker.getDecorationList()
+        var tempDeco = decoList[i]
+        while(i < decoList.size) {
+            tempDeco = decoList[i]
+            when(tempDeco.placement) {
+                "left" ->
+                    when(tempDeco.decoType) {
+                        "wall" -> findViewById<ImageView>(R.id.wallDecoLeft).setImageURI(tempDeco.decoCode?.toUri())
+                        "table" -> findViewById<ImageView>(R.id.tableDecoLeft).setImageURI(tempDeco.decoCode?.toUri())
+                        "tank" -> findViewById<ImageView>(R.id.tankDecoLeft).setImageURI(tempDeco.decoCode?.toUri())
+                    }
+                "right" ->
+                    when(tempDeco.decoType) {
+                        "wall" -> findViewById<ImageView>(R.id.wallDecoRight).setImageURI(tempDeco.decoCode?.toUri())
+                        "table" -> findViewById<ImageView>(R.id.tableDecoRight).setImageURI(tempDeco.decoCode?.toUri())
+                        "tank" -> findViewById<ImageView>(R.id.tankDecoRight).setImageURI(tempDeco.decoCode?.toUri())
+                    }
+                "center" ->
+                    when(tempDeco.decoType) {
+                        "wall" -> findViewById<ImageView>(R.id.wallDecoCenter).setImageURI(tempDeco.decoCode?.toUri())
+                        "table" -> findViewById<ImageView>(R.id.tableDecoCenter).setImageURI(tempDeco.decoCode?.toUri())
+                        "tank" -> findViewById<ImageView>(R.id.tankDecoCenter).setImageURI(tempDeco.decoCode?.toUri())
+                    }
+                null -> {}
+                else -> Log.e(TankActivity.TAG, "Unable to place Decoration " + tempDeco.name)
+            }
+            i++
+        }
+        i = 0
+        val fishList: List<Fish> = ListMaker.fishList.toList()
+        var tempFish = fishList[i]
+        while(i < fishList.size) {
+            tempFish = fishList[i]
+            when(tempFish.placement) {
+                    "left" -> findViewById<ImageView>(R.id.fishLeft).setImageURI(tempFish.imageLink.toUri())
+                    "center" -> findViewById<ImageView>(R.id.fishCenter).setImageURI(tempFish.imageLink.toUri())
+                    "right" -> findViewById<ImageView>(R.id.fishRight).setImageURI(tempFish.imageLink.toUri())
+                    null -> {}
+                    else -> Log.e(TankActivity.TAG, "Unable to place Fish " + tempFish.name)
+            }
+            i++
+        }
+
 
         val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNavBar.selectedItemId = R.id.tank
@@ -89,7 +138,6 @@ class TankActivity : AppCompatActivity() {
             return@setOnItemSelectedListener true
         }
 
-        val ListMaker = ListMaker(this)
         ListMaker.executeStatistics()
         statistics = ListMaker.getStatistics()
         val foodCount = findViewById<TextView>(R.id.foodCount)
