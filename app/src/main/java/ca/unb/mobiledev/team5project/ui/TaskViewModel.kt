@@ -41,7 +41,12 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
         return taskRepository.retrieveCompletedTasks(currDate)
     }
 
-    fun completeTask(name: String) {
-        taskRepository.completeTask(name)
+    fun completeTask(name: String, completed: Boolean) {
+        taskRepository.completeTask(name, completed)
+        // Update statistics (tasksCompleted)
+        // Check if = 1, give fish & update fishCollected variable
+        // If multiple of 5, new fish & update fishCollected variable
+        // If multiple of 3, 10 fish food
+        // Otherwise, 5 fish food
     }
 }

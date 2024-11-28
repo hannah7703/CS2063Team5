@@ -68,7 +68,7 @@ class TaskRepository(application: Application) {
         return dataReadFuture.get()
     }
 
-    fun completeTask(name: String) {
-        AppDatabase.databaseWriterExecutor.execute { taskDao!!.completeTask(name) }
+    fun completeTask(name: String, completed: Boolean) {
+        AppDatabase.databaseWriterExecutor.execute { taskDao!!.completeTask(name, completed) }
     }
 }
