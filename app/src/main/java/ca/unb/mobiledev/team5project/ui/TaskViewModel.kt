@@ -1,10 +1,12 @@
 package ca.unb.mobiledev.team5project.ui
 
+import android.app.Activity
 import android.app.Application
-import android.util.Log
+import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import ca.unb.mobiledev.team5project.model.Task
 import ca.unb.mobiledev.team5project.repository.TaskRepository
+import ca.unb.mobiledev.team5project.util.ListMaker
 import java.time.LocalDate
 import java.time.Period
 
@@ -43,10 +45,5 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
 
     fun completeTask(name: String, completed: Boolean) {
         taskRepository.completeTask(name, completed)
-        // Update statistics (tasksCompleted)
-        // Check if = 1, give fish & update fishCollected variable
-        // If multiple of 5, new fish & update fishCollected variable
-        // If multiple of 3, 10 fish food
-        // Otherwise, 5 fish food
     }
 }
