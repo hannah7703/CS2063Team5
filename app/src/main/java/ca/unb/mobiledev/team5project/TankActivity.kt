@@ -15,8 +15,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import ca.unb.mobiledev.team5project.model.Decoration
 import ca.unb.mobiledev.team5project.model.Fish
 import ca.unb.mobiledev.team5project.model.Statistics
+import ca.unb.mobiledev.team5project.util.JsonUtils
 import ca.unb.mobiledev.team5project.util.ListMaker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.time.LocalTime
@@ -29,7 +31,7 @@ class TankActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_tank)
 
-        val ListMaker = ListMaker(this)
+        val listMaker = ListMaker(this)
 
         //sets day window and wall visible if day *****Hardcoded sunrise sunset!!
         val daytime = TimeUtils.isTimeBetween(LocalTime.now(), LocalTime.of(6,0), LocalTime.of(22,0))
@@ -52,49 +54,105 @@ class TankActivity : AppCompatActivity() {
             insets
         }
 
-        var i = 0
-        val decoList = ListMaker.getDecorationList()
-        var tempDeco = decoList[i]
-        while(i < decoList.size) {
-            tempDeco = decoList[i]
+        listMaker.executeDecorations()
+        val decoList = ArrayList<Decoration>()
+        decoList.addAll(listMaker.getDecorationList())
+        var image: ImageView
+        var id = 0
+        var link = ""
+        for(tempDeco in decoList) {
+            link = tempDeco.imageLink.split(".")[0]
             when(tempDeco.placement) {
-                "left" ->
-                    when(tempDeco.decoType) {
-                        "wall" -> findViewById<ImageView>(R.id.wallDecoLeft).setImageURI(tempDeco.decoCode?.toUri())
-                        "table" -> findViewById<ImageView>(R.id.tableDecoLeft).setImageURI(tempDeco.decoCode?.toUri())
-                        "tank" -> findViewById<ImageView>(R.id.tankDecoLeft).setImageURI(tempDeco.decoCode?.toUri())
+                "Left" -> {
+                    when (tempDeco.decoType) {
+                        "Wall" -> {
+                            image = findViewById<ImageView>(R.id.wallDecoLeft)
+                            id = getResources().getIdentifier(link, "drawable", packageName)
+                            image.setImageResource(id)
+                        }
+
+                        "Table" -> {
+                            image = findViewById<ImageView>(R.id.tableDecoLeft)
+                            id = getResources().getIdentifier(link, "drawable", packageName)
+                            image.setImageResource(id)
+                        }
+
+                        "tank" -> {
+                            image = findViewById<ImageView>(R.id.tankDecoLeft)
+                            id = getResources().getIdentifier(link, "drawable", packageName)
+                            image.setImageResource(id)
+                        }
                     }
-                "right" ->
+                }
+                "Right" ->
                     when(tempDeco.decoType) {
-                        "wall" -> findViewById<ImageView>(R.id.wallDecoRight).setImageURI(tempDeco.decoCode?.toUri())
-                        "table" -> findViewById<ImageView>(R.id.tableDecoRight).setImageURI(tempDeco.decoCode?.toUri())
-                        "tank" -> findViewById<ImageView>(R.id.tankDecoRight).setImageURI(tempDeco.decoCode?.toUri())
+                        "Wall" -> {
+                            image = findViewById<ImageView>(R.id.wallDecoRight)
+                            id = getResources().getIdentifier(link, "drawable", packageName)
+                            image.setImageResource(id) }
+                        "Table" -> {
+                            image = findViewById<ImageView>(R.id.tableDecoRight)
+                            id = getResources().getIdentifier(link, "drawable", packageName)
+                            image.setImageResource(id)
+                        }
+                        "Tank" -> {
+                            image = findViewById<ImageView>(R.id.tankDecoRight)
+                            id = getResources().getIdentifier(link, "drawable", packageName)
+                            image.setImageResource(id)
+                        }
                     }
-                "center" ->
+                "Center" ->
                     when(tempDeco.decoType) {
-                        "wall" -> findViewById<ImageView>(R.id.wallDecoCenter).setImageURI(tempDeco.decoCode?.toUri())
-                        "table" -> findViewById<ImageView>(R.id.tableDecoCenter).setImageURI(tempDeco.decoCode?.toUri())
-                        "tank" -> findViewById<ImageView>(R.id.tankDecoCenter).setImageURI(tempDeco.decoCode?.toUri())
+                        "Wall" -> {
+                            image = findViewById<ImageView>(R.id.wallDecoCenter)
+                            id = getResources().getIdentifier(link, "drawable", packageName)
+                            image.setImageResource(id)
+                        }
+                        "Table" -> {
+                            image = findViewById<ImageView>(R.id.tableDecoCenter)
+                            id = getResources().getIdentifier(link, "drawable", packageName)
+                            image.setImageResource(id)
+                        }
+                        "Tank" -> {
+                            image = findViewById<ImageView>(R.id.tankDecoCenter)
+                            id = getResources().getIdentifier(link, "drawable", packageName)
+                            image.setImageResource(id)
+                        }
                     }
                 null -> {}
+                "NA" -> {}
                 else -> Log.e(TankActivity.TAG, "Unable to place Decoration " + tempDeco.name)
             }
-            i++
         }
-        i = 0
-        val fishList: List<Fish> = ListMaker.fishList.toList()
-        var tempFish = fishList[i]
-        while(i < fishList.size) {
-            tempFish = fishList[i]
-            when(tempFish.placement) {
-                    "left" -> findViewById<ImageView>(R.id.fishLeft).setImageURI(tempFish.imageLink.toUri())
-                    "center" -> findViewById<ImageView>(R.id.fishCenter).setImageURI(tempFish.imageLink.toUri())
-                    "right" -> findViewById<ImageView>(R.id.fishRight).setImageURI(tempFish.imageLink.toUri())
-                    null -> {}
-                    else -> Log.e(TankActivity.TAG, "Unable to place Fish " + tempFish.name)
+
+        listMaker.executeFish()
+        val fishList: List<Fish> = listMaker.fishList
+        var fishCount = 0
+        for(tempFish in fishList) {
+            link = tempFish.imageLink.split(".")[0]
+            if(tempFish.owned && tempFish.placed) {
+                when(fishCount){
+                    0 -> {
+                        image = findViewById<ImageView>(R.id.fishLeft)
+                        id = getResources().getIdentifier(link, "drawable", packageName)
+                        image.setImageResource(id)
+                    }
+                    1 -> {
+                        image = findViewById<ImageView>(R.id.tankDecoCenter)
+                        id = getResources().getIdentifier(link, "drawable", packageName)
+                        image.setImageResource(id)
+                    }
+                    2 -> {
+                        image = findViewById<ImageView>(R.id.tankDecoRight)
+                        id = getResources().getIdentifier(link, "drawable", packageName)
+                        image.setImageResource(id)
+                    }
+                    else -> Log.e(TankActivity.TAG, "Too many placed fish, unable to place: " + tempFish.name)
+                }
+                fishCount++
             }
-            i++
         }
+
 
 
         val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
@@ -138,8 +196,8 @@ class TankActivity : AppCompatActivity() {
             return@setOnItemSelectedListener true
         }
 
-        ListMaker.executeStatistics()
-        statistics = ListMaker.getStatistics()
+        listMaker.executeStatistics()
+        statistics = listMaker.getStatistics()
         val foodCount = findViewById<TextView>(R.id.foodCount)
         foodCount.text = statistics.Fishfood.toString()
         val title = findViewById<TextView>(R.id.textView)
