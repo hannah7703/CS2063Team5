@@ -107,7 +107,7 @@
     {
       "name": "Fishy Following",
       "state": "Locked",
-      "goal": 5,
+      "goal": 3,
       "goalType": "Fish Displayed",
       "reward": "Treasure Chest",
       "rewardCode": "DE11"

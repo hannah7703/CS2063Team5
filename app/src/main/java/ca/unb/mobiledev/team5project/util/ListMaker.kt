@@ -11,8 +11,8 @@ import java.io.BufferedWriter
 import java.io.File
 import java.io.FileWriter
 
-class ListMaker(private val activity: AppCompatActivity) {
-    private val appContext: Context = activity.applicationContext
+class ListMaker(private val context: Context) {
+    private val appContext: Context = context
     lateinit var achieveList: ArrayList<Achievement>
     lateinit var decoList: ArrayList<Decoration>
     lateinit var fishList: ArrayList<Fish>
@@ -264,7 +264,7 @@ class ListMaker(private val activity: AppCompatActivity) {
         val string = content.toString()
         var stringput = string
         if(stat.equals("owned")){
-            stringput = string.replaceFirst("\"type\": $type,      \"owned\": false", "\"type\": $type,      \"owned\": true")
+            stringput = string.replaceFirst("\"type\": \"$type\",      \"owned\": false", "\"type\": \"$type\",      \"owned\": true")
         }else if(stat.equals("placed")){
             val oldVal = !newVal
             stringput = string.replaceFirst("\"type\": \"$type\",      \"owned\": true,      \"placed\": $oldVal", "\"type\": \"$type\",      \"owned\": true,      \"placed\": $newVal")
