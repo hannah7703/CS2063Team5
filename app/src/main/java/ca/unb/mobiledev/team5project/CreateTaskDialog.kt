@@ -33,13 +33,11 @@ class CreateTaskDialog : AppCompatActivity() {
             insets
         }
         var startdate: Date? = null
-        var reminder = false
         var reminderTime: Time? = null
         val titleBox = findViewById<EditText>(R.id.TaskTitleEdit)
         val calendar = findViewById<CalendarView>(R.id.calendarView)
         val calendarBack = findViewById<RelativeLayout>(R.id.relativeLayout3)
         val dateClickBox = findViewById<TextView>(R.id.selectDateBox)
-        val selectTime = findViewById<Button>(R.id.button2)
         dateClickBox.setOnClickListener {
             calendarBack.visibility = View.VISIBLE
         }
@@ -57,65 +55,10 @@ class CreateTaskDialog : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         deadlineDropDown.adapter = adapter
 
-        val reminderTimeDialog = findViewById<TextView>(R.id.DialogRemindTime)
-        val remindCheckBox = findViewById<CheckBox>(R.id.reminderCheckBox)
-
-        val selectTimeBox = findViewById<TextView>(R.id.selectTimeBox)
-        val timePicker = findViewById<TimePicker>(R.id.timePicker)
-        selectTimeBox.setOnClickListener {
-            calendarBack.visibility = View.VISIBLE
-            timePicker.visibility = View.VISIBLE
-            selectTime.visibility = View.VISIBLE
-            calendar.visibility = View.INVISIBLE
-        }
-        selectTime.setOnClickListener{
-            var hour = timePicker.hour
-            var minute = timePicker.minute
-            var reminder = "$hour:$minute:00"
-            reminderTime = Time.valueOf(reminder)
-            var am_pm = ""
-            // AM_PM decider logic
-            when {hour == 0 -> { hour += 12
-                am_pm = "AM"
-            }
-                hour == 12 -> am_pm = "PM"
-                hour > 12 -> { hour -= 12
-                    am_pm = "PM"
-                }
-                else -> am_pm = "AM"
-            }
-            var displayHour = if (hour < 10) "0" + hour else hour
-            val displayMin = if (minute < 10) "0" + minute else minute
-            // display format of time
-            val time = " $displayHour:$displayMin $am_pm"
-            selectTimeBox.text = time
-            calendarBack.visibility = View.INVISIBLE
-            timePicker.visibility = View.INVISIBLE
-            selectTime.visibility = View.INVISIBLE
-            calendar.visibility = View.VISIBLE
-        }
-
-        remindCheckBox.setOnClickListener{
-            if(remindCheckBox.isChecked){
-                selectTimeBox.visibility = View.VISIBLE
-                reminderTimeDialog.visibility = View.VISIBLE
-                reminder = true
-            } else {
-                selectTimeBox.visibility = View.INVISIBLE
-                reminderTimeDialog.visibility = View.INVISIBLE
-                reminder = false
-            }
-        }
-
-        val repeatCheckbox = findViewById<CheckBox>(R.id.repeatCheck)
         val saveTaskButton = findViewById<Button>(R.id.SaveTask)
         saveTaskButton.setOnClickListener{
             val title = titleBox.text.toString()
             val deadline = deadlineDropDown.selectedItem.toString()
-            var repeat = repeatCheckbox.isChecked
-            if (!remindCheckBox.isChecked){
-                reminderTime = null
-            }
             if (title.isEmpty() or dateClickBox.text.equals(" Tap to select")) {
                 Toast.makeText(this, "You must fill all fields!", Toast.LENGTH_SHORT).show()
             } else {
@@ -124,8 +67,8 @@ class CreateTaskDialog : AppCompatActivity() {
                 val statistics = listMaker.getStatistics()
                 listMaker.updateStatistics("Task Made", statistics.TaskMade,true, 1)
                 val taskViewModel by viewModels<TaskViewModel>()
-                taskViewModel.insert(title, deadline, repeat,
-                    startdate.toString(), reminder, reminderTime.toString(), false)
+                taskViewModel.insert(title, deadline, false,
+                    startdate.toString(), false, reminderTime.toString(), false)
                 finish()
             }
         }

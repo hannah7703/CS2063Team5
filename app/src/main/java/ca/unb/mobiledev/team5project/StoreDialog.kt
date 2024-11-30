@@ -63,7 +63,7 @@ class StoreDialog : AppCompatActivity()   {
                 }
                 listMaker.updateStatistics("Fish food", statistics.Fishfood, false, cost!!.toInt())
                 listMaker.updateStatistics("Decoration Bought", statistics.DecorationBought, true, 1)
-            } else {
+            } else if (!placement.equals("Center")){
                 val decoList = listMaker.getDecorationList()
                 for (deco in decoList){
                     if(deco.decoType == type && deco.placement.equals("Center")){
@@ -81,42 +81,46 @@ class StoreDialog : AppCompatActivity()   {
             finish()
         }
         leftBtn.setOnClickListener {
-            val listMaker = ListMaker(this)
-            listMaker.executeDecorations()
-            listMaker.executeStatistics()
-            val statistics = listMaker.getStatistics()
-            val decoList = listMaker.getDecorationList()
-            for (deco in decoList){
-                if(deco.decoType == type && deco.placement.equals("Left")){
-                    listMaker.placeDecoration(deco.name!!, deco.placement!!, "NA")
-                    listMaker.updateStatistics("Decoration Placed", statistics.DecorationPlaced, false, 1)
-                    statistics.DecorationPlaced--
-                    break
+            if(!placement.equals("Left")) {
+                val listMaker = ListMaker(this)
+                listMaker.executeDecorations()
+                listMaker.executeStatistics()
+                val statistics = listMaker.getStatistics()
+                val decoList = listMaker.getDecorationList()
+                for (deco in decoList) {
+                    if (deco.decoType == type && deco.placement.equals("Left")) {
+                        listMaker.placeDecoration(deco.name!!, deco.placement!!, "NA")
+                        listMaker.updateStatistics("Decoration Placed", statistics.DecorationPlaced, false, 1)
+                        statistics.DecorationPlaced--
+                        break
+                    }
                 }
-            }
-            listMaker.placeDecoration(name!!, placement!!, "Left")
-            if(placement.equals("NA")) {
-                listMaker.updateStatistics("Decoration Placed", statistics.DecorationPlaced, true, 1)
+                listMaker.placeDecoration(name!!, placement!!, "Left")
+                if (placement.equals("NA")) {
+                    listMaker.updateStatistics("Decoration Placed", statistics.DecorationPlaced, true, 1)
+                }
             }
             finish()
         }
         rightBtn.setOnClickListener {
-            val listMaker = ListMaker(this)
-            listMaker.executeDecorations()
-            listMaker.executeStatistics()
-            val statistics = listMaker.getStatistics()
-            val decoList = listMaker.getDecorationList()
-            for (deco in decoList){
-                if(deco.decoType == type && deco.placement.equals("Right")){
-                    listMaker.placeDecoration(deco.name!!, deco.placement!!, "NA")
-                    listMaker.updateStatistics("Decoration Placed", statistics.DecorationPlaced, false, 1)
-                    statistics.DecorationPlaced--
-                    break
+            if(!placement.equals("Right")) {
+                val listMaker = ListMaker(this)
+                listMaker.executeDecorations()
+                listMaker.executeStatistics()
+                val statistics = listMaker.getStatistics()
+                val decoList = listMaker.getDecorationList()
+                for (deco in decoList) {
+                    if (deco.decoType == type && deco.placement.equals("Right")) {
+                        listMaker.placeDecoration(deco.name!!, deco.placement!!, "NA")
+                        listMaker.updateStatistics("Decoration Placed", statistics.DecorationPlaced, false, 1)
+                        statistics.DecorationPlaced--
+                        break
+                    }
                 }
-            }
-            listMaker.placeDecoration(name!!, placement!!, "Right")
-            if(placement.equals("NA")) {
-                listMaker.updateStatistics("Decoration Placed", statistics.DecorationPlaced, true, 1)
+                listMaker.placeDecoration(name!!, placement!!, "Right")
+                if (placement.equals("NA")) {
+                    listMaker.updateStatistics("Decoration Placed", statistics.DecorationPlaced, true, 1)
+                }
             }
             finish()
         }
