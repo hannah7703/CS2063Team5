@@ -5,7 +5,7 @@ This task tracker app allows users to create, manage and complete tasks with the
 * The project runs in Android Studio Koala (2024.1.1 Patch 2)
 
 ## Android SDK
-* This project uses a minimum of API level 27 (Android Oreo 8.1)
+* This project uses a minimum of API level 31 (Android S 12.0)
 * Please ensure that the correct SDK platforms are installed.
 
 ## Image Resources Used
