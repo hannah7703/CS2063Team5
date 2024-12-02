@@ -13,8 +13,8 @@
 
     <TextView
         android:id="@+id/CreateDialogTitle"
-        android:layout_width="256dp"
-        android:layout_height="53dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="77dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="78dp"
@@ -52,8 +52,8 @@
 
     <TextView
         android:id="@+id/DialogDeadline"
-        android:layout_width="103dp"
-        android:layout_height="33dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="27dp"
         android:text="Deadline:"
@@ -136,8 +136,8 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
-        android:layout_width="346dp"
-        android:layout_height="322dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginStart="36dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="31dp"
@@ -154,8 +154,8 @@
 
         <CalendarView
             android:id="@+id/calendarView"
-            android:layout_width="340dp"
-            android:layout_height="309dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:visibility="visible"
             android:weekNumberColor="#000000" />
 
