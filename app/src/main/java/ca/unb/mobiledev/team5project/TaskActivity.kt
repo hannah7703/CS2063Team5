@@ -4,7 +4,9 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -20,12 +22,14 @@ import ca.unb.mobiledev.team5project.ui.TaskViewModel
 import ca.unb.mobiledev.team5project.util.ListMaker
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ca.unb.mobiledev.team5project.ui.TaskAdapter
+import kotlin.random.Random
 
 
 class TaskActivity : AppCompatActivity() {
     lateinit var statistics: Statistics
     lateinit var ListMaker: ListMaker
     lateinit var foodCount: TextView
+    lateinit var bannerText: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -84,6 +88,8 @@ class TaskActivity : AppCompatActivity() {
         statistics = ListMaker.getStatistics()
         foodCount = findViewById(R.id.foodCount)
         foodCount.text = statistics.Fishfood.toString()
+        bannerText = findViewById(R.id.BannerStats)
+        val bannerFish = findViewById<ImageView>(R.id.BannerFish)
         if(statistics.Username?.isEmpty() == true){
             val intent = Intent(this, UsernameDialog::class.java)
             try {
@@ -94,6 +100,27 @@ class TaskActivity : AppCompatActivity() {
         }
         val title = findViewById<TextView>(R.id.textView)
         title.text = "${statistics.Username}'s Tasks"
+
+        bannerText.text = "${statistics.Username}'s Stats\nTasks Made: ${statistics.TaskMade}" +
+                "\nTasks Completed: ${statistics.TaskCompleted}\nFish Collected: ${statistics.FishCollected}" +
+                "\nFish Displayed: ${statistics.FishDisplayed}"
+
+        val fishList = ListMaker.executeFish()
+        var index = 0
+        for (fish in fishList){
+            if (fish.owned){
+                index++
+            }
+        }
+        if(index == 0){
+            bannerFish.visibility = View.INVISIBLE
+        } else {
+            val fish = Random.nextInt(index)
+            bannerFish.visibility = View.VISIBLE
+            val link = fishList.get(fish).imageLink.substringBefore(".")
+            val resID = getResources().getIdentifier(link, "drawable", packageName)
+            bannerFish.setImageResource(resID)
+        }
 
         val createTaskButton = findViewById<Button>(R.id.createTaskBtn)
         createTaskButton.setOnClickListener {
@@ -116,6 +143,9 @@ class TaskActivity : AppCompatActivity() {
         foodCount.text = statistics.Fishfood.toString()
         val title = findViewById<TextView>(R.id.textView)
         title.text = "${statistics.Username}'s Tasks"
+        bannerText.text = "${statistics.Username}'s Stats\n      Tasks Made: ${statistics.TaskMade}" +
+                "\n      Tasks Completed: ${statistics.TaskCompleted}\n      Fish Collected: ${statistics.FishCollected}" +
+                "\n      Fish Displayed: ${statistics.FishDisplayed}"
         updateLists()
         super.onResume()
     }

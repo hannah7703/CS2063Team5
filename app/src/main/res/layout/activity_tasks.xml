@@ -80,11 +80,19 @@
         tools:layout_editor_absoluteY="71dp">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/BannerStats"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Info about the user's tank will be displayed here" />
+            android:text="Info about the user's tank will be displayed here"
+            android:textColor="#FFFFFF" />
+
+        <ImageView
+            android:id="@+id/BannerFish"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/betta" />
     </LinearLayout>
 
     <ScrollView

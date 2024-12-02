@@ -34,8 +34,7 @@
         android:layout_width="500dp"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/wall_image"
+        app:srcCompat="@drawable/nightwall_image"
         tools:ignore="MissingConstraints" />
 
 

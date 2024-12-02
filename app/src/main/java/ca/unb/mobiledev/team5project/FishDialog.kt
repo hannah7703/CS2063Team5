@@ -1,5 +1,7 @@
 package ca.unb.mobiledev.team5project
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -39,6 +41,7 @@ class FishDialog: AppCompatActivity() {
         val displayCheck = findViewById<CheckBox>(R.id.checkBox)
         val image = findViewById<ImageView>(R.id.fish)
         val exitBtn = findViewById<Button>(R.id.button)
+        val message = findViewById<TextView>(R.id.FullMessage)
         exitBtn.setOnClickListener{
             val listMaker = ListMaker(this)
             listMaker.executeFish()
@@ -69,6 +72,7 @@ class FishDialog: AppCompatActivity() {
             fishName.visibility = View.INVISIBLE
             displayCheck.visibility = View.INVISIBLE
             link = link + "_dark"
+            message.visibility = View.INVISIBLE
         } else {
             fishType.text = type
             nameText.text = "Name:"
@@ -76,8 +80,19 @@ class FishDialog: AppCompatActivity() {
             fishName.visibility = View.VISIBLE
             fishName.text = name
             displayCheck.visibility = View.VISIBLE
+            message.visibility = View.INVISIBLE
             if (placed != null) {
                 displayCheck.isChecked = placed
+            }
+            displayCheck.isEnabled = true
+            val listMaker = ListMaker(this)
+            listMaker.executeStatistics()
+            val statistics = listMaker.getStatistics()
+            if (!displayCheck.isChecked && statistics.FishDisplayed == 3){
+                message.visibility = View.VISIBLE
+                displayCheck.isEnabled = false
+                displayCheck.setTextColor(Color.DKGRAY)
+                displayCheck.buttonTintList = ColorStateList.valueOf(Color.DKGRAY)
             }
         }
         val resID = getResources().getIdentifier(link, "drawable", packageName)

@@ -34,7 +34,7 @@ class TankActivity : AppCompatActivity() {
         val listMaker = ListMaker(this)
 
         //sets day window and wall visible if day *****Hardcoded sunrise sunset!!
-        val daytime = TimeUtils.isTimeBetween(LocalTime.now(), LocalTime.of(6,0), LocalTime.of(22,0))
+        val daytime = TimeUtils.isTimeBetween(LocalTime.now(), LocalTime.of(6,0), LocalTime.of(20,0))
         if (daytime) {
             findViewById<ImageView>(R.id.dayWindow).visibility = View.VISIBLE
             findViewById<ImageView>(R.id.nightWindow).visibility = View.INVISIBLE
