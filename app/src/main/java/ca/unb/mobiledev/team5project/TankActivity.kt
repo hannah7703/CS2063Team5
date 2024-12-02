@@ -25,7 +25,6 @@ import java.time.LocalTime
 
 class TankActivity : AppCompatActivity() {
     lateinit var statistics: Statistics
-    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -34,8 +33,7 @@ class TankActivity : AppCompatActivity() {
         val listMaker = ListMaker(this)
 
         //sets day window and wall visible if day *****Hardcoded sunrise sunset!!
-        val daytime = TimeUtils.isTimeBetween(LocalTime.now(), LocalTime.of(6,0), LocalTime.of(20,0))
-        if (daytime) {
+        if (LocalTime.now().isAfter(LocalTime.of(6,0)) && LocalTime.now().isBefore(LocalTime.of(20,0))) {
             findViewById<ImageView>(R.id.dayWindow).visibility = View.VISIBLE
             findViewById<ImageView>(R.id.nightWindow).visibility = View.INVISIBLE
             findViewById<ImageView>(R.id.dayWall).visibility = View.VISIBLE
