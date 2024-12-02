@@ -4,12 +4,16 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.GestureDetector
+import android.view.GestureDetector.SimpleOnGestureListener
+import android.view.MotionEvent
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import ca.unb.mobiledev.team5project.TaskActivity.Companion
 import ca.unb.mobiledev.team5project.model.Achievement
 import ca.unb.mobiledev.team5project.model.Statistics
 import ca.unb.mobiledev.team5project.util.ListMaker
@@ -20,6 +24,9 @@ class AchieveActivity : AppCompatActivity() {
     lateinit var statistics: Statistics
     lateinit var foodCount: TextView
     lateinit var ListMaker: ListMaker
+    private lateinit var gestureDetector: GestureDetector
+    private val swipeWidth = 100
+    private val swipeVelocity = 100
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -454,7 +461,56 @@ class AchieveActivity : AppCompatActivity() {
                 Log.e(TAG, "Unable to start the activity")
             }
         }
+        gestureDetector = GestureDetector(this, object : SimpleOnGestureListener() {
+            override fun onDown(motionEvent: MotionEvent): Boolean {
+                return false
+            }
 
+            override fun onFling(
+                event1: MotionEvent?, event2: MotionEvent,
+                velocityX: Float, velocityY: Float,
+            ): Boolean {
+                try {
+                    val Ylength = event1!!.y - event2.y
+                    val Xlength = event1.x - event2.x
+                    if (Math.abs(Xlength) > Math.abs(Ylength)) {
+                        if (Math.abs(Xlength) > swipeWidth && Math.abs(velocityX) > swipeVelocity) {
+                            if (Xlength < 0) {
+                                val intent = Intent(this@AchieveActivity, StoreActivity::class.java)
+                                try {
+                                    startActivity(intent)
+                                } catch (ex: ActivityNotFoundException) {
+                                    Log.e(TaskActivity.TAG, "Unable to start the activity")
+                                }
+                                finish()
+                            }
+                            else {
+                                val intent = Intent(this@AchieveActivity, TaskActivity::class.java)
+                                try {
+                                    startActivity(intent)
+                                } catch (ex: ActivityNotFoundException) {
+                                    Log.e(TaskActivity.TAG, "Unable to start the activity")
+                                }
+                                finish()
+                            }
+                        }
+                    }
+                }
+                catch (exception: Exception) {
+                    exception.printStackTrace()
+                }
+                return true
+            }
+        })
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        return if (gestureDetector.onTouchEvent(event)) {
+            true
+        }
+        else {
+            super.onTouchEvent(event)
+        }
     }
 
     private fun setDetails(achievement: Achievement, image: ImageView, text: TextView){
