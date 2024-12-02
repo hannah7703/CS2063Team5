@@ -222,12 +222,6 @@ class TankActivity : AppCompatActivity() {
                     if (Math.abs(Xlength) > Math.abs(Ylength)) {
                         if (Math.abs(Xlength) > swipeWidth && Math.abs(velocityX) > swipeVelocity) {
                             if (Xlength < 0) {
-                                val intent = Intent(this@TankActivity, TaskActivity::class.java)
-                                try {
-                                    startActivity(intent)
-                                } catch (ex: ActivityNotFoundException) {
-                                    Log.e(TaskActivity.TAG, "Unable to start the activity")
-                                }
                                 finish()
                             }
                             else {

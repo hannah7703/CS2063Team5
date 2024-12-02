@@ -485,12 +485,6 @@ class AchieveActivity : AppCompatActivity() {
                                 finish()
                             }
                             else {
-                                val intent = Intent(this@AchieveActivity, TaskActivity::class.java)
-                                try {
-                                    startActivity(intent)
-                                } catch (ex: ActivityNotFoundException) {
-                                    Log.e(TaskActivity.TAG, "Unable to start the activity")
-                                }
                                 finish()
                             }
                         }
